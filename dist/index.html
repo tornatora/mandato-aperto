@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Verifica l'attività documentata dei deputati italiani con dati ufficiali, formula pubblica e fonti cliccabili." />
+    <meta name="theme-color" content="#07182d" />
+    <title>Mandato Aperto — Dati, fatti, alternative</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#results">Vai ai risultati</a>
+    <div class="flag-line" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Mandato Aperto, home">
+        <span class="brand-mark" aria-hidden="true"><span>M</span><span>A</span></span>
+        <span class="brand-copy">
+          <strong>Mandato Aperto</strong>
+          <small>Dati · fatti · alternative</small>
+        </span>
+      </a>
+      <nav aria-label="Navigazione principale">
+        <button class="text-button" type="button" data-dialog="method-dialog">Metodo</button>
+        <button class="text-button" type="button" data-dialog="sources-dialog">Fonti</button>
+        <button class="text-button" type="button" data-dialog="replacement-dialog">Ricambio</button>
+        <span class="open-badge">Open source</span>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="command-panel" aria-labelledby="page-title">
+        <div class="command-copy">
+          <p class="eyebrow"><span aria-hidden="true"></span> Osservatorio civico · XIX legislatura</p>
+          <h1 id="page-title">Controlla il mandato.<br />Confronta i fatti.</h1>
+          <p class="intro">Attività parlamentare resa leggibile, senza opinioni nascoste nell'algoritmo. Ogni numero porta alla fonte ufficiale.</p>
+        </div>
+
+        <div class="search-console" role="search" aria-label="Cerca e filtra deputati">
+          <label class="search-field" for="search-input">
+            <span class="search-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Cerca deputato</span>
+            <input id="search-input" type="search" autocomplete="off" placeholder="Nome, gruppo o circoscrizione…" />
+            <kbd aria-hidden="true">⌘ K</kbd>
+          </label>
+          <div class="filter-row">
+            <label>
+              <span>Gruppo</span>
+              <select id="group-filter">
+                <option value="">Tutti i gruppi</option>
+              </select>
+            </label>
+            <label>
+              <span>Ordina</span>
+              <select id="sort-filter">
+                <option value="name">Nome A–Z</option>
+                <option value="score-desc">Indice attività</option>
+                <option value="attendance-desc">Partecipazione voti</option>
+                <option value="bills-desc">Proposte di legge</option>
+              </select>
+            </label>
+          </div>
+          <div class="dataset-status" aria-live="polite">
+            <span class="pulse" aria-hidden="true"></span>
+            <span id="freshness">Caricamento dati ufficiali…</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="truth-strip" aria-label="Come leggere i dati">
+        <p><strong>Misura attività documentata.</strong> Non misura onestà, competenza, qualità delle leggi o lavoro sul territorio.</p>
+        <button type="button" data-dialog="method-dialog">Leggi i limiti <span aria-hidden="true">→</span></button>
+      </section>
+
+      <section class="overview" aria-label="Riepilogo del dataset">
+        <div>
+          <span class="stat-value" id="total-stat">—</span>
+          <span class="stat-label">deputati in carica</span>
+        </div>
+        <div>
+          <span class="stat-value">4</span>
+          <span class="stat-label">indicatori pubblici</span>
+        </div>
+        <div>
+          <span class="stat-value">100%</span>
+          <span class="stat-label">fonti tracciabili</span>
+        </div>
+        <div class="overview-note">
+          <span>Formula</span>
+          <strong>v0.1.0</strong>
+        </div>
+      </section>
+
+      <section class="results-section" id="results" aria-labelledby="results-title">
+        <div class="results-heading">
+          <div>
+            <p class="section-kicker">Camera dei deputati</p>
+            <h2 id="results-title">Schede verificabili</h2>
+          </div>
+          <p id="results-count" aria-live="polite">Preparazione delle schede…</p>
+        </div>
+
+        <div class="legend" aria-label="Legenda">
+          <span><i class="legend-score" aria-hidden="true"></i> Indice su 100</span>
+          <span><i class="legend-source" aria-hidden="true"></i> Dato ufficiale</span>
+          <button type="button" data-dialog="method-dialog">Come si calcola?</button>
+        </div>
+
+        <div class="card-grid" id="card-grid" aria-live="polite"></div>
+
+        <div class="empty-state" id="empty-state" hidden>
+          <span aria-hidden="true">∅</span>
+          <h3>Nessun risultato</h3>
+          <p>Prova con un cognome, un gruppo diverso o una circoscrizione più ampia.</p>
+          <button class="secondary-button" id="reset-filters" type="button">Azzera filtri</button>
+        </div>
+
+        <button class="load-more" id="load-more" type="button" hidden>Mostra altre schede</button>
+      </section>
+
+      <section class="democracy-note" aria-labelledby="democracy-title">
+        <div class="note-number" aria-hidden="true">67</div>
+        <div>
+          <p class="section-kicker">Costituzione italiana</p>
+          <h2 id="democracy-title">Il ricambio lo decidono gli elettori, non un punteggio.</h2>
+          <p>L'articolo 67 tutela il mandato libero. Mandato Aperto non revoca eletti e non sceglie candidati: offre elementi verificabili per valutarli e, durante le elezioni, confrontarli con le alternative ufficiali.</p>
+        </div>
+        <a href="https://www.senato.it/istituzione/la-costituzione/parte-ii/titolo-i/sezione-i/articolo-67" target="_blank" rel="noreferrer">Apri la Costituzione <span aria-hidden="true">↗</span></a>
+      </section>
+    </main>
+
+    <footer>
+      <div>
+        <strong>Mandato Aperto</strong>
+        <p>Progetto civico indipendente. Codice MIT. Nessuna affiliazione con Camera, Senato, partiti o candidati.</p>
+      </div>
+      <div class="footer-links">
+        <button type="button" data-dialog="method-dialog">Metodologia</button>
+        <button type="button" data-dialog="sources-dialog">Fonti e licenze</button>
+        <a href="data/deputies.json" download>Scarica i dati</a>
+      </div>
+    </footer>
+
+    <aside class="compare-bar" id="compare-bar" aria-label="Confronto selezionato" hidden>
+      <div class="compare-summary">
+        <span class="compare-count" id="compare-count">0/2</span>
+        <div>
+          <strong>Confronto</strong>
+          <p id="compare-names">Seleziona due deputati</p>
+        </div>
+      </div>
+      <div class="compare-actions">
+        <button class="text-button inverse" id="clear-compare" type="button">Svuota</button>
+        <button class="primary-button" id="open-compare" type="button" disabled>Confronta</button>
+      </div>
+    </aside>
+
+    <dialog class="sheet-dialog" id="profile-dialog">
+      <div class="dialog-shell">
+        <button class="close-dialog" type="button" aria-label="Chiudi finestra">×</button>
+        <div class="profile-header">
+          <div class="large-avatar" id="profile-avatar" aria-hidden="true">—</div>
+          <div>
+            <p class="section-kicker">Scheda verificabile</p>
+            <h2 id="profile-name">—</h2>
+            <p id="profile-meta">—</p>
+          </div>
+          <div class="large-score" id="profile-score">
+            <strong>—</strong><span>/100</span><small>Indice attività</small>
+          </div>
+        </div>
+
+        <div class="profile-warning">
+          <strong id="profile-label">—</strong>
+          <span>Confronto quantitativo interno alla Camera. Non è una valutazione di merito.</span>
+        </div>
+
+        <div class="metric-panels">
+          <article>
+            <span>Partecipazione voti</span>
+            <strong id="metric-attendance">—</strong>
+            <p id="metric-attendance-note">—</p>
+          </article>
+          <article>
+            <span>Proposte di legge</span>
+            <strong id="metric-bills">—</strong>
+            <p>Da primo firmatario</p>
+          </article>
+          <article>
+            <span>Indirizzo e controllo</span>
+            <strong id="metric-oversight">—</strong>
+            <p>Atti da primo firmatario</p>
+          </article>
+          <article>
+            <span>Interventi</span>
+            <strong id="metric-interventions">—</strong>
+            <p>Registrati nei dati Camera</p>
+          </article>
+        </div>
+
+        <details class="calculation-detail">
+          <summary>Vedi il calcolo e le esclusioni</summary>
+          <div class="calculation-grid" id="calculation-grid"></div>
+        </details>
+
+        <div class="profile-actions">
+          <a class="primary-button" id="official-profile" href="#" target="_blank" rel="noreferrer">Verifica sul sito Camera <span aria-hidden="true">↗</span></a>
+          <button class="secondary-button" id="profile-compare" type="button">Aggiungi al confronto</button>
+          <button class="secondary-button" id="profile-alternative" type="button">Valuta un'alternativa</button>
+        </div>
+        <p class="source-stamp" id="profile-source-stamp">Fonte e aggiornamento in caricamento.</p>
+      </div>
+    </dialog>
+
+    <dialog class="wide-dialog" id="compare-dialog">
+      <div class="dialog-shell">
+        <button class="close-dialog" type="button" aria-label="Chiudi finestra">×</button>
+        <p class="section-kicker">Confronto diretto</p>
+        <h2>Due mandati, gli stessi indicatori</h2>
+        <p class="dialog-intro">Nessun vincitore automatico: leggi le differenze e apri le fonti originali.</p>
+        <div id="compare-table" class="comparison-table"></div>
+      </div>
+    </dialog>
+
+    <dialog class="reading-dialog" id="method-dialog">
+      <div class="dialog-shell">
+        <button class="close-dialog" type="button" aria-label="Chiudi finestra">×</button>
+        <p class="section-kicker">Metodologia v0.1.0</p>
+        <h2>Una formula leggibile, non una sentenza.</h2>
+        <p class="dialog-intro">L'indice combina partecipazione e volumi di attività. Le posizioni politiche, la popolarità e il sentiment social non entrano mai nel calcolo.</p>
+
+        <div class="weights" aria-label="Pesi dell'indice">
+          <div><span style="--weight: 50%"></span><strong>50%</strong><p>Partecipazione alle votazioni elettroniche</p></div>
+          <div><span style="--weight: 20%"></span><strong>20%</strong><p>Proposte di legge da primo firmatario</p></div>
+          <div><span style="--weight: 15%"></span><strong>15%</strong><p>Atti di indirizzo e controllo</p></div>
+          <div><span style="--weight: 15%"></span><strong>15%</strong><p>Interventi parlamentari</p></div>
+        </div>
+
+        <div class="method-columns">
+          <section>
+            <h3>Missioni escluse</h3>
+            <p>“In missione” e “Presidente di turno” non sono considerate assenze. La percentuale indica partecipazione alle votazioni elettroniche, non presenza fisica.</p>
+          </section>
+          <section>
+            <h3>Estremi ridotti</h3>
+            <p>I volumi sono trasformati su scala logaritmica e limitati al 95° percentile, così pochi numeri eccezionali non schiacciano tutti gli altri.</p>
+          </section>
+          <section>
+            <h3>Indicatori separati</h3>
+            <p>Il totale non sostituisce i quattro dati di base. Ruoli di governo, opposizione e presidenza possono produrre profili di attività diversi.</p>
+          </section>
+          <section>
+            <h3>Formula versionata</h3>
+            <p>Ogni modifica resta pubblica, motivata e confrontabile. Nessun peso dipende dal partito, dal voto espresso o dall'orientamento ideologico.</p>
+          </section>
+        </div>
+
+        <div class="limits-box">
+          <strong>Limite essenziale</strong>
+          <p>Più attività non significa automaticamente attività migliore. L'indice non misura integrità, competenza, impatto delle leggi, lavoro sul territorio o capacità di mediazione.</p>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="reading-dialog" id="sources-dialog">
+      <div class="dialog-shell">
+        <button class="close-dialog" type="button" aria-label="Chiudi finestra">×</button>
+        <p class="section-kicker">Provenienza dei dati</p>
+        <h2>Prima la fonte. Poi il numero.</h2>
+        <div class="source-list">
+          <a href="https://www.camera.it/deputati/elenco" target="_blank" rel="noreferrer">
+            <span class="source-index">01</span>
+            <span><strong>Camera dei deputati</strong><small>Elenco, gruppi e schede istituzionali</small></span>
+            <i aria-hidden="true">↗</i>
+          </a>
+          <a href="https://dati.camera.it/sparql" target="_blank" rel="noreferrer">
+            <span class="source-index">02</span>
+            <span><strong>dati.camera.it</strong><small>Votazioni, atti, interventi e Linked Open Data</small></span>
+            <i aria-hidden="true">↗</i>
+          </a>
+          <a href="https://dati.senato.it/sito/scarica_i_dati" target="_blank" rel="noreferrer">
+            <span class="source-index">03</span>
+            <span><strong>dati.senato.it</strong><small>Fonte prevista per la seconda fase</small></span>
+            <i aria-hidden="true">↗</i>
+          </a>
+        </div>
+        <div class="limits-box">
+          <strong>Aggiornamento e rettifiche</strong>
+          <p>Il dataset viene rigenerato automaticamente. Una correzione documentata deve citare una fonte istituzionale e resta tracciata nel progetto open source.</p>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="reading-dialog" id="replacement-dialog">
+      <div class="dialog-shell">
+        <button class="close-dialog" type="button" aria-label="Chiudi finestra">×</button>
+        <p class="section-kicker">Laboratorio di ricambio democratico</p>
+        <h2>Non basta sostituire un nome. Serve un'alternativa verificabile.</h2>
+        <p class="dialog-intro">Crea una scheda privata da confrontare con un eletto. Il candidato non riceve un punteggio parlamentare: prima del mandato contano evidenze, impegni misurabili e trasparenza.</p>
+
+        <div class="current-context">
+          <span>Eletto di riferimento</span>
+          <strong id="alternative-current">Nessun eletto selezionato</strong>
+        </div>
+
+        <form class="alternative-form" id="alternative-form">
+          <div class="field-grid">
+            <label>
+              <span>Nome dell'alternativa</span>
+              <input id="candidate-name" name="candidate-name" required placeholder="Nome e cognome" />
+            </label>
+            <label>
+              <span>Stato del profilo</span>
+              <select id="candidate-status" name="candidate-status" required>
+                <option value="Proposta civica">Proposta civica</option>
+                <option value="Potenziale candidatura">Potenziale candidatura</option>
+                <option value="Candidatura ufficiale">Candidatura ufficiale</option>
+              </select>
+            </label>
+          </div>
+          <label>
+            <span>Esperienza rilevante</span>
+            <textarea id="candidate-experience" name="candidate-experience" required rows="3" placeholder="Ruolo, risultato concreto, periodo. Evita slogan."></textarea>
+          </label>
+          <label>
+            <span>Fonte che conferma l'esperienza</span>
+            <input id="candidate-evidence" name="candidate-evidence" type="url" required placeholder="https://…" />
+          </label>
+          <label>
+            <span>Tre impegni misurabili</span>
+            <textarea id="candidate-commitments" name="candidate-commitments" required rows="5" placeholder="Uno per riga: azione + risultato atteso + scadenza"></textarea>
+          </label>
+          <label class="check-field">
+            <input id="candidate-transparency" name="candidate-transparency" type="checkbox" required />
+            <span>Il profilo dichiara incarichi, interessi economici e possibili conflitti.</span>
+          </label>
+          <p class="privacy-note">La scheda resta nel tuo dispositivo: non viene inviata né pubblicata. “Candidatura ufficiale” va usato solo con una fonte elettorale.</p>
+          <button class="primary-button" type="submit">Genera scheda di confronto</button>
+        </form>
+
+        <section class="alternative-result" id="alternative-result" hidden aria-live="polite">
+          <div class="result-heading">
+            <div>
+              <span>Bozza privata · non certificata</span>
+              <h3 id="alternative-name">—</h3>
+              <p id="alternative-status">—</p>
+            </div>
+            <strong id="alternative-readiness">0/4</strong>
+          </div>
+          <div class="readiness-list" id="readiness-list"></div>
+          <div class="alternative-copy" id="alternative-copy"></div>
+          <div class="profile-actions">
+            <button class="primary-button" id="copy-alternative" type="button">Copia scheda</button>
+            <button class="secondary-button" id="download-alternative" type="button">Scarica testo</button>
+            <button class="secondary-button" id="edit-alternative" type="button">Modifica</button>
+          </div>
+        </section>
+      </div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+    <script src="app.js" defer></script>
+  </body>
+</html>
