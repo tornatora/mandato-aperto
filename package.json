@@ -1,0 +1,13 @@
+{
+  "name": "mandato-aperto",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Piattaforma civica open source per verificare l'attività documentata dei rappresentanti italiani.",
+  "scripts": {
+    "sync": "node scripts/sync-camera.mjs",
+    "validate": "node scripts/validate-data.mjs",
+    "check": "node --check dist/app.js && node scripts/validate-data.mjs"
+  },
+  "license": "MIT"
+}
