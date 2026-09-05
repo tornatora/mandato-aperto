@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Verifica l'attività documentata dei deputati italiani con dati ufficiali, formula pubblica e fonti cliccabili." />
+    <meta name="description" content="Esplora attività parlamentare con record anonimi, fasce aggregate e nessun riferimento personale pubblicato." />
     <meta name="theme-color" content="#07182d" />
     <title>Mandato Aperto — Dati, fatti, alternative</title>
     <link rel="stylesheet" href="styles.css" />
@@ -33,30 +33,22 @@
         <div class="command-copy">
           <p class="eyebrow"><span aria-hidden="true"></span> Osservatorio civico · XIX legislatura</p>
           <h1 id="page-title">Controlla il mandato.<br />Confronta i fatti.</h1>
-          <p class="intro">Attività parlamentare resa leggibile, senza opinioni nascoste nell'algoritmo. Ogni numero porta alla fonte ufficiale.</p>
+          <p class="intro">Attività parlamentare pubblicata esclusivamente con codici anonimi e fasce aggregate. Nessun nome, partito, area o collegamento personale è esposto.</p>
         </div>
 
         <div class="search-console" role="search" aria-label="Cerca e filtra deputati">
           <label class="search-field" for="search-input">
             <span class="search-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Cerca deputato</span>
-            <input id="search-input" type="search" autocomplete="off" placeholder="Nome, gruppo o circoscrizione…" />
+            <input id="search-input" type="search" autocomplete="off" placeholder="Cerca un codice anonimo, es. R001…" />
             <kbd aria-hidden="true">⌘ K</kbd>
           </label>
           <div class="filter-row">
             <label>
-              <span>Gruppo</span>
-              <select id="group-filter">
-                <option value="">Tutti i gruppi</option>
-              </select>
-            </label>
-            <label>
               <span>Ordina</span>
               <select id="sort-filter">
-                <option value="name">Nome A–Z</option>
-                <option value="score-desc">Indice attività</option>
-                <option value="attendance-desc">Partecipazione voti</option>
-                <option value="bills-desc">Proposte di legge</option>
+                <option value="name">Codice</option>
+                <option value="score-desc">Fascia attività</option>
               </select>
             </label>
           </div>
@@ -68,14 +60,14 @@
       </section>
 
       <section class="truth-strip" aria-label="Come leggere i dati">
-        <p><strong>Misura attività documentata.</strong> Non misura onestà, competenza, qualità delle leggi o lavoro sul territorio.</p>
+        <p><strong>Anonimizzazione forte.</strong> Nomi, partiti, aree, identificativi originari, collegamenti e valori puntuali non sono pubblicati.</p>
         <button type="button" data-dialog="method-dialog">Leggi i limiti <span aria-hidden="true">→</span></button>
       </section>
 
       <section class="overview" aria-label="Riepilogo del dataset">
         <div>
           <span class="stat-value" id="total-stat">—</span>
-          <span class="stat-label">deputati in carica</span>
+          <span class="stat-label">record pseudonimizzati</span>
         </div>
         <div>
           <span class="stat-value">4</span>
@@ -87,7 +79,7 @@
         </div>
         <div class="overview-note">
           <span>Formula</span>
-          <strong>v0.1.0</strong>
+          <strong>v0.1.1</strong>
         </div>
       </section>
 
@@ -95,7 +87,7 @@
         <div class="results-heading">
           <div>
             <p class="section-kicker">Camera dei deputati</p>
-            <h2 id="results-title">Schede verificabili</h2>
+            <h2 id="results-title">Schede pseudonimizzate</h2>
           </div>
           <p id="results-count" aria-live="polite">Preparazione delle schede…</p>
         </div>
@@ -111,7 +103,7 @@
         <div class="empty-state" id="empty-state" hidden>
           <span aria-hidden="true">∅</span>
           <h3>Nessun risultato</h3>
-          <p>Prova con un cognome, un gruppo diverso o una circoscrizione più ampia.</p>
+          <p>Inserisci un codice anonimo valido oppure azzera la ricerca.</p>
           <button class="secondary-button" id="reset-filters" type="button">Azzera filtri</button>
         </div>
 
@@ -162,7 +154,7 @@
         <div class="profile-header">
           <div class="large-avatar" id="profile-avatar" aria-hidden="true">—</div>
           <div>
-            <p class="section-kicker">Scheda verificabile</p>
+            <p class="section-kicker">Scheda pseudonimizzata</p>
             <h2 id="profile-name">—</h2>
             <p id="profile-meta">—</p>
           </div>
@@ -173,7 +165,7 @@
 
         <div class="profile-warning">
           <strong id="profile-label">—</strong>
-          <span>Confronto quantitativo interno alla Camera. Non è una valutazione di merito.</span>
+          <span>Confronto per fasce aggregate. Nessun record identifica una persona.</span>
         </div>
 
         <div class="metric-panels">
@@ -199,13 +191,7 @@
           </article>
         </div>
 
-        <details class="calculation-detail">
-          <summary>Vedi il calcolo e le esclusioni</summary>
-          <div class="calculation-grid" id="calculation-grid"></div>
-        </details>
-
         <div class="profile-actions">
-          <a class="primary-button" id="official-profile" href="#" target="_blank" rel="noreferrer">Verifica sul sito Camera <span aria-hidden="true">↗</span></a>
           <button class="secondary-button" id="profile-compare" type="button">Aggiungi al confronto</button>
           <button class="secondary-button" id="profile-alternative" type="button">Valuta un'alternativa</button>
         </div>
@@ -218,7 +204,7 @@
         <button class="close-dialog" type="button" aria-label="Chiudi finestra">×</button>
         <p class="section-kicker">Confronto diretto</p>
         <h2>Due mandati, gli stessi indicatori</h2>
-        <p class="dialog-intro">Nessun vincitore automatico: leggi le differenze e apri le fonti originali.</p>
+        <p class="dialog-intro">Nessun vincitore automatico: sono mostrate soltanto fasce aggregate non riconducibili direttamente a persone.</p>
         <div id="compare-table" class="comparison-table"></div>
       </div>
     </dialog>
@@ -226,7 +212,7 @@
     <dialog class="reading-dialog" id="method-dialog">
       <div class="dialog-shell">
         <button class="close-dialog" type="button" aria-label="Chiudi finestra">×</button>
-        <p class="section-kicker">Metodologia v0.1.0</p>
+        <p class="section-kicker">Metodologia v0.1.1</p>
         <h2>Una formula leggibile, non una sentenza.</h2>
         <p class="dialog-intro">L'indice combina partecipazione e volumi di attività. Le posizioni politiche, la popolarità e il sentiment social non entrano mai nel calcolo.</p>
 
@@ -267,23 +253,16 @@
       <div class="dialog-shell">
         <button class="close-dialog" type="button" aria-label="Chiudi finestra">×</button>
         <p class="section-kicker">Provenienza dei dati</p>
-        <h2>Prima la fonte. Poi il numero.</h2>
+        <h2>Provenienza dichiarata, riferimenti diretti rimossi.</h2>
         <div class="source-list">
-          <a href="https://www.camera.it/deputati/elenco" target="_blank" rel="noreferrer">
+          <div>
             <span class="source-index">01</span>
-            <span><strong>Camera dei deputati</strong><small>Elenco, gruppi e schede istituzionali</small></span>
-            <i aria-hidden="true">↗</i>
-          </a>
-          <a href="https://dati.camera.it/sparql" target="_blank" rel="noreferrer">
+            <span><strong>Fonte istituzionale primaria</strong><small>Identità e collegamenti non inclusi nella pubblicazione</small></span>
+          </div>
+          <div>
             <span class="source-index">02</span>
-            <span><strong>dati.camera.it</strong><small>Votazioni, atti, interventi e Linked Open Data</small></span>
-            <i aria-hidden="true">↗</i>
-          </a>
-          <a href="https://dati.senato.it/sito/scarica_i_dati" target="_blank" rel="noreferrer">
-            <span class="source-index">03</span>
-            <span><strong>dati.senato.it</strong><small>Fonte prevista per la seconda fase</small></span>
-            <i aria-hidden="true">↗</i>
-          </a>
+            <span><strong>Dati parlamentari aggregati</strong><small>Valori pubblicati esclusivamente per intervalli</small></span>
+          </div>
         </div>
         <div class="limits-box">
           <strong>Aggiornamento e rettifiche</strong>
