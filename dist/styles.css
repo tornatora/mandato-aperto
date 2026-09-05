@@ -1322,7 +1322,8 @@ dialog::backdrop {
   margin-top: 30px;
 }
 
-.source-list a {
+.source-list a,
+.source-list > div {
   display: grid;
   grid-template-columns: 40px minmax(0, 1fr) auto;
   gap: 14px;
@@ -1345,7 +1346,8 @@ dialog::backdrop {
   font-weight: 850;
 }
 
-.source-list a > span:nth-child(2) {
+.source-list a > span:nth-child(2),
+.source-list > div > span:nth-child(2) {
   display: grid;
 }
 
