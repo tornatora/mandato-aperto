@@ -57,18 +57,21 @@ function normalize(value) {
 }
 
 function initials(person) {
-  return `${person.firstName?.[0] ?? ""}${person.lastName?.[0] ?? ""}`.toLocaleUpperCase("it-IT");
+  return person.id?.slice(-2) ?? "**";
 }
 
 function scoreValue(person) {
-  return Number.isFinite(person.score) ? person.score : -1;
+  const value = Number.parseInt(String(person.scoreBand ?? ""), 10);
+  return Number.isFinite(value) ? value : -1;
 }
 
 function percent(value) {
+  if (typeof value === "string") return value === "N/D" ? value : `${value}%`;
   return Number.isFinite(value) ? `${value.toLocaleString("it-IT", { maximumFractionDigits: 1 })}%` : "N/D";
 }
 
 function integer(value) {
+  if (typeof value === "string") return value;
   return Number.isFinite(value) ? numberFormat.format(value) : "N/D";
 }
 
@@ -86,6 +89,7 @@ function showToast(message) {
 }
 
 function populateGroups() {
+  if (!elements.group) return;
   const groups = [...new Set(state.deputies.map((person) => person.group).filter(Boolean))]
     .sort((a, b) => a.localeCompare(b, "it"));
   const fragment = document.createDocumentFragment();
@@ -100,23 +104,17 @@ function populateGroups() {
 
 function applyFilters() {
   const query = normalize(elements.search.value.trim());
-  const group = elements.group.value;
+  const group = elements.group?.value ?? "";
   const sort = elements.sort.value;
 
   state.filtered = state.deputies.filter((person) => {
-    const haystack = normalize(`${person.name} ${person.group} ${person.constituency}`);
-    return (!query || haystack.includes(query)) && (!group || person.group === group);
+    const haystack = normalize(`${person.name} ${person.id}`);
+    return (!query || haystack.includes(query)) && !group;
   });
 
   state.filtered.sort((a, b) => {
-    if (sort === "score-desc") return scoreValue(b) - scoreValue(a) || a.lastName.localeCompare(b.lastName, "it");
-    if (sort === "attendance-desc") {
-      return (b.metrics.participationPct ?? -1) - (a.metrics.participationPct ?? -1) || a.lastName.localeCompare(b.lastName, "it");
-    }
-    if (sort === "bills-desc") {
-      return b.metrics.billsFirstSigned - a.metrics.billsFirstSigned || a.lastName.localeCompare(b.lastName, "it");
-    }
-    return a.lastName.localeCompare(b.lastName, "it") || a.firstName.localeCompare(b.firstName, "it");
+    if (sort === "score-desc") return scoreValue(b) - scoreValue(a) || a.id.localeCompare(b.id, "it");
+    return a.id.localeCompare(b.id, "it");
   });
 
   state.visible = PAGE_SIZE;
@@ -125,21 +123,22 @@ function applyFilters() {
 
 function cardTemplate(person) {
   const selected = state.compare.includes(String(person.id));
-  const score = Number.isFinite(person.score) ? person.score : "—";
-  const angle = Number.isFinite(person.score) ? Math.max(0, Math.min(360, person.score * 3.6)) : 0;
+  const score = person.scoreBand ?? "N/D";
+  const scoreNumber = scoreValue(person);
+  const angle = scoreNumber >= 0 ? Math.max(0, Math.min(360, (scoreNumber + 5) * 3.6)) : 0;
   return `
     <article class="person-card">
       <div class="card-top">
         <div class="avatar" aria-hidden="true">${escapeHtml(initials(person))}</div>
         <div class="identity">
           <h3 title="${escapeHtml(person.name)}">${escapeHtml(person.name)}</h3>
-          <p title="${escapeHtml(person.group)}">${escapeHtml(person.group)}</p>
+          <p>Identità non pubblicata</p>
         </div>
         <div class="score-dial" style="--score-angle: ${angle}deg" aria-label="Indice di attività ${escapeHtml(score)} su 100">
           <strong>${escapeHtml(score)}</strong>
         </div>
       </div>
-      <p class="card-district" title="${escapeHtml(person.constituency)}">${escapeHtml(person.constituency)}</p>
+      <p class="card-district">Partito e area non pubblicati</p>
       <div class="card-metrics">
         <div><strong>${escapeHtml(percent(person.metrics.participationPct))}</strong><span>Votazioni</span></div>
         <div><strong>${escapeHtml(integer(person.metrics.billsFirstSigned))}</strong><span>Proposte</span></div>
@@ -209,23 +208,16 @@ function openProfile(id) {
   const metrics = person.metrics;
   document.querySelector("#profile-avatar").textContent = initials(person);
   document.querySelector("#profile-name").textContent = person.name;
-  document.querySelector("#profile-meta").textContent = `${person.group} · ${person.constituency}`;
-  document.querySelector("#profile-score strong").textContent = Number.isFinite(person.score) ? person.score : "—";
+  document.querySelector("#profile-meta").textContent = "Identità, partito e area non pubblicati";
+  document.querySelector("#profile-score strong").textContent = person.scoreBand ?? "N/D";
   document.querySelector("#profile-label").textContent = person.scoreLabel;
   document.querySelector("#metric-attendance").textContent = percent(metrics.participationPct);
-  document.querySelector("#metric-attendance-note").textContent = `${integer(metrics.votesCast)} voti espressi su ${integer(metrics.eligibleVotes)} conteggiati`;
+  document.querySelector("#metric-attendance-note").textContent = "Valore pubblicato per fascia";
   document.querySelector("#metric-bills").textContent = integer(metrics.billsFirstSigned);
   document.querySelector("#metric-oversight").textContent = integer(metrics.oversightFirstSigned);
   document.querySelector("#metric-interventions").textContent = integer(metrics.interventions);
-  document.querySelector("#official-profile").href = person.profileUrl;
-  document.querySelector("#calculation-grid").innerHTML = `
-    <div><strong>${escapeHtml(integer(metrics.votesCast))}</strong><span>Voti espressi</span></div>
-    <div><strong>${escapeHtml(integer(metrics.absentVotes))}</strong><span>Non partecipazioni conteggiate</span></div>
-    <div><strong>${escapeHtml(integer(metrics.missions))}</strong><span>Missioni escluse</span></div>
-    <div><strong>${escapeHtml(integer(metrics.presiding))}</strong><span>Presidenze di turno escluse</span></div>`;
-
   const updated = state.meta?.generatedAt ? dateFormat.format(new Date(state.meta.generatedAt)) : "data non disponibile";
-  document.querySelector("#profile-source-stamp").textContent = `Fonte: Camera dei deputati · Dataset generato il ${updated} · Metodo ${state.meta?.methodologyVersion ?? "0.1.0"}`;
+  document.querySelector("#profile-source-stamp").textContent = `Dati istituzionali aggregati · Nessun riferimento personale pubblicato · Aggiornamento ${updated} · Metodo ${state.meta?.methodologyVersion ?? "0.1.1"}`;
   updateCompareBar();
   document.querySelector("#profile-dialog").showModal();
 }
@@ -245,44 +237,19 @@ function openComparison() {
   document.querySelector("#compare-table").innerHTML = `
     <div class="comparison-row header">
       <div><span class="comparison-label">Indicatore</span></div>
-      <div><strong>${escapeHtml(left.name)}</strong><span>${escapeHtml(left.group)}</span></div>
-      <div><strong>${escapeHtml(right.name)}</strong><span>${escapeHtml(right.group)}</span></div>
+      <div><strong>${escapeHtml(left.name)}</strong><span>Anonimo</span></div>
+      <div><strong>${escapeHtml(right.name)}</strong><span>Anonimo</span></div>
     </div>
-    ${comparisonRow("Indice attività", escapeHtml(integer(left.score)), escapeHtml(integer(right.score)), "Su 100")}
+    ${comparisonRow("Fascia attività", escapeHtml(left.scoreBand), escapeHtml(right.scoreBand), "Intervallo su 100")}
     ${comparisonRow("Partecipazione voti", escapeHtml(percent(left.metrics.participationPct)), escapeHtml(percent(right.metrics.participationPct)), "Missioni escluse")}
     ${comparisonRow("Proposte di legge", escapeHtml(integer(left.metrics.billsFirstSigned)), escapeHtml(integer(right.metrics.billsFirstSigned)), "Primo firmatario")}
     ${comparisonRow("Indirizzo e controllo", escapeHtml(integer(left.metrics.oversightFirstSigned)), escapeHtml(integer(right.metrics.oversightFirstSigned)), "Primo firmatario")}
-    ${comparisonRow("Interventi", escapeHtml(integer(left.metrics.interventions)), escapeHtml(integer(right.metrics.interventions)), "Dati Camera")}
-    ${comparisonRow("Circoscrizione", escapeHtml(left.constituency), escapeHtml(right.constituency))}
-    ${comparisonRow("Fonte ufficiale", `<a href="${escapeHtml(left.profileUrl)}" target="_blank" rel="noreferrer">Apri scheda ↗</a>`, `<a href="${escapeHtml(right.profileUrl)}" target="_blank" rel="noreferrer">Apri scheda ↗</a>`)}`;
+    ${comparisonRow("Interventi", escapeHtml(integer(left.metrics.interventions)), escapeHtml(integer(right.metrics.interventions)), "Fascia aggregata")}`;
   document.querySelector("#compare-dialog").showModal();
 }
 
 function populateSources() {
-  const dialog = document.querySelector("#sources-dialog .dialog-shell");
-  const limitBox = dialog.querySelector(".limits-box");
-  const sources = [
-    ...(state.meta?.sources ?? []),
-    {
-      name: "Senato della Repubblica — Open data",
-      url: "https://dati.senato.it/sito/scarica_i_dati",
-      note: "Integrazione prevista nella versione 0.2"
-    },
-    {
-      name: "Costituzione della Repubblica italiana",
-      url: "https://www.senato.it/istituzione/la-costituzione",
-      note: "Quadro costituzionale del mandato"
-    }
-  ];
-  const list = document.createElement("div");
-  list.className = "source-list";
-  list.innerHTML = sources.map((source, index) => `
-    <a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">
-      <span class="source-index">0${index + 1}</span>
-      <span><strong>${escapeHtml(source.name)}</strong><small>${escapeHtml(source.note ?? "Fonte istituzionale primaria")}</small></span>
-      <i aria-hidden="true">↗</i>
-    </a>`).join("");
-  dialog.insertBefore(list, limitBox);
+  // I riferimenti diretti sono intenzionalmente esclusi dalla pubblicazione.
 }
 
 function isHttpUrl(value) {
@@ -303,7 +270,7 @@ function openAlternativeFromProfile() {
   document.querySelector("#alternative-result").hidden = true;
   state.alternativeText = "";
   document.querySelector("#alternative-current").textContent = current
-    ? `${current.name} · indice ${Number.isFinite(current.score) ? current.score : "N/D"}/100`
+    ? `${current.name} · fascia attività ${current.scoreBand ?? "N/D"}/100`
     : "Nessun eletto selezionato";
   document.querySelector("#replacement-dialog").showModal();
 }
@@ -347,7 +314,7 @@ function renderAlternative(event) {
     .join("");
 
   const incumbentText = current
-    ? `${current.name}: indice ${Number.isFinite(current.score) ? current.score : "N/D"}/100, partecipazione ${percent(current.metrics.participationPct)}, ${integer(current.metrics.billsFirstSigned)} proposte di legge da primo firmatario.`
+    ? `${current.name}: fascia attività ${current.scoreBand ?? "N/D"}/100, partecipazione ${percent(current.metrics.participationPct)}, proposte di legge nella fascia ${integer(current.metrics.billsFirstSigned)}.`
     : "Nessun eletto selezionato. Apri una scheda per collegare il confronto a un mandato in corso.";
   const commitmentsHtml = commitments.length
     ? `<ol>${commitments.map((commitment) => `<li>${escapeHtml(commitment)}</li>`).join("")}</ol>`
@@ -429,7 +396,7 @@ async function loadData() {
     state.meta = payload.meta ?? {};
     elements.total.textContent = numberFormat.format(state.deputies.length);
     const updated = state.meta.generatedAt ? dateFormat.format(new Date(state.meta.generatedAt)) : "data non disponibile";
-    elements.freshness.textContent = `Dati Camera · aggiornati ${updated}`;
+    elements.freshness.textContent = `Dati istituzionali aggregati · aggiornati ${updated}`;
     populateGroups();
     populateSources();
     restoreCompare();
@@ -441,17 +408,17 @@ async function loadData() {
     elements.count.textContent = "Errore di caricamento";
     elements.empty.hidden = false;
     elements.empty.querySelector("h3").textContent = "Impossibile caricare le schede";
-    elements.empty.querySelector("p").textContent = "Riprova tra poco oppure consulta direttamente le fonti ufficiali.";
+    elements.empty.querySelector("p").textContent = "Riprova tra poco.";
     elements.reset.hidden = true;
   }
 }
 
 elements.search.addEventListener("input", applyFilters);
-elements.group.addEventListener("change", applyFilters);
+elements.group?.addEventListener("change", applyFilters);
 elements.sort.addEventListener("change", applyFilters);
 elements.reset.addEventListener("click", () => {
   elements.search.value = "";
-  elements.group.value = "";
+  if (elements.group) elements.group.value = "";
   elements.sort.value = "name";
   applyFilters();
   elements.search.focus();
