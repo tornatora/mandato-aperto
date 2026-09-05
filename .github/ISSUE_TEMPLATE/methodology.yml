@@ -1,0 +1,33 @@
+name: Proposta metodologia
+description: Proponi una modifica trasparente alla formula o alle fonti.
+title: "[METODO] "
+labels: [metodologia, discussione]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problema misurabile
+      description: Quale distorsione o limite vuoi correggere?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Modifica proposta
+      description: Descrivi formula, fonte o regola alternativa.
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impatto e possibili distorsioni
+      description: Chi potrebbe essere favorito o penalizzato, e perché?
+    validations:
+      required: true
+  - type: checkboxes
+    id: neutrality
+    attributes:
+      label: Neutralità
+      options:
+        - label: La proposta non mira a favorire una persona, un partito o un orientamento.
+          required: true
