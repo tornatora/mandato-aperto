@@ -1,8 +1,8 @@
-# Metodologia — versione 0.1.1
+# Metodologia — versione 0.1.2
 
 ## Principio
 
-L'Indice di attività documentata rende comparabili quattro quantità pubbliche. Non esprime un giudizio sulla qualità, sull'utilità o sull'orientamento politico dell'attività.
+L'Indice di attività documentata rende comparabili quattro quantità pubbliche. L'interfaccia mostra in primo piano la **fascia di inattività documentata**, calcolata come `100 − indice di attività`: un valore più alto segnala quindi meno attività rilevata. Non esprime un giudizio sulla qualità, sull'utilità o sull'orientamento politico dell'attività.
 
 La versione pubblicata sostituisce ogni identità con un codice casuale, rimuove nomi, partiti, circoscrizioni, identificativi, fotografie e collegamenti personali e converte tutti i valori puntuali in fasce. L'ordine viene rimescolato a ogni aggiornamento. Non viene promessa anonimizzazione statistica irreversibile perché i dati di origine sono pubblici.
 
@@ -26,9 +26,9 @@ indice = 50 × partecipazione
        + 15 × scala_log(interventi)
 ```
 
-Il risultato viene arrotondato a un intero da 0 a 100.
+Il risultato viene arrotondato a un intero da 0 a 100. Prima della pubblicazione viene trasformato in una fascia di dieci punti; la fascia di inattività è l'intervallo inverso. Per esempio, attività `70–79` diventa inattività `21–30`.
 
-Le etichette di fascia dividono i punteggi validi in cinque gruppi usando i percentili 20, 40, 60 e 80. “Fascia superiore” e “fascia inferiore” indicano quindi una posizione relativa nel dataset corrente, non un giudizio positivo o negativo sulla persona.
+Le etichette dividono i punteggi validi in cinque gruppi usando i percentili 20, 40, 60 e 80. “Tra i più inattivi” e “tra i meno inattivi” indicano una posizione relativa nel dataset corrente, non un giudizio positivo o negativo sulla persona.
 
 ## Limiti dichiarati
 

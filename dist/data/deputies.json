@@ -1,10 +1,10 @@
 {
   "meta": {
-    "title": "Mandato Aperto — Camera dei deputati",
+    "title": "Mandato Aperto — Politici alla Camera",
     "legislature": "XIX",
-    "scope": "Record anonimi dei deputati in carica",
+    "scope": "Record anonimi dei politici in carica alla Camera",
     "generatedAt": "2026-09-05T14:48:39.627Z",
-    "methodologyVersion": "0.1.1",
+    "methodologyVersion": "0.1.2",
     "scoreCaps": {
       "billsFirstSigned": 20,
       "oversightFirstSigned": 260,
@@ -17,7 +17,7 @@
       "p80": 81
     },
     "count": 399,
-    "disclaimer": "L'indice misura attività documentata, non qualità, competenza, integrità o efficacia politica.",
+    "disclaimer": "L’inattività è l’inverso dell’attività documentata e non misura qualità, competenza, integrità o efficacia politica.",
     "sources": [
       {
         "name": "Fonte istituzionale primaria",
@@ -33,5190 +33,5190 @@
   "deputies": [
     {
       "id": "R001",
-      "name": "Rappresentante R001",
+      "name": "Politico R001",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R002",
-      "name": "Rappresentante R002",
+      "name": "Politico R002",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R003",
-      "name": "Rappresentante R003",
+      "name": "Politico R003",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R004",
-      "name": "Rappresentante R004",
+      "name": "Politico R004",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "1–5",
         "interventions": "oltre 100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R005",
-      "name": "Rappresentante R005",
+      "name": "Politico R005",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R006",
-      "name": "Rappresentante R006",
+      "name": "Politico R006",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "0",
         "interventions": "0"
       },
-      "scoreBand": "30–39",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "61–70",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R007",
-      "name": "Rappresentante R007",
+      "name": "Politico R007",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "1–5",
         "interventions": "oltre 100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R008",
-      "name": "Rappresentante R008",
+      "name": "Politico R008",
       "metrics": {
         "participationPct": "10–19",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "1–5",
         "interventions": "6–20"
       },
-      "scoreBand": "10–19",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "81–90",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R009",
-      "name": "Rappresentante R009",
+      "name": "Politico R009",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "1–5",
         "interventions": "21–100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R010",
-      "name": "Rappresentante R010",
+      "name": "Politico R010",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "90–99",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "1–10",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R011",
-      "name": "Rappresentante R011",
+      "name": "Politico R011",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "21–100",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R012",
-      "name": "Rappresentante R012",
+      "name": "Politico R012",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R013",
-      "name": "Rappresentante R013",
+      "name": "Politico R013",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R014",
-      "name": "Rappresentante R014",
+      "name": "Politico R014",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R015",
-      "name": "Rappresentante R015",
+      "name": "Politico R015",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "6–20"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R016",
-      "name": "Rappresentante R016",
+      "name": "Politico R016",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R017",
-      "name": "Rappresentante R017",
+      "name": "Politico R017",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R018",
-      "name": "Rappresentante R018",
+      "name": "Politico R018",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "1–5",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R019",
-      "name": "Rappresentante R019",
+      "name": "Politico R019",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R020",
-      "name": "Rappresentante R020",
+      "name": "Politico R020",
       "metrics": {
         "participationPct": "50–59",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R021",
-      "name": "Rappresentante R021",
+      "name": "Politico R021",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R022",
-      "name": "Rappresentante R022",
+      "name": "Politico R022",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R023",
-      "name": "Rappresentante R023",
+      "name": "Politico R023",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R024",
-      "name": "Rappresentante R024",
+      "name": "Politico R024",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R025",
-      "name": "Rappresentante R025",
+      "name": "Politico R025",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R026",
-      "name": "Rappresentante R026",
+      "name": "Politico R026",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R027",
-      "name": "Rappresentante R027",
+      "name": "Politico R027",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R028",
-      "name": "Rappresentante R028",
+      "name": "Politico R028",
       "metrics": {
         "participationPct": "50–59",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R029",
-      "name": "Rappresentante R029",
+      "name": "Politico R029",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "1–5",
         "interventions": "0"
       },
-      "scoreBand": "30–39",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "61–70",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R030",
-      "name": "Rappresentante R030",
+      "name": "Politico R030",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "0",
         "interventions": "0"
       },
-      "scoreBand": "40–49",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "51–60",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R031",
-      "name": "Rappresentante R031",
+      "name": "Politico R031",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R032",
-      "name": "Rappresentante R032",
+      "name": "Politico R032",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R033",
-      "name": "Rappresentante R033",
+      "name": "Politico R033",
       "metrics": {
         "participationPct": "50–59",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R034",
-      "name": "Rappresentante R034",
+      "name": "Politico R034",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R035",
-      "name": "Rappresentante R035",
+      "name": "Politico R035",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R036",
-      "name": "Rappresentante R036",
+      "name": "Politico R036",
       "metrics": {
         "participationPct": "50–59",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "1–5",
         "interventions": "1–5"
       },
-      "scoreBand": "30–39",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "61–70",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R037",
-      "name": "Rappresentante R037",
+      "name": "Politico R037",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "1–5",
         "interventions": "0"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R038",
-      "name": "Rappresentante R038",
+      "name": "Politico R038",
       "metrics": {
         "participationPct": "50–59",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "1–5",
         "interventions": "21–100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R039",
-      "name": "Rappresentante R039",
+      "name": "Politico R039",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "90–99",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "1–10",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R040",
-      "name": "Rappresentante R040",
+      "name": "Politico R040",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R041",
-      "name": "Rappresentante R041",
+      "name": "Politico R041",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R042",
-      "name": "Rappresentante R042",
+      "name": "Politico R042",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "1–5",
         "interventions": "1–5"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R043",
-      "name": "Rappresentante R043",
+      "name": "Politico R043",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R044",
-      "name": "Rappresentante R044",
+      "name": "Politico R044",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "6–20",
         "interventions": "6–20"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R045",
-      "name": "Rappresentante R045",
+      "name": "Politico R045",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R046",
-      "name": "Rappresentante R046",
+      "name": "Politico R046",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R047",
-      "name": "Rappresentante R047",
+      "name": "Politico R047",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "40–49",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "51–60",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R048",
-      "name": "Rappresentante R048",
+      "name": "Politico R048",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R049",
-      "name": "Rappresentante R049",
+      "name": "Politico R049",
       "metrics": {
         "participationPct": "40–49",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R050",
-      "name": "Rappresentante R050",
+      "name": "Politico R050",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R051",
-      "name": "Rappresentante R051",
+      "name": "Politico R051",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R052",
-      "name": "Rappresentante R052",
+      "name": "Politico R052",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R053",
-      "name": "Rappresentante R053",
+      "name": "Politico R053",
       "metrics": {
         "participationPct": "40–49",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R054",
-      "name": "Rappresentante R054",
+      "name": "Politico R054",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R055",
-      "name": "Rappresentante R055",
+      "name": "Politico R055",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "1–5",
         "interventions": "oltre 100"
       },
-      "scoreBand": "40–49",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "51–60",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R056",
-      "name": "Rappresentante R056",
+      "name": "Politico R056",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R057",
-      "name": "Rappresentante R057",
+      "name": "Politico R057",
       "metrics": {
         "participationPct": "50–59",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "0",
         "interventions": "0"
       },
-      "scoreBand": "20–29",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "71–80",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R058",
-      "name": "Rappresentante R058",
+      "name": "Politico R058",
       "metrics": {
         "participationPct": "50–59",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R059",
-      "name": "Rappresentante R059",
+      "name": "Politico R059",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R060",
-      "name": "Rappresentante R060",
+      "name": "Politico R060",
       "metrics": {
         "participationPct": "10–19",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "40–49",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "51–60",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R061",
-      "name": "Rappresentante R061",
+      "name": "Politico R061",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "90–99",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "1–10",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R062",
-      "name": "Rappresentante R062",
+      "name": "Politico R062",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R063",
-      "name": "Rappresentante R063",
+      "name": "Politico R063",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R064",
-      "name": "Rappresentante R064",
+      "name": "Politico R064",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R065",
-      "name": "Rappresentante R065",
+      "name": "Politico R065",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R066",
-      "name": "Rappresentante R066",
+      "name": "Politico R066",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R067",
-      "name": "Rappresentante R067",
+      "name": "Politico R067",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "1–5",
         "interventions": "21–100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R068",
-      "name": "Rappresentante R068",
+      "name": "Politico R068",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "90–99",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "1–10",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R069",
-      "name": "Rappresentante R069",
+      "name": "Politico R069",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "40–49",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "51–60",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R070",
-      "name": "Rappresentante R070",
+      "name": "Politico R070",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R071",
-      "name": "Rappresentante R071",
+      "name": "Politico R071",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R072",
-      "name": "Rappresentante R072",
+      "name": "Politico R072",
       "metrics": {
         "participationPct": "50–59",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R073",
-      "name": "Rappresentante R073",
+      "name": "Politico R073",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "6–20"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R074",
-      "name": "Rappresentante R074",
+      "name": "Politico R074",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R075",
-      "name": "Rappresentante R075",
+      "name": "Politico R075",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "90–99",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "1–10",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R076",
-      "name": "Rappresentante R076",
+      "name": "Politico R076",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R077",
-      "name": "Rappresentante R077",
+      "name": "Politico R077",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R078",
-      "name": "Rappresentante R078",
+      "name": "Politico R078",
       "metrics": {
         "participationPct": "0–9",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "1–5",
         "interventions": "0"
       },
-      "scoreBand": "0–9",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "91–100",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R079",
-      "name": "Rappresentante R079",
+      "name": "Politico R079",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R080",
-      "name": "Rappresentante R080",
+      "name": "Politico R080",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R081",
-      "name": "Rappresentante R081",
+      "name": "Politico R081",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R082",
-      "name": "Rappresentante R082",
+      "name": "Politico R082",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R083",
-      "name": "Rappresentante R083",
+      "name": "Politico R083",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R084",
-      "name": "Rappresentante R084",
+      "name": "Politico R084",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R085",
-      "name": "Rappresentante R085",
+      "name": "Politico R085",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "21–100",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "90–99",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "1–10",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R086",
-      "name": "Rappresentante R086",
+      "name": "Politico R086",
       "metrics": {
         "participationPct": "50–59",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "40–49",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "51–60",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R087",
-      "name": "Rappresentante R087",
+      "name": "Politico R087",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R088",
-      "name": "Rappresentante R088",
+      "name": "Politico R088",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "90–99",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "1–10",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R089",
-      "name": "Rappresentante R089",
+      "name": "Politico R089",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R090",
-      "name": "Rappresentante R090",
+      "name": "Politico R090",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R091",
-      "name": "Rappresentante R091",
+      "name": "Politico R091",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R092",
-      "name": "Rappresentante R092",
+      "name": "Politico R092",
       "metrics": {
         "participationPct": "50–59",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "0",
         "interventions": "1–5"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R093",
-      "name": "Rappresentante R093",
+      "name": "Politico R093",
       "metrics": {
         "participationPct": "40–49",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R094",
-      "name": "Rappresentante R094",
+      "name": "Politico R094",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R095",
-      "name": "Rappresentante R095",
+      "name": "Politico R095",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R096",
-      "name": "Rappresentante R096",
+      "name": "Politico R096",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R097",
-      "name": "Rappresentante R097",
+      "name": "Politico R097",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R098",
-      "name": "Rappresentante R098",
+      "name": "Politico R098",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R099",
-      "name": "Rappresentante R099",
+      "name": "Politico R099",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "1–5",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R100",
-      "name": "Rappresentante R100",
+      "name": "Politico R100",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "21–100",
         "interventions": "6–20"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R101",
-      "name": "Rappresentante R101",
+      "name": "Politico R101",
       "metrics": {
         "participationPct": "50–59",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R102",
-      "name": "Rappresentante R102",
+      "name": "Politico R102",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R103",
-      "name": "Rappresentante R103",
+      "name": "Politico R103",
       "metrics": {
         "participationPct": "50–59",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R104",
-      "name": "Rappresentante R104",
+      "name": "Politico R104",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R105",
-      "name": "Rappresentante R105",
+      "name": "Politico R105",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R106",
-      "name": "Rappresentante R106",
+      "name": "Politico R106",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "90–99",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "1–10",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R107",
-      "name": "Rappresentante R107",
+      "name": "Politico R107",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R108",
-      "name": "Rappresentante R108",
+      "name": "Politico R108",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R109",
-      "name": "Rappresentante R109",
+      "name": "Politico R109",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R110",
-      "name": "Rappresentante R110",
+      "name": "Politico R110",
       "metrics": {
         "participationPct": "40–49",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "0",
         "interventions": "1–5"
       },
-      "scoreBand": "20–29",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "71–80",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R111",
-      "name": "Rappresentante R111",
+      "name": "Politico R111",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R112",
-      "name": "Rappresentante R112",
+      "name": "Politico R112",
       "metrics": {
         "participationPct": "20–29",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R113",
-      "name": "Rappresentante R113",
+      "name": "Politico R113",
       "metrics": {
         "participationPct": "30–39",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R114",
-      "name": "Rappresentante R114",
+      "name": "Politico R114",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "21–100",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R115",
-      "name": "Rappresentante R115",
+      "name": "Politico R115",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R116",
-      "name": "Rappresentante R116",
+      "name": "Politico R116",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R117",
-      "name": "Rappresentante R117",
+      "name": "Politico R117",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R118",
-      "name": "Rappresentante R118",
+      "name": "Politico R118",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R119",
-      "name": "Rappresentante R119",
+      "name": "Politico R119",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R120",
-      "name": "Rappresentante R120",
+      "name": "Politico R120",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "90–99",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "1–10",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R121",
-      "name": "Rappresentante R121",
+      "name": "Politico R121",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R122",
-      "name": "Rappresentante R122",
+      "name": "Politico R122",
       "metrics": {
         "participationPct": "50–59",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R123",
-      "name": "Rappresentante R123",
+      "name": "Politico R123",
       "metrics": {
         "participationPct": "40–49",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "40–49",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "51–60",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R124",
-      "name": "Rappresentante R124",
+      "name": "Politico R124",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R125",
-      "name": "Rappresentante R125",
+      "name": "Politico R125",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R126",
-      "name": "Rappresentante R126",
+      "name": "Politico R126",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R127",
-      "name": "Rappresentante R127",
+      "name": "Politico R127",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R128",
-      "name": "Rappresentante R128",
+      "name": "Politico R128",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R129",
-      "name": "Rappresentante R129",
+      "name": "Politico R129",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R130",
-      "name": "Rappresentante R130",
+      "name": "Politico R130",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R131",
-      "name": "Rappresentante R131",
+      "name": "Politico R131",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R132",
-      "name": "Rappresentante R132",
+      "name": "Politico R132",
       "metrics": {
         "participationPct": "50–59",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "40–49",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "51–60",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R133",
-      "name": "Rappresentante R133",
+      "name": "Politico R133",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R134",
-      "name": "Rappresentante R134",
+      "name": "Politico R134",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R135",
-      "name": "Rappresentante R135",
+      "name": "Politico R135",
       "metrics": {
         "participationPct": "40–49",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R136",
-      "name": "Rappresentante R136",
+      "name": "Politico R136",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R137",
-      "name": "Rappresentante R137",
+      "name": "Politico R137",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R138",
-      "name": "Rappresentante R138",
+      "name": "Politico R138",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "21–100",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "90–99",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "1–10",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R139",
-      "name": "Rappresentante R139",
+      "name": "Politico R139",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "1–5",
         "interventions": "6–20"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R140",
-      "name": "Rappresentante R140",
+      "name": "Politico R140",
       "metrics": {
         "participationPct": "10–19",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "0",
         "interventions": "0"
       },
-      "scoreBand": "0–9",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "91–100",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R141",
-      "name": "Rappresentante R141",
+      "name": "Politico R141",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "1–5",
         "interventions": "oltre 100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R142",
-      "name": "Rappresentante R142",
+      "name": "Politico R142",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R143",
-      "name": "Rappresentante R143",
+      "name": "Politico R143",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R144",
-      "name": "Rappresentante R144",
+      "name": "Politico R144",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R145",
-      "name": "Rappresentante R145",
+      "name": "Politico R145",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R146",
-      "name": "Rappresentante R146",
+      "name": "Politico R146",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R147",
-      "name": "Rappresentante R147",
+      "name": "Politico R147",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R148",
-      "name": "Rappresentante R148",
+      "name": "Politico R148",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R149",
-      "name": "Rappresentante R149",
+      "name": "Politico R149",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R150",
-      "name": "Rappresentante R150",
+      "name": "Politico R150",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R151",
-      "name": "Rappresentante R151",
+      "name": "Politico R151",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R152",
-      "name": "Rappresentante R152",
+      "name": "Politico R152",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "6–20",
         "interventions": "6–20"
       },
-      "scoreBand": "40–49",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "51–60",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R153",
-      "name": "Rappresentante R153",
+      "name": "Politico R153",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "6–20"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R154",
-      "name": "Rappresentante R154",
+      "name": "Politico R154",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R155",
-      "name": "Rappresentante R155",
+      "name": "Politico R155",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R156",
-      "name": "Rappresentante R156",
+      "name": "Politico R156",
       "metrics": {
         "participationPct": "50–59",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "40–49",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "51–60",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R157",
-      "name": "Rappresentante R157",
+      "name": "Politico R157",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "0",
         "interventions": "0"
       },
-      "scoreBand": "30–39",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "61–70",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R158",
-      "name": "Rappresentante R158",
+      "name": "Politico R158",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R159",
-      "name": "Rappresentante R159",
+      "name": "Politico R159",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R160",
-      "name": "Rappresentante R160",
+      "name": "Politico R160",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "21–100",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "90–99",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "1–10",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R161",
-      "name": "Rappresentante R161",
+      "name": "Politico R161",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R162",
-      "name": "Rappresentante R162",
+      "name": "Politico R162",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R163",
-      "name": "Rappresentante R163",
+      "name": "Politico R163",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R164",
-      "name": "Rappresentante R164",
+      "name": "Politico R164",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R165",
-      "name": "Rappresentante R165",
+      "name": "Politico R165",
       "metrics": {
         "participationPct": "50–59",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R166",
-      "name": "Rappresentante R166",
+      "name": "Politico R166",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R167",
-      "name": "Rappresentante R167",
+      "name": "Politico R167",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R168",
-      "name": "Rappresentante R168",
+      "name": "Politico R168",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "21–100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R169",
-      "name": "Rappresentante R169",
+      "name": "Politico R169",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R170",
-      "name": "Rappresentante R170",
+      "name": "Politico R170",
       "metrics": {
         "participationPct": "50–59",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R171",
-      "name": "Rappresentante R171",
+      "name": "Politico R171",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R172",
-      "name": "Rappresentante R172",
+      "name": "Politico R172",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R173",
-      "name": "Rappresentante R173",
+      "name": "Politico R173",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R174",
-      "name": "Rappresentante R174",
+      "name": "Politico R174",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R175",
-      "name": "Rappresentante R175",
+      "name": "Politico R175",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "90–99",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "1–10",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R176",
-      "name": "Rappresentante R176",
+      "name": "Politico R176",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R177",
-      "name": "Rappresentante R177",
+      "name": "Politico R177",
       "metrics": {
         "participationPct": "50–59",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R178",
-      "name": "Rappresentante R178",
+      "name": "Politico R178",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R179",
-      "name": "Rappresentante R179",
+      "name": "Politico R179",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "21–100",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R180",
-      "name": "Rappresentante R180",
+      "name": "Politico R180",
       "metrics": {
         "participationPct": "40–49",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R181",
-      "name": "Rappresentante R181",
+      "name": "Politico R181",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R182",
-      "name": "Rappresentante R182",
+      "name": "Politico R182",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R183",
-      "name": "Rappresentante R183",
+      "name": "Politico R183",
       "metrics": {
         "participationPct": "20–29",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "30–39",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "61–70",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R184",
-      "name": "Rappresentante R184",
+      "name": "Politico R184",
       "metrics": {
         "participationPct": "100",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R185",
-      "name": "Rappresentante R185",
+      "name": "Politico R185",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R186",
-      "name": "Rappresentante R186",
+      "name": "Politico R186",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "90–99",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "1–10",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R187",
-      "name": "Rappresentante R187",
+      "name": "Politico R187",
       "metrics": {
         "participationPct": "0–9",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "0",
         "interventions": "1–5"
       },
-      "scoreBand": "10–19",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "81–90",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R188",
-      "name": "Rappresentante R188",
+      "name": "Politico R188",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R189",
-      "name": "Rappresentante R189",
+      "name": "Politico R189",
       "metrics": {
         "participationPct": "50–59",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "0",
         "interventions": "0"
       },
-      "scoreBand": "20–29",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "71–80",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R190",
-      "name": "Rappresentante R190",
+      "name": "Politico R190",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R191",
-      "name": "Rappresentante R191",
+      "name": "Politico R191",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "1–5",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R192",
-      "name": "Rappresentante R192",
+      "name": "Politico R192",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "1–5",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R193",
-      "name": "Rappresentante R193",
+      "name": "Politico R193",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R194",
-      "name": "Rappresentante R194",
+      "name": "Politico R194",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R195",
-      "name": "Rappresentante R195",
+      "name": "Politico R195",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R196",
-      "name": "Rappresentante R196",
+      "name": "Politico R196",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "90–99",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "1–10",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R197",
-      "name": "Rappresentante R197",
+      "name": "Politico R197",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R198",
-      "name": "Rappresentante R198",
+      "name": "Politico R198",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R199",
-      "name": "Rappresentante R199",
+      "name": "Politico R199",
       "metrics": {
         "participationPct": "50–59",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "0",
         "interventions": "1–5"
       },
-      "scoreBand": "30–39",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "61–70",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R200",
-      "name": "Rappresentante R200",
+      "name": "Politico R200",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R201",
-      "name": "Rappresentante R201",
+      "name": "Politico R201",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R202",
-      "name": "Rappresentante R202",
+      "name": "Politico R202",
       "metrics": {
         "participationPct": "50–59",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R203",
-      "name": "Rappresentante R203",
+      "name": "Politico R203",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R204",
-      "name": "Rappresentante R204",
+      "name": "Politico R204",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R205",
-      "name": "Rappresentante R205",
+      "name": "Politico R205",
       "metrics": {
         "participationPct": "30–39",
         "billsFirstSigned": "21–100",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R206",
-      "name": "Rappresentante R206",
+      "name": "Politico R206",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R207",
-      "name": "Rappresentante R207",
+      "name": "Politico R207",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R208",
-      "name": "Rappresentante R208",
+      "name": "Politico R208",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R209",
-      "name": "Rappresentante R209",
+      "name": "Politico R209",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R210",
-      "name": "Rappresentante R210",
+      "name": "Politico R210",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R211",
-      "name": "Rappresentante R211",
+      "name": "Politico R211",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R212",
-      "name": "Rappresentante R212",
+      "name": "Politico R212",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R213",
-      "name": "Rappresentante R213",
+      "name": "Politico R213",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R214",
-      "name": "Rappresentante R214",
+      "name": "Politico R214",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R215",
-      "name": "Rappresentante R215",
+      "name": "Politico R215",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R216",
-      "name": "Rappresentante R216",
+      "name": "Politico R216",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R217",
-      "name": "Rappresentante R217",
+      "name": "Politico R217",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R218",
-      "name": "Rappresentante R218",
+      "name": "Politico R218",
       "metrics": {
         "participationPct": "30–39",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "0",
         "interventions": "1–5"
       },
-      "scoreBand": "20–29",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "71–80",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R219",
-      "name": "Rappresentante R219",
+      "name": "Politico R219",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R220",
-      "name": "Rappresentante R220",
+      "name": "Politico R220",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R221",
-      "name": "Rappresentante R221",
+      "name": "Politico R221",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R222",
-      "name": "Rappresentante R222",
+      "name": "Politico R222",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R223",
-      "name": "Rappresentante R223",
+      "name": "Politico R223",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R224",
-      "name": "Rappresentante R224",
+      "name": "Politico R224",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "1–5",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R225",
-      "name": "Rappresentante R225",
+      "name": "Politico R225",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R226",
-      "name": "Rappresentante R226",
+      "name": "Politico R226",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R227",
-      "name": "Rappresentante R227",
+      "name": "Politico R227",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R228",
-      "name": "Rappresentante R228",
+      "name": "Politico R228",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R229",
-      "name": "Rappresentante R229",
+      "name": "Politico R229",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R230",
-      "name": "Rappresentante R230",
+      "name": "Politico R230",
       "metrics": {
         "participationPct": "10–19",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "1–5",
         "interventions": "0"
       },
-      "scoreBand": "10–19",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "81–90",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R231",
-      "name": "Rappresentante R231",
+      "name": "Politico R231",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "1–5",
         "interventions": "21–100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R232",
-      "name": "Rappresentante R232",
+      "name": "Politico R232",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "1–5",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R233",
-      "name": "Rappresentante R233",
+      "name": "Politico R233",
       "metrics": {
         "participationPct": "40–49",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "40–49",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "51–60",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R234",
-      "name": "Rappresentante R234",
+      "name": "Politico R234",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R235",
-      "name": "Rappresentante R235",
+      "name": "Politico R235",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "21–100",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R236",
-      "name": "Rappresentante R236",
+      "name": "Politico R236",
       "metrics": {
         "participationPct": "40–49",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "21–100",
         "interventions": "6–20"
       },
-      "scoreBand": "30–39",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "61–70",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R237",
-      "name": "Rappresentante R237",
+      "name": "Politico R237",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R238",
-      "name": "Rappresentante R238",
+      "name": "Politico R238",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "90–99",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "1–10",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R239",
-      "name": "Rappresentante R239",
+      "name": "Politico R239",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R240",
-      "name": "Rappresentante R240",
+      "name": "Politico R240",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R241",
-      "name": "Rappresentante R241",
+      "name": "Politico R241",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "90–99",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "1–10",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R242",
-      "name": "Rappresentante R242",
+      "name": "Politico R242",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "90–99",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "1–10",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R243",
-      "name": "Rappresentante R243",
+      "name": "Politico R243",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R244",
-      "name": "Rappresentante R244",
+      "name": "Politico R244",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R245",
-      "name": "Rappresentante R245",
+      "name": "Politico R245",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R246",
-      "name": "Rappresentante R246",
+      "name": "Politico R246",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R247",
-      "name": "Rappresentante R247",
+      "name": "Politico R247",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R248",
-      "name": "Rappresentante R248",
+      "name": "Politico R248",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R249",
-      "name": "Rappresentante R249",
+      "name": "Politico R249",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R250",
-      "name": "Rappresentante R250",
+      "name": "Politico R250",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R251",
-      "name": "Rappresentante R251",
+      "name": "Politico R251",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R252",
-      "name": "Rappresentante R252",
+      "name": "Politico R252",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R253",
-      "name": "Rappresentante R253",
+      "name": "Politico R253",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R254",
-      "name": "Rappresentante R254",
+      "name": "Politico R254",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R255",
-      "name": "Rappresentante R255",
+      "name": "Politico R255",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R256",
-      "name": "Rappresentante R256",
+      "name": "Politico R256",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R257",
-      "name": "Rappresentante R257",
+      "name": "Politico R257",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "1–5",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R258",
-      "name": "Rappresentante R258",
+      "name": "Politico R258",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R259",
-      "name": "Rappresentante R259",
+      "name": "Politico R259",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R260",
-      "name": "Rappresentante R260",
+      "name": "Politico R260",
       "metrics": {
         "participationPct": "40–49",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "0",
         "interventions": "1–5"
       },
-      "scoreBand": "20–29",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "71–80",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R261",
-      "name": "Rappresentante R261",
+      "name": "Politico R261",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R262",
-      "name": "Rappresentante R262",
+      "name": "Politico R262",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "21–100",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R263",
-      "name": "Rappresentante R263",
+      "name": "Politico R263",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R264",
-      "name": "Rappresentante R264",
+      "name": "Politico R264",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R265",
-      "name": "Rappresentante R265",
+      "name": "Politico R265",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R266",
-      "name": "Rappresentante R266",
+      "name": "Politico R266",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R267",
-      "name": "Rappresentante R267",
+      "name": "Politico R267",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R268",
-      "name": "Rappresentante R268",
+      "name": "Politico R268",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R269",
-      "name": "Rappresentante R269",
+      "name": "Politico R269",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "21–100",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "90–99",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "1–10",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R270",
-      "name": "Rappresentante R270",
+      "name": "Politico R270",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "1–5",
         "interventions": "6–20"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R271",
-      "name": "Rappresentante R271",
+      "name": "Politico R271",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "21–100",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "90–99",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "1–10",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R272",
-      "name": "Rappresentante R272",
+      "name": "Politico R272",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R273",
-      "name": "Rappresentante R273",
+      "name": "Politico R273",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R274",
-      "name": "Rappresentante R274",
+      "name": "Politico R274",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R275",
-      "name": "Rappresentante R275",
+      "name": "Politico R275",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "0",
         "interventions": "0"
       },
-      "scoreBand": "30–39",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "61–70",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R276",
-      "name": "Rappresentante R276",
+      "name": "Politico R276",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R277",
-      "name": "Rappresentante R277",
+      "name": "Politico R277",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R278",
-      "name": "Rappresentante R278",
+      "name": "Politico R278",
       "metrics": {
         "participationPct": "40–49",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R279",
-      "name": "Rappresentante R279",
+      "name": "Politico R279",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R280",
-      "name": "Rappresentante R280",
+      "name": "Politico R280",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R281",
-      "name": "Rappresentante R281",
+      "name": "Politico R281",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R282",
-      "name": "Rappresentante R282",
+      "name": "Politico R282",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R283",
-      "name": "Rappresentante R283",
+      "name": "Politico R283",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "1–5",
         "interventions": "21–100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R284",
-      "name": "Rappresentante R284",
+      "name": "Politico R284",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "1–5",
         "interventions": "1–5"
       },
-      "scoreBand": "30–39",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "61–70",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R285",
-      "name": "Rappresentante R285",
+      "name": "Politico R285",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R286",
-      "name": "Rappresentante R286",
+      "name": "Politico R286",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R287",
-      "name": "Rappresentante R287",
+      "name": "Politico R287",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R288",
-      "name": "Rappresentante R288",
+      "name": "Politico R288",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R289",
-      "name": "Rappresentante R289",
+      "name": "Politico R289",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R290",
-      "name": "Rappresentante R290",
+      "name": "Politico R290",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R291",
-      "name": "Rappresentante R291",
+      "name": "Politico R291",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R292",
-      "name": "Rappresentante R292",
+      "name": "Politico R292",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R293",
-      "name": "Rappresentante R293",
+      "name": "Politico R293",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R294",
-      "name": "Rappresentante R294",
+      "name": "Politico R294",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R295",
-      "name": "Rappresentante R295",
+      "name": "Politico R295",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R296",
-      "name": "Rappresentante R296",
+      "name": "Politico R296",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R297",
-      "name": "Rappresentante R297",
+      "name": "Politico R297",
       "metrics": {
         "participationPct": "30–39",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "40–49",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "51–60",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R298",
-      "name": "Rappresentante R298",
+      "name": "Politico R298",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R299",
-      "name": "Rappresentante R299",
+      "name": "Politico R299",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R300",
-      "name": "Rappresentante R300",
+      "name": "Politico R300",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R301",
-      "name": "Rappresentante R301",
+      "name": "Politico R301",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R302",
-      "name": "Rappresentante R302",
+      "name": "Politico R302",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R303",
-      "name": "Rappresentante R303",
+      "name": "Politico R303",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "21–100",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "90–99",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "1–10",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R304",
-      "name": "Rappresentante R304",
+      "name": "Politico R304",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R305",
-      "name": "Rappresentante R305",
+      "name": "Politico R305",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R306",
-      "name": "Rappresentante R306",
+      "name": "Politico R306",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R307",
-      "name": "Rappresentante R307",
+      "name": "Politico R307",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "1–5",
         "interventions": "1–5"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R308",
-      "name": "Rappresentante R308",
+      "name": "Politico R308",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "40–49",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "51–60",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R309",
-      "name": "Rappresentante R309",
+      "name": "Politico R309",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R310",
-      "name": "Rappresentante R310",
+      "name": "Politico R310",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R311",
-      "name": "Rappresentante R311",
+      "name": "Politico R311",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R312",
-      "name": "Rappresentante R312",
+      "name": "Politico R312",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R313",
-      "name": "Rappresentante R313",
+      "name": "Politico R313",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R314",
-      "name": "Rappresentante R314",
+      "name": "Politico R314",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R315",
-      "name": "Rappresentante R315",
+      "name": "Politico R315",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "1–5",
         "interventions": "oltre 100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R316",
-      "name": "Rappresentante R316",
+      "name": "Politico R316",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R317",
-      "name": "Rappresentante R317",
+      "name": "Politico R317",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R318",
-      "name": "Rappresentante R318",
+      "name": "Politico R318",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R319",
-      "name": "Rappresentante R319",
+      "name": "Politico R319",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R320",
-      "name": "Rappresentante R320",
+      "name": "Politico R320",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R321",
-      "name": "Rappresentante R321",
+      "name": "Politico R321",
       "metrics": {
         "participationPct": "30–39",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "0",
         "interventions": "0"
       },
-      "scoreBand": "20–29",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "71–80",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R322",
-      "name": "Rappresentante R322",
+      "name": "Politico R322",
       "metrics": {
         "participationPct": "50–59",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "0",
         "interventions": "oltre 100"
       },
-      "scoreBand": "40–49",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "51–60",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R323",
-      "name": "Rappresentante R323",
+      "name": "Politico R323",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R324",
-      "name": "Rappresentante R324",
+      "name": "Politico R324",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R325",
-      "name": "Rappresentante R325",
+      "name": "Politico R325",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R326",
-      "name": "Rappresentante R326",
+      "name": "Politico R326",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R327",
-      "name": "Rappresentante R327",
+      "name": "Politico R327",
       "metrics": {
         "participationPct": "N/D",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "0",
         "interventions": "21–100"
       },
-      "scoreBand": "N/D",
       "dataComplete": false,
-      "scoreLabel": "Dati insufficienti"
+      "inactivityBand": "N/D",
+      "inactivityLabel": "Dati insufficienti"
     },
     {
       "id": "R328",
-      "name": "Rappresentante R328",
+      "name": "Politico R328",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R329",
-      "name": "Rappresentante R329",
+      "name": "Politico R329",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R330",
-      "name": "Rappresentante R330",
+      "name": "Politico R330",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R331",
-      "name": "Rappresentante R331",
+      "name": "Politico R331",
       "metrics": {
         "participationPct": "40–49",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "0",
         "interventions": "0"
       },
-      "scoreBand": "20–29",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "71–80",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R332",
-      "name": "Rappresentante R332",
+      "name": "Politico R332",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "6–20"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R333",
-      "name": "Rappresentante R333",
+      "name": "Politico R333",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R334",
-      "name": "Rappresentante R334",
+      "name": "Politico R334",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R335",
-      "name": "Rappresentante R335",
+      "name": "Politico R335",
       "metrics": {
         "participationPct": "40–49",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R336",
-      "name": "Rappresentante R336",
+      "name": "Politico R336",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R337",
-      "name": "Rappresentante R337",
+      "name": "Politico R337",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R338",
-      "name": "Rappresentante R338",
+      "name": "Politico R338",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R339",
-      "name": "Rappresentante R339",
+      "name": "Politico R339",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R340",
-      "name": "Rappresentante R340",
+      "name": "Politico R340",
       "metrics": {
         "participationPct": "50–59",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "0",
         "interventions": "1–5"
       },
-      "scoreBand": "30–39",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "61–70",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R341",
-      "name": "Rappresentante R341",
+      "name": "Politico R341",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R342",
-      "name": "Rappresentante R342",
+      "name": "Politico R342",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R343",
-      "name": "Rappresentante R343",
+      "name": "Politico R343",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R344",
-      "name": "Rappresentante R344",
+      "name": "Politico R344",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R345",
-      "name": "Rappresentante R345",
+      "name": "Politico R345",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R346",
-      "name": "Rappresentante R346",
+      "name": "Politico R346",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "0",
         "interventions": "1–5"
       },
-      "scoreBand": "30–39",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "61–70",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R347",
-      "name": "Rappresentante R347",
+      "name": "Politico R347",
       "metrics": {
         "participationPct": "30–39",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "0",
         "interventions": "1–5"
       },
-      "scoreBand": "20–29",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "71–80",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R348",
-      "name": "Rappresentante R348",
+      "name": "Politico R348",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R349",
-      "name": "Rappresentante R349",
+      "name": "Politico R349",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R350",
-      "name": "Rappresentante R350",
+      "name": "Politico R350",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R351",
-      "name": "Rappresentante R351",
+      "name": "Politico R351",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R352",
-      "name": "Rappresentante R352",
+      "name": "Politico R352",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "1–5",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R353",
-      "name": "Rappresentante R353",
+      "name": "Politico R353",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R354",
-      "name": "Rappresentante R354",
+      "name": "Politico R354",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "90–99",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "1–10",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R355",
-      "name": "Rappresentante R355",
+      "name": "Politico R355",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "21–100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R356",
-      "name": "Rappresentante R356",
+      "name": "Politico R356",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R357",
-      "name": "Rappresentante R357",
+      "name": "Politico R357",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "0",
         "interventions": "0"
       },
-      "scoreBand": "30–39",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "61–70",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R358",
-      "name": "Rappresentante R358",
+      "name": "Politico R358",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "21–100",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R359",
-      "name": "Rappresentante R359",
+      "name": "Politico R359",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "90–99",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "1–10",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R360",
-      "name": "Rappresentante R360",
+      "name": "Politico R360",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "21–100",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R361",
-      "name": "Rappresentante R361",
+      "name": "Politico R361",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R362",
-      "name": "Rappresentante R362",
+      "name": "Politico R362",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "6–20",
         "interventions": "6–20"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R363",
-      "name": "Rappresentante R363",
+      "name": "Politico R363",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R364",
-      "name": "Rappresentante R364",
+      "name": "Politico R364",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R365",
-      "name": "Rappresentante R365",
+      "name": "Politico R365",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R366",
-      "name": "Rappresentante R366",
+      "name": "Politico R366",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R367",
-      "name": "Rappresentante R367",
+      "name": "Politico R367",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R368",
-      "name": "Rappresentante R368",
+      "name": "Politico R368",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "90–99",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "1–10",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R369",
-      "name": "Rappresentante R369",
+      "name": "Politico R369",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R370",
-      "name": "Rappresentante R370",
+      "name": "Politico R370",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R371",
-      "name": "Rappresentante R371",
+      "name": "Politico R371",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R372",
-      "name": "Rappresentante R372",
+      "name": "Politico R372",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R373",
-      "name": "Rappresentante R373",
+      "name": "Politico R373",
       "metrics": {
         "participationPct": "20–29",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "0",
         "interventions": "0"
       },
-      "scoreBand": "10–19",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "81–90",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R374",
-      "name": "Rappresentante R374",
+      "name": "Politico R374",
       "metrics": {
         "participationPct": "50–59",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "0",
         "interventions": "1–5"
       },
-      "scoreBand": "30–39",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "61–70",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R375",
-      "name": "Rappresentante R375",
+      "name": "Politico R375",
       "metrics": {
         "participationPct": "10–19",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "30–39",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "61–70",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R376",
-      "name": "Rappresentante R376",
+      "name": "Politico R376",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R377",
-      "name": "Rappresentante R377",
+      "name": "Politico R377",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R378",
-      "name": "Rappresentante R378",
+      "name": "Politico R378",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R379",
-      "name": "Rappresentante R379",
+      "name": "Politico R379",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R380",
-      "name": "Rappresentante R380",
+      "name": "Politico R380",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R381",
-      "name": "Rappresentante R381",
+      "name": "Politico R381",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R382",
-      "name": "Rappresentante R382",
+      "name": "Politico R382",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R383",
-      "name": "Rappresentante R383",
+      "name": "Politico R383",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R384",
-      "name": "Rappresentante R384",
+      "name": "Politico R384",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R385",
-      "name": "Rappresentante R385",
+      "name": "Politico R385",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R386",
-      "name": "Rappresentante R386",
+      "name": "Politico R386",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R387",
-      "name": "Rappresentante R387",
+      "name": "Politico R387",
       "metrics": {
         "participationPct": "20–29",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "1–5",
         "interventions": "0"
       },
-      "scoreBand": "10–19",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "81–90",
+      "inactivityLabel": "Tra i più inattivi"
     },
     {
       "id": "R388",
-      "name": "Rappresentante R388",
+      "name": "Politico R388",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "6–20",
         "interventions": "21–100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R389",
-      "name": "Rappresentante R389",
+      "name": "Politico R389",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "21–100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R390",
-      "name": "Rappresentante R390",
+      "name": "Politico R390",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "oltre 100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R391",
-      "name": "Rappresentante R391",
+      "name": "Politico R391",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R392",
-      "name": "Rappresentante R392",
+      "name": "Politico R392",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "6–20",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "80–89",
       "dataComplete": true,
-      "scoreLabel": "Fascia superiore"
+      "inactivityBand": "11–20",
+      "inactivityLabel": "Tra i meno inattivi"
     },
     {
       "id": "R393",
-      "name": "Rappresentante R393",
+      "name": "Politico R393",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R394",
-      "name": "Rappresentante R394",
+      "name": "Politico R394",
       "metrics": {
         "participationPct": "90–99",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Sopra la mediana"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività sotto la mediana"
     },
     {
       "id": "R395",
-      "name": "Rappresentante R395",
+      "name": "Politico R395",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "6–20",
         "interventions": "oltre 100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R396",
-      "name": "Rappresentante R396",
+      "name": "Politico R396",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "1–5",
         "interventions": "oltre 100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R397",
-      "name": "Rappresentante R397",
+      "name": "Politico R397",
       "metrics": {
         "participationPct": "80–89",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "60–69",
       "dataComplete": true,
-      "scoreLabel": "Sotto la mediana"
+      "inactivityBand": "31–40",
+      "inactivityLabel": "Inattività sopra la mediana"
     },
     {
       "id": "R398",
-      "name": "Rappresentante R398",
+      "name": "Politico R398",
       "metrics": {
         "participationPct": "70–79",
         "billsFirstSigned": "1–5",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "70–79",
       "dataComplete": true,
-      "scoreLabel": "Fascia centrale"
+      "inactivityBand": "21–30",
+      "inactivityLabel": "Inattività centrale"
     },
     {
       "id": "R399",
-      "name": "Rappresentante R399",
+      "name": "Politico R399",
       "metrics": {
         "participationPct": "60–69",
         "billsFirstSigned": "0",
         "oversightFirstSigned": "21–100",
         "interventions": "oltre 100"
       },
-      "scoreBand": "50–59",
       "dataComplete": true,
-      "scoreLabel": "Fascia inferiore"
+      "inactivityBand": "41–50",
+      "inactivityLabel": "Tra i più inattivi"
     }
   ]
 }

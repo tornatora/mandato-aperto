@@ -1,6 +1,6 @@
 # Mandato Aperto
 
-**Dati, fatti, alternative.** Mandato Aperto pubblica esclusivamente record anonimi e fasce aggregate, senza nomi, partiti, circoscrizioni o collegamenti personali.
+**Inattività, senza rumore.** Mandato Aperto pubblica esclusivamente politici anonimi e fasce aggregate, senza nomi, cognomi, partiti, circoscrizioni o collegamenti personali.
 
 **Apri l'app:** https://tornatora.github.io/mandato-aperto/
 
@@ -9,9 +9,10 @@ La prima versione deriva da dati istituzionali relativi alla XIX legislatura. La
 ## Che cosa fa
 
 - cerca un record esclusivamente tramite codice anonimo;
+- mostra subito i politici ordinati per **fascia di inattività documentata**;
 - mostra partecipazione alle votazioni elettroniche, prime firme, atti di controllo e interventi;
-- calcola un **Indice di attività documentata** con formula pubblica e versionata;
-- confronta due rappresentanti senza classifiche editoriali preimpostate;
+- calcola un **Indice di attività documentata** con formula pubblica e versionata, poi mostra l'inattività come `100 − attività`;
+- confronta due politici anonimi sugli stessi indicatori;
 - crea, senza codice e solo sul dispositivo, una scheda di alternativa basata su fonti, trasparenza e impegni misurabili;
 - esclude dal calcolo delle assenze le missioni e la presidenza di turno;
 - aggiorna automaticamente i dati tramite GitHub Actions;
@@ -29,7 +30,7 @@ Le fonti originarie restano pubbliche presso le istituzioni. Il progetto non pro
 
 ## Che cosa non fa
 
-Mandato Aperto non misura onestà, competenza, qualità delle leggi, efficacia politica o aderenza a un'ideologia. Non definisce nessuno “nullafacente” e non può revocare un eletto. Il ricambio avviene con gli strumenti previsti dall'ordinamento democratico; il progetto aiuta gli elettori a confrontare fatti verificabili.
+Mandato Aperto non misura onestà, competenza, utilità, qualità delle leggi, efficacia politica o aderenza a un'ideologia. Non definisce nessuno “nullafacente” e non può revocare un eletto. Il ricambio avviene con gli strumenti previsti dall'ordinamento democratico; il progetto aiuta gli elettori a confrontare fatti documentati.
 
 ## Avvio senza installazioni
 

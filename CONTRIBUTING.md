@@ -4,10 +4,10 @@
 
 Usa il modulo “Correzione dati” nelle issue. Indica sempre:
 
-1. nome del rappresentante;
+1. codice del politico;
 2. campo o indicatore contestato;
 3. valore visualizzato e valore atteso;
-4. collegamento a una fonte istituzionale;
+4. descrizione della fonte istituzionale, senza collegamenti personali o elementi identificativi;
 5. data della verifica.
 
 ## Proporre una modifica alla formula
@@ -22,4 +22,4 @@ Il sito è intenzionalmente semplice: HTML, CSS e JavaScript senza framework. Pr
 npm run check
 ```
 
-Non inserire dati personali non già pubblicati dalle istituzioni e necessari allo scopo civico del progetto.
+Non inserire nomi, cognomi, partiti, aree, fotografie, identificativi originari o collegamenti riconducibili a singole persone.

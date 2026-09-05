@@ -69,6 +69,14 @@ function rangeBand(value, width, maximum = null) {
   return `${lower}–${upper}`;
 }
 
+function inverseBand(band, maximum = 100) {
+  if (band === "N/D") return band;
+  if (/^\d+$/.test(band)) return String(maximum - Number(band));
+  const match = band.match(/^(\d+)–(\d+)$/);
+  if (!match) return "N/D";
+  return `${maximum - Number(match[2])}–${maximum - Number(match[1])}`;
+}
+
 function countBand(value) {
   if (!Number.isFinite(value)) return "N/D";
   if (value === 0) return "0";
@@ -333,52 +341,53 @@ const scoreBands = {
 
 for (const deputy of deputies) {
   const score = deputy.score;
-  deputy.scoreLabel = !Number.isFinite(score)
+  deputy.inactivityLabel = !Number.isFinite(score)
     ? deputy.metrics.presiding > 0 && deputy.metrics.eligibleVotes === 0
       ? "Ruolo non comparabile"
       : "Dati insufficienti"
     : score >= scoreBands.p80
-      ? "Fascia superiore"
+      ? "Tra i meno inattivi"
       : score >= scoreBands.p60
-        ? "Sopra la mediana"
+        ? "Inattività sotto la mediana"
         : score >= scoreBands.p40
-          ? "Fascia centrale"
+          ? "Inattività centrale"
           : score >= scoreBands.p20
-            ? "Sotto la mediana"
-            : "Fascia inferiore";
+            ? "Inattività sopra la mediana"
+            : "Tra i più inattivi";
 }
 
 deputies.sort((a, b) => a.lastName.localeCompare(b.lastName, "it") || a.firstName.localeCompare(b.firstName, "it"));
 
 const publicDeputies = shuffle(deputies).map((deputy, index) => {
   const id = `R${String(index + 1).padStart(3, "0")}`;
+  const activityBand = rangeBand(deputy.score, 10, 100);
   return {
     id,
-    name: `Rappresentante ${id}`,
+    name: `Politico ${id}`,
     metrics: {
       participationPct: rangeBand(deputy.metrics.participationPct, 10, 100),
       billsFirstSigned: countBand(deputy.metrics.billsFirstSigned),
       oversightFirstSigned: countBand(deputy.metrics.oversightFirstSigned),
       interventions: countBand(deputy.metrics.interventions)
     },
-    scoreBand: rangeBand(deputy.score, 10, 100),
+    inactivityBand: inverseBand(activityBand),
     dataComplete: deputy.dataComplete,
-    scoreLabel: deputy.scoreLabel
+    inactivityLabel: deputy.inactivityLabel
   };
 });
 
 const payload = {
   meta: {
-    title: "Mandato Aperto — Camera dei deputati",
+    title: "Mandato Aperto — Politici alla Camera",
     legislature: "XIX",
-    scope: "Record pseudonimizzati dei deputati in carica",
+    scope: "Record anonimi dei politici in carica alla Camera",
     generatedAt: new Date().toISOString(),
-    methodologyVersion: "0.1.1",
+    methodologyVersion: "0.1.2",
     scoreCaps: caps,
     scoreBands,
     count: publicDeputies.length,
     privacy: "Identità, nomi, partiti, circoscrizioni, identificativi, collegamenti personali e valori puntuali rimossi.",
-    disclaimer: "L'indice misura attività documentata, non qualità, competenza, integrità o efficacia politica.",
+    disclaimer: "L'inattività è l'inverso dell'attività documentata e non misura qualità, competenza, integrità o efficacia politica.",
     sources: [
       {
         name: "Camera dei deputati — elenco ufficiale",
