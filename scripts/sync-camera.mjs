@@ -1,4 +1,5 @@
 import { mkdir, writeFile } from "node:fs/promises";
+import { randomInt } from "node:crypto";
 
 const LEGISLATURE = 19;
 const CAMERA_LIST_URL = `https://www.camera.it/deputati/ws/elenco_deputati?_format=json&leg=${LEGISLATURE}`;
@@ -58,6 +59,32 @@ function displayName(text) {
   return text
     .toLocaleLowerCase("it-IT")
     .replace(/(^|[\s'’-])\p{L}/gu, (match) => match.toLocaleUpperCase("it-IT"));
+}
+
+function rangeBand(value, width, maximum = null) {
+  if (!Number.isFinite(value)) return "N/D";
+  if (maximum !== null && value >= maximum) return String(maximum);
+  const lower = Math.floor(value / width) * width;
+  const upper = maximum === null ? lower + width - 1 : Math.min(maximum, lower + width - 1);
+  return `${lower}–${upper}`;
+}
+
+function countBand(value) {
+  if (!Number.isFinite(value)) return "N/D";
+  if (value === 0) return "0";
+  if (value <= 5) return "1–5";
+  if (value <= 20) return "6–20";
+  if (value <= 100) return "21–100";
+  return "oltre 100";
+}
+
+function shuffle(items) {
+  const shuffled = [...items];
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const other = randomInt(index + 1);
+    [shuffled[index], shuffled[other]] = [shuffled[other], shuffled[index]];
+  }
+  return shuffled;
 }
 
 function addNested(map, id, key, amount) {
@@ -323,31 +350,49 @@ for (const deputy of deputies) {
 
 deputies.sort((a, b) => a.lastName.localeCompare(b.lastName, "it") || a.firstName.localeCompare(b.firstName, "it"));
 
+const publicDeputies = shuffle(deputies).map((deputy, index) => {
+  const id = `R${String(index + 1).padStart(3, "0")}`;
+  return {
+    id,
+    name: `Rappresentante ${id}`,
+    metrics: {
+      participationPct: rangeBand(deputy.metrics.participationPct, 10, 100),
+      billsFirstSigned: countBand(deputy.metrics.billsFirstSigned),
+      oversightFirstSigned: countBand(deputy.metrics.oversightFirstSigned),
+      interventions: countBand(deputy.metrics.interventions)
+    },
+    scoreBand: rangeBand(deputy.score, 10, 100),
+    dataComplete: deputy.dataComplete,
+    scoreLabel: deputy.scoreLabel
+  };
+});
+
 const payload = {
   meta: {
     title: "Mandato Aperto — Camera dei deputati",
     legislature: "XIX",
-    scope: "Deputati in carica",
+    scope: "Record pseudonimizzati dei deputati in carica",
     generatedAt: new Date().toISOString(),
-    methodologyVersion: "0.1.0",
+    methodologyVersion: "0.1.1",
     scoreCaps: caps,
     scoreBands,
-    count: deputies.length,
+    count: publicDeputies.length,
+    privacy: "Identità, nomi, partiti, circoscrizioni, identificativi, collegamenti personali e valori puntuali rimossi.",
     disclaimer: "L'indice misura attività documentata, non qualità, competenza, integrità o efficacia politica.",
     sources: [
       {
         name: "Camera dei deputati — elenco ufficiale",
-        url: "https://www.camera.it/deputati/elenco"
+        note: "Fonte istituzionale; collegamento non pubblicato"
       },
       {
         name: "Camera dei deputati — Linked Open Data",
-        url: CAMERA_SPARQL_URL
+        note: "Fonte istituzionale; collegamento non pubblicato"
       }
     ]
   },
-  deputies
+  deputies: publicDeputies
 };
 
 await mkdir(new URL("../dist/data/", import.meta.url), { recursive: true });
 await writeFile(OUTPUT, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
-console.log(`Salvati ${deputies.length} deputati in ${OUTPUT.pathname}`);
+console.log(`Salvati ${publicDeputies.length} record pseudonimizzati in ${OUTPUT.pathname}`);
