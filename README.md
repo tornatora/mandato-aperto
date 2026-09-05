@@ -2,6 +2,8 @@
 
 **Dati, fatti, alternative.** Mandato Aperto è una piattaforma civica open source che rende leggibile l'attività documentata dei rappresentanti italiani senza trasformare un algoritmo in una sentenza politica.
 
+**Apri l'app:** https://tornatora.github.io/mandato-aperto/
+
 La prima versione copre i deputati in carica nella XIX legislatura. Nomi, collegi, attività, interventi e votazioni provengono dai portali ufficiali della Camera dei deputati. Ogni scheda rimanda alla fonte istituzionale.
 
 ## Che cosa fa
