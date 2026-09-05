@@ -1,8 +1,10 @@
-# Metodologia — versione 0.1.0
+# Metodologia — versione 0.1.1
 
 ## Principio
 
 L'Indice di attività documentata rende comparabili quattro quantità pubbliche. Non esprime un giudizio sulla qualità, sull'utilità o sull'orientamento politico dell'attività.
+
+La versione pubblicata sostituisce ogni identità con un codice casuale, rimuove nomi, partiti, circoscrizioni, identificativi, fotografie e collegamenti personali e converte tutti i valori puntuali in fasce. L'ordine viene rimescolato a ogni aggiornamento. Non viene promessa anonimizzazione statistica irreversibile perché i dati di origine sono pubblici.
 
 ## Indicatori
 
@@ -38,7 +40,7 @@ Le etichette di fascia dividono i punteggi validi in cinque gruppi usando i perc
 5. Il dato ufficiale può essere corretto o riclassificato dall'istituzione dopo la pubblicazione.
 6. Il confronto ha senso solo nello stesso organo e nello stesso periodo.
 
-Per queste ragioni la piattaforma mostra sempre gli indicatori separati, la data di aggiornamento e i collegamenti alle fonti.
+Per queste ragioni la piattaforma mostra soltanto indicatori per fasce, la data di aggiornamento e una descrizione non cliccabile della provenienza.
 
 ## Regole editoriali
 
