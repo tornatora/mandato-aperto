@@ -811,6 +811,10 @@ kbd {
   font-weight: 800;
 }
 
+a.open-badge {
+  text-decoration: none;
+}
+
 .empty-state h3 {
   margin: 0;
   font-size: 22px;
