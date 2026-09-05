@@ -1,14 +1,14 @@
 # Mandato Aperto
 
-**Dati, fatti, alternative.** Mandato Aperto è una piattaforma civica open source che rende leggibile l'attività documentata dei rappresentanti italiani senza trasformare un algoritmo in una sentenza politica.
+**Dati, fatti, alternative.** Mandato Aperto pubblica esclusivamente record anonimi e fasce aggregate, senza nomi, partiti, circoscrizioni o collegamenti personali.
 
 **Apri l'app:** https://tornatora.github.io/mandato-aperto/
 
-La prima versione copre i deputati in carica nella XIX legislatura. Nomi, collegi, attività, interventi e votazioni provengono dai portali ufficiali della Camera dei deputati. Ogni scheda rimanda alla fonte istituzionale.
+La prima versione deriva da dati istituzionali relativi alla XIX legislatura. La pubblicazione rimuove tutti gli elementi identificativi e sostituisce i valori puntuali con intervalli.
 
 ## Che cosa fa
 
-- cerca un deputato per nome, gruppo o circoscrizione;
+- cerca un record esclusivamente tramite codice anonimo;
 - mostra partecipazione alle votazioni elettroniche, prime firme, atti di controllo e interventi;
 - calcola un **Indice di attività documentata** con formula pubblica e versionata;
 - confronta due rappresentanti senza classifiche editoriali preimpostate;
@@ -16,6 +16,16 @@ La prima versione copre i deputati in carica nella XIX legislatura. Nomi, colleg
 - esclude dal calcolo delle assenze le missioni e la presidenza di turno;
 - aggiorna automaticamente i dati tramite GitHub Actions;
 - consente rettifiche tracciabili attraverso le issue del repository.
+
+## Minimizzazione e anonimizzazione editoriale
+
+- nomi e cognomi non sono pubblicati;
+- partiti, gruppi e circoscrizioni non sono pubblicati;
+- ID originari, URI, fotografie e collegamenti personali sono rimossi;
+- partecipazione, atti, interventi e indice sono pubblicati soltanto per fasce;
+- l'ordine dei record viene rimescolato a ogni aggiornamento.
+
+Le fonti originarie restano pubbliche presso le istituzioni. Il progetto non promette anonimizzazione statistica irreversibile né immunità da responsabilità legali.
 
 ## Che cosa non fa
 
@@ -36,10 +46,7 @@ Chi non programma può usare il flusso descritto in [OPERATIONS-NO-CODE.md](OPER
 
 ## Fonti
 
-- [Elenco ufficiale dei deputati](https://www.camera.it/deputati/elenco)
-- [Endpoint Linked Open Data della Camera](https://dati.camera.it/sparql)
-- [Open data del Senato](https://dati.senato.it/sito/scarica_i_dati) — integrazione prevista nella v0.2
-- [Costituzione della Repubblica italiana](https://www.senato.it/istituzione/la-costituzione)
+Fonti istituzionali parlamentari. I riferimenti diretti alle singole persone non sono inclusi nella pubblicazione.
 
 Consulta [METHODOLOGY.md](METHODOLOGY.md) per formula, limiti e definizioni.
 
