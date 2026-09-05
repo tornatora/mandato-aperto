@@ -1,0 +1,41 @@
+name: Correzione dati
+description: Segnala un valore errato allegando una fonte verificabile.
+title: "[DATO] "
+labels: [dati, verifica]
+body:
+  - type: input
+    id: representative
+    attributes:
+      label: Rappresentante
+      placeholder: Nome e cognome
+    validations:
+      required: true
+  - type: input
+    id: field
+    attributes:
+      label: Dato contestato
+      placeholder: Partecipazione, proposte, atti di controllo, interventi…
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Correzione richiesta
+      description: Indica valore visualizzato, valore atteso e motivo.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Fonte
+      description: Inserisci preferibilmente un collegamento istituzionale.
+      placeholder: https://...
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Conferme
+      options:
+        - label: La segnalazione riguarda dati verificabili e non contiene accuse personali.
+          required: true
