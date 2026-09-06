@@ -1,5 +1,5 @@
 const DATA_URL = "data/deputies.json";
-const PAGE_SIZE = 30;
+const PAGE_SIZE = 40;
 
 const state = {
   politicians: [],
@@ -11,25 +11,27 @@ const state = {
   meta: null
 };
 
+const $ = (selector) => document.querySelector(selector);
 const elements = {
-  search: document.querySelector("#search-input"),
-  sort: document.querySelector("#sort-filter"),
-  grid: document.querySelector("#card-grid"),
-  count: document.querySelector("#results-count"),
-  freshness: document.querySelector("#freshness"),
-  total: document.querySelector("#total-stat"),
-  high: document.querySelector("#high-stat"),
-  common: document.querySelector("#common-stat"),
-  updated: document.querySelector("#updated-stat"),
-  empty: document.querySelector("#empty-state"),
-  reset: document.querySelector("#reset-filters"),
-  loadMore: document.querySelector("#load-more"),
-  compareBar: document.querySelector("#compare-bar"),
-  compareCount: document.querySelector("#compare-count"),
-  compareNames: document.querySelector("#compare-names"),
-  clearCompare: document.querySelector("#clear-compare"),
-  openCompare: document.querySelector("#open-compare"),
-  toast: document.querySelector("#toast")
+  search: $("#search-input"),
+  sort: $("#sort-filter"),
+  grid: $("#card-grid"),
+  count: $("#results-count"),
+  freshness: $("#freshness"),
+  total: $("#total-stat"),
+  high: $("#high-stat"),
+  common: $("#common-stat"),
+  updated: $("#updated-stat"),
+  headerUpdated: $("#header-updated"),
+  empty: $("#empty-state"),
+  reset: $("#reset-filters"),
+  loadMore: $("#load-more"),
+  compareBar: $("#compare-bar"),
+  compareCount: $("#compare-count"),
+  compareNames: $("#compare-names"),
+  clearCompare: $("#clear-compare"),
+  openCompare: $("#open-compare"),
+  toast: $("#toast")
 };
 
 const numberFormat = new Intl.NumberFormat("it-IT");
@@ -44,7 +46,7 @@ const dateFormat = new Intl.DateTimeFormat("it-IT", {
 const shortDateFormat = new Intl.DateTimeFormat("it-IT", {
   day: "2-digit",
   month: "short",
-  year: "numeric",
+  year: "2-digit",
   timeZone: "Europe/Rome"
 });
 
@@ -70,8 +72,8 @@ function bandBounds(value) {
     const number = Number(text);
     return [number, number];
   }
-  const range = text.match(/^(\d+)–(\d+)$/);
-  return range ? [Number(range[1]), Number(range[2])] : null;
+  const match = text.match(/^(\d+)–(\d+)$/);
+  return match ? [Number(match[1]), Number(match[2])] : null;
 }
 
 function inactivityValue(person) {
@@ -79,23 +81,10 @@ function inactivityValue(person) {
   return bounds ? (bounds[0] + bounds[1]) / 2 : -1;
 }
 
-function signalClass(person) {
-  const value = inactivityValue(person);
-  if (value >= 60) return "is-high";
-  if (value >= 30) return "is-medium";
-  return "is-low";
-}
-
-function percent(value) {
-  if (typeof value === "string") return value === "N/D" ? value : `${value}%`;
-  return Number.isFinite(value)
-    ? `${value.toLocaleString("it-IT", { maximumFractionDigits: 1 })}%`
-    : "N/D";
-}
-
-function integer(value) {
-  if (typeof value === "string") return value;
-  return Number.isFinite(value) ? numberFormat.format(value) : "N/D";
+function metric(value, suffix = "") {
+  if (value === null || value === undefined || value === "N/D") return "N/D";
+  if (typeof value === "string") return `${value}${suffix}`;
+  return Number.isFinite(value) ? `${numberFormat.format(value)}${suffix}` : "N/D";
 }
 
 function politicianById(id) {
@@ -105,67 +94,34 @@ function politicianById(id) {
 function showToast(message) {
   elements.toast.textContent = message;
   elements.toast.hidden = false;
-  window.clearTimeout(showToast.timer);
-  showToast.timer = window.setTimeout(() => {
-    elements.toast.hidden = true;
-  }, 2600);
-}
-
-function applyFilters() {
-  const query = normalize(elements.search.value.trim());
-  const sort = elements.sort.value;
-
-  state.filtered = state.politicians.filter((person) => {
-    const haystack = normalize(`${person.name} ${person.id}`);
-    return !query || haystack.includes(query);
-  });
-
-  state.filtered.sort((left, right) => {
-    if (sort === "inactivity-desc") {
-      return inactivityValue(right) - inactivityValue(left) || left.id.localeCompare(right.id, "it");
-    }
-    if (sort === "inactivity-asc") {
-      const leftValue = inactivityValue(left);
-      const rightValue = inactivityValue(right);
-      if (leftValue < 0) return 1;
-      if (rightValue < 0) return -1;
-      return leftValue - rightValue || left.id.localeCompare(right.id, "it");
-    }
-    return left.id.localeCompare(right.id, "it");
-  });
-
-  state.visible = PAGE_SIZE;
-  renderRows();
+  clearTimeout(showToast.timer);
+  showToast.timer = setTimeout(() => { elements.toast.hidden = true; }, 2200);
 }
 
 function rowTemplate(person, index) {
   const selected = state.compare.includes(String(person.id));
   const inactivity = person.inactivityBand ?? "N/D";
   const score = Math.max(0, Math.min(100, inactivityValue(person)));
+  const high = score >= 60;
+
   return `
-    <article class="person-row ${signalClass(person)}" role="listitem" style="--score: ${score}%">
-      <span class="row-rank">${String(index + 1).padStart(2, "0")}</span>
-      <div class="identity">
-        <span class="person-avatar" aria-hidden="true">R</span>
-        <div>
-          <button class="person-link" type="button" data-open-profile="${escapeHtml(person.id)}">${escapeHtml(person.name)}</button>
-          <small>Cognome **** · Partito ****</small>
-        </div>
+    <article class="record-row ${high ? "is-high" : ""}" role="row">
+      <span class="row-rank" role="cell">${String(index + 1).padStart(2, "0")}</span>
+      <div class="record-identity" role="cell">
+        <button type="button" data-open-profile="${escapeHtml(person.id)}">${escapeHtml(person.name)}</button>
+        <small>CODICE ${escapeHtml(person.id)}</small>
       </div>
-      <div class="inactivity-cell" aria-label="Fascia di inattività documentata ${escapeHtml(inactivity)} su 100">
-        <div class="inactivity-main"><strong>${escapeHtml(inactivity)}</strong><span>/100</span></div>
-        <div class="score-track" aria-hidden="true"><span></span></div>
-        <small>${escapeHtml(person.inactivityLabel)}</small>
+      <div class="inactivity-wrap" role="cell">
+        <span class="band-main ${high ? "is-high" : ""}">${escapeHtml(inactivity)}</span>
+        <span class="mini-meter" aria-hidden="true"><span style="--meter:${score}%"></span></span>
       </div>
-      <div class="row-metrics">
-        <dl><dt>Partecipazione</dt><dd>${escapeHtml(percent(person.metrics.participationPct))}</dd></dl>
-        <dl><dt>Proposte</dt><dd>${escapeHtml(integer(person.metrics.billsFirstSigned))}</dd></dl>
-        <dl><dt>Controllo</dt><dd>${escapeHtml(integer(person.metrics.oversightFirstSigned))}</dd></dl>
-        <dl><dt>Interventi</dt><dd>${escapeHtml(integer(person.metrics.interventions))}</dd></dl>
-      </div>
-      <div class="row-actions">
-        <button class="open-profile" type="button" data-open-profile="${escapeHtml(person.id)}">Apri</button>
-        <button class="add-compare" type="button" data-add-compare="${escapeHtml(person.id)}" aria-pressed="${selected}" aria-label="${selected ? "Rimuovi" : "Aggiungi"} ${escapeHtml(person.name)} ${selected ? "dal" : "al"} confronto">${selected ? "✓ Aggiunto" : "+ Confronta"}</button>
+      <div class="row-metric" role="cell"><span>PARTECIP.</span><strong>${escapeHtml(metric(person.metrics.participationPct, "%"))}</strong></div>
+      <div class="row-metric" role="cell"><span>PROPOSTE</span><strong>${escapeHtml(metric(person.metrics.billsFirstSigned))}</strong></div>
+      <div class="row-metric" role="cell"><span>CONTROLLO</span><strong>${escapeHtml(metric(person.metrics.oversightFirstSigned))}</strong></div>
+      <div class="row-metric" role="cell"><span>INTERVENTI</span><strong>${escapeHtml(metric(person.metrics.interventions))}</strong></div>
+      <div class="row-action" role="cell">
+        <button type="button" data-open-profile="${escapeHtml(person.id)}">Apri →</button>
+        <button class="compare-toggle" type="button" data-add-compare="${escapeHtml(person.id)}" aria-pressed="${selected}">${selected ? "SELEZIONATO" : "+ CONFRONTA"}</button>
       </div>
     </article>`;
 }
@@ -173,135 +129,114 @@ function rowTemplate(person, index) {
 function renderRows() {
   const shown = state.filtered.slice(0, state.visible);
   elements.grid.innerHTML = shown.map(rowTemplate).join("");
-  const noun = state.filtered.length === 1 ? "politico" : "politici";
-  elements.count.textContent = `${numberFormat.format(state.filtered.length)} ${noun}`;
+  elements.count.textContent = `${numberFormat.format(state.filtered.length)} record`;
   elements.empty.hidden = state.filtered.length !== 0;
   elements.loadMore.hidden = state.visible >= state.filtered.length;
+}
+
+function applyFilters() {
+  const query = normalize(elements.search.value.trim());
+  const sort = elements.sort.value;
+
+  state.filtered = state.politicians.filter((person) => {
+    return !query || normalize(`${person.id} ${person.name}`).includes(query);
+  });
+
+  state.filtered.sort((a, b) => {
+    if (sort === "inactivity-desc") return inactivityValue(b) - inactivityValue(a) || a.id.localeCompare(b.id, "it");
+    if (sort === "inactivity-asc") {
+      const av = inactivityValue(a), bv = inactivityValue(b);
+      if (av < 0) return 1;
+      if (bv < 0) return -1;
+      return av - bv || a.id.localeCompare(b.id, "it");
+    }
+    return a.id.localeCompare(b.id, "it");
+  });
+
+  state.visible = PAGE_SIZE;
+  renderRows();
 }
 
 function updateCompareBar() {
   const people = state.compare.map(politicianById).filter(Boolean);
   elements.compareBar.hidden = people.length === 0;
   elements.compareCount.textContent = `${people.length}/2`;
-  elements.compareNames.textContent = people.length
-    ? people.map((person) => person.name).join(" · ")
-    : "Seleziona due politici";
+  elements.compareNames.textContent = people.length ? people.map((p) => p.name).join(" · ") : "Seleziona due politici";
   elements.openCompare.disabled = people.length !== 2;
 
   document.querySelectorAll("[data-add-compare]").forEach((button) => {
-    const id = String(button.dataset.addCompare);
-    const selected = state.compare.includes(id);
-    const person = politicianById(id);
+    const selected = state.compare.includes(String(button.dataset.addCompare));
     button.setAttribute("aria-pressed", String(selected));
-    button.setAttribute(
-      "aria-label",
-      `${selected ? "Rimuovi" : "Aggiungi"} ${person?.name ?? "politico"} ${selected ? "dal" : "al"} confronto`
-    );
-    button.textContent = selected ? "✓ Aggiunto" : "+ Confronta";
+    button.textContent = selected ? "SELEZIONATO" : "+ CONFRONTA";
   });
 
   if (state.activeProfile) {
-    const button = document.querySelector("#profile-compare");
-    const selected = state.compare.includes(String(state.activeProfile.id));
-    button.textContent = selected ? "Rimuovi dal confronto" : "Aggiungi al confronto";
+    $("#profile-compare").textContent = state.compare.includes(String(state.activeProfile.id)) ? "Rimuovi dal confronto" : "Aggiungi al confronto";
   }
 
-  try {
-    localStorage.setItem("mandato-aperto-compare", JSON.stringify(state.compare));
-  } catch {
-    // Il confronto resta disponibile durante la sessione.
-  }
+  try { localStorage.setItem("mandato-aperto-compare", JSON.stringify(state.compare)); } catch {}
 }
 
 function toggleCompare(id) {
   const key = String(id);
-  if (state.compare.includes(key)) {
-    state.compare = state.compare.filter((item) => item !== key);
-  } else if (state.compare.length >= 2) {
-    showToast("Puoi confrontare due politici alla volta.");
-    return;
-  } else {
-    state.compare.push(key);
-  }
+  if (state.compare.includes(key)) state.compare = state.compare.filter((item) => item !== key);
+  else if (state.compare.length >= 2) return showToast("Puoi confrontare due politici alla volta.");
+  else state.compare.push(key);
   updateCompareBar();
 }
 
 function openProfile(id) {
   const person = politicianById(id);
   if (!person) return;
-
   state.activeProfile = person;
-  const metrics = person.metrics;
-  document.querySelector("#profile-code").textContent = person.id;
-  document.querySelector("#profile-symbol").textContent = person.id.slice(-2);
-  document.querySelector("#profile-name").textContent = person.name;
-  document.querySelector("#profile-meta").textContent = "Cognome **** · Partito **** · Area ****";
-  document.querySelector("#profile-inactivity strong").textContent = person.inactivityBand ?? "N/D";
-  document.querySelector("#profile-label").textContent = person.inactivityLabel;
-  document.querySelector("#metric-attendance").textContent = percent(metrics.participationPct);
-  document.querySelector("#metric-bills").textContent = integer(metrics.billsFirstSigned);
-  document.querySelector("#metric-oversight").textContent = integer(metrics.oversightFirstSigned);
-  document.querySelector("#metric-interventions").textContent = integer(metrics.interventions);
 
-  const updated = state.meta?.generatedAt
-    ? dateFormat.format(new Date(state.meta.generatedAt))
-    : "data non disponibile";
-  document.querySelector("#profile-source-stamp").textContent =
-    `Dati istituzionali aggregati · Nessun riferimento personale · Aggiornamento ${updated} · Metodo ${state.meta?.methodologyVersion ?? "0.1.2"}`;
+  $("#profile-code").textContent = person.id;
+  $("#profile-name").textContent = person.name;
+  $("#profile-meta").textContent = "Cognome **** · Partito **** · Area ****";
+  $("#profile-inactivity").textContent = person.inactivityBand ?? "N/D";
+  $("#profile-label").textContent = person.inactivityLabel ?? "Dati aggregati";
+  $("#metric-attendance").textContent = metric(person.metrics.participationPct, "%");
+  $("#metric-bills").textContent = metric(person.metrics.billsFirstSigned);
+  $("#metric-oversight").textContent = metric(person.metrics.oversightFirstSigned);
+  $("#metric-interventions").textContent = metric(person.metrics.interventions);
 
+  const updated = state.meta?.generatedAt ? dateFormat.format(new Date(state.meta.generatedAt)) : "data non disponibile";
+  $("#profile-source-stamp").textContent = `Dati istituzionali aggregati · aggiornamento ${updated} · metodo ${state.meta?.methodologyVersion ?? "0.1.2"}`;
   updateCompareBar();
-  document.querySelector("#profile-dialog").showModal();
+  $("#profile-dialog").showModal();
 }
 
 function comparisonRow(label, left, right, note = "") {
-  return `
-    <div class="comparison-row">
-      <div><span class="comparison-label">${escapeHtml(label)}</span>${note ? `<div class="comparison-note">${escapeHtml(note)}</div>` : ""}</div>
-      <div><span class="comparison-value">${left}</span></div>
-      <div><span class="comparison-value">${right}</span></div>
-    </div>`;
+  return `<div class="comparison-row"><div><span class="comparison-label">${escapeHtml(label)}</span><span class="comparison-note">${escapeHtml(note)}</span></div><div><span class="comparison-value">${escapeHtml(left)}</span></div><div><span class="comparison-value">${escapeHtml(right)}</span></div></div>`;
 }
 
 function openComparison() {
   const [left, right] = state.compare.map(politicianById);
   if (!left || !right) return;
-
-  document.querySelector("#compare-table").innerHTML = `
-    <div class="comparison-row header">
-      <div><span>Indicatore</span></div>
-      <div><strong>${escapeHtml(left.name)}</strong><span>Anonimo</span></div>
-      <div><strong>${escapeHtml(right.name)}</strong><span>Anonimo</span></div>
-    </div>
-    ${comparisonRow("Inattività documentata", escapeHtml(left.inactivityBand), escapeHtml(right.inactivityBand), "Fascia su 100")}
-    ${comparisonRow("Partecipazione", escapeHtml(percent(left.metrics.participationPct)), escapeHtml(percent(right.metrics.participationPct)), "Votazioni elettroniche")}
-    ${comparisonRow("Proposte di legge", escapeHtml(integer(left.metrics.billsFirstSigned)), escapeHtml(integer(right.metrics.billsFirstSigned)), "Primo firmatario")}
-    ${comparisonRow("Indirizzo e controllo", escapeHtml(integer(left.metrics.oversightFirstSigned)), escapeHtml(integer(right.metrics.oversightFirstSigned)), "Primo firmatario")}
-    ${comparisonRow("Interventi", escapeHtml(integer(left.metrics.interventions)), escapeHtml(integer(right.metrics.interventions)), "Fascia aggregata")}`;
-  document.querySelector("#compare-dialog").showModal();
+  $("#compare-table").innerHTML = `
+    <div class="comparison-row header"><div>INDICATORE</div><div><strong>${escapeHtml(left.name)}</strong></div><div><strong>${escapeHtml(right.name)}</strong></div></div>
+    ${comparisonRow("Inattività", left.inactivityBand ?? "N/D", right.inactivityBand ?? "N/D", "Fascia su 100")}
+    ${comparisonRow("Partecipazione", metric(left.metrics.participationPct, "%"), metric(right.metrics.participationPct, "%"), "Votazioni elettroniche")}
+    ${comparisonRow("Proposte", metric(left.metrics.billsFirstSigned), metric(right.metrics.billsFirstSigned), "Primo firmatario")}
+    ${comparisonRow("Controllo", metric(left.metrics.oversightFirstSigned), metric(right.metrics.oversightFirstSigned), "Primo firmatario")}
+    ${comparisonRow("Interventi", metric(left.metrics.interventions), metric(right.metrics.interventions), "Fascia aggregata")}`;
+  $("#compare-dialog").showModal();
 }
 
 function isHttpUrl(value) {
-  try {
-    const url = new URL(value);
-    return url.protocol === "https:" || url.protocol === "http:";
-  } catch {
-    return false;
-  }
+  try { const url = new URL(value); return url.protocol === "http:" || url.protocol === "https:"; } catch { return false; }
 }
 
-function openAlternativeFromProfile() {
-  const profileDialog = document.querySelector("#profile-dialog");
+function openAlternative() {
+  const profileDialog = $("#profile-dialog");
   if (profileDialog.open) profileDialog.close();
-  const current = state.activeProfile;
-
-  document.querySelector("#alternative-form").reset();
-  document.querySelector("#alternative-form").hidden = false;
-  document.querySelector("#alternative-result").hidden = true;
+  $("#alternative-form").reset();
+  $("#alternative-form").hidden = false;
+  $("#alternative-result").hidden = true;
   state.alternativeText = "";
-  document.querySelector("#alternative-current").textContent = current
-    ? `${current.name} · inattività ${current.inactivityBand ?? "N/D"}/100`
-    : "Nessun politico selezionato";
-  document.querySelector("#replacement-dialog").showModal();
+  const current = state.activeProfile;
+  $("#alternative-current").textContent = current ? `${current.name} · inattività ${current.inactivityBand ?? "N/D"}/100` : "Nessun politico selezionato";
+  $("#replacement-dialog").showModal();
 }
 
 function renderAlternative(event) {
@@ -309,91 +244,62 @@ function renderAlternative(event) {
   const form = event.currentTarget;
   if (!form.reportValidity()) return;
 
-  const name = document.querySelector("#candidate-name").value.trim();
-  const status = document.querySelector("#candidate-status").value;
-  const experience = document.querySelector("#candidate-experience").value.trim();
-  const evidence = document.querySelector("#candidate-evidence").value.trim();
-  const evidenceField = document.querySelector("#candidate-evidence");
+  const name = $("#candidate-name").value.trim();
+  const status = $("#candidate-status").value;
+  const experience = $("#candidate-experience").value.trim();
+  const evidence = $("#candidate-evidence").value.trim();
+  const commitments = $("#candidate-commitments").value.split("\n").map((line) => line.replace(/^[-–—•\d.)\s]+/, "").trim()).filter(Boolean);
+  const transparency = $("#candidate-transparency").checked;
+
   if (!isHttpUrl(evidence)) {
-    evidenceField.setCustomValidity("Inserisci un riferimento che inizi con http:// o https://");
-    evidenceField.reportValidity();
+    $("#candidate-evidence").setCustomValidity("Inserisci un URL valido che inizi con http:// o https://");
+    $("#candidate-evidence").reportValidity();
     return;
   }
-  evidenceField.setCustomValidity("");
+  $("#candidate-evidence").setCustomValidity("");
 
-  const commitments = document.querySelector("#candidate-commitments").value
-    .split("\n")
-    .map((line) => line.replace(/^[-–—•\d.)\s]+/, "").trim())
-    .filter(Boolean);
-  const transparency = document.querySelector("#candidate-transparency").checked;
-  const current = state.activeProfile;
   const checks = [
-    { label: "Identità e stato del profilo", ok: Boolean(name && status) },
-    { label: "Esperienza con riferimento privato", ok: Boolean(experience && isHttpUrl(evidence)) },
-    { label: "Almeno tre impegni misurabili", ok: commitments.length >= 3 },
-    { label: "Dichiarazione di trasparenza", ok: transparency }
+    ["Identità e stato", Boolean(name && status)],
+    ["Esperienza con riferimento", Boolean(experience && evidence)],
+    ["Tre impegni misurabili", commitments.length >= 3],
+    ["Dichiarazione trasparenza", transparency]
   ];
-  const readiness = checks.filter((check) => check.ok).length;
+  const readiness = checks.filter(([, ok]) => ok).length;
 
-  document.querySelector("#alternative-name").textContent = name;
-  document.querySelector("#alternative-status").textContent = status;
-  document.querySelector("#alternative-readiness").textContent = `${readiness}/4`;
-  document.querySelector("#readiness-list").innerHTML = checks
-    .map((check) => `<div class="readiness-item ${check.ok ? "ok" : ""}">${escapeHtml(check.label)}</div>`)
-    .join("");
-
-  const referenceText = current
-    ? `${current.name}: inattività ${current.inactivityBand ?? "N/D"}/100, partecipazione ${percent(current.metrics.participationPct)}, proposte nella fascia ${integer(current.metrics.billsFirstSigned)}.`
-    : "Nessun politico selezionato. Apri una scheda per collegare il confronto a un mandato.";
-  const commitmentsHtml = commitments.length
-    ? `<ol>${commitments.map((commitment) => `<li>${escapeHtml(commitment)}</li>`).join("")}</ol>`
-    : "<p>Nessun impegno strutturato.</p>";
-
-  document.querySelector("#alternative-copy").innerHTML = `
+  $("#alternative-name").textContent = name;
+  $("#alternative-status").textContent = status;
+  $("#alternative-readiness").textContent = `${readiness}/4`;
+  $("#readiness-list").innerHTML = checks.map(([label, ok]) => `<div class="readiness-item ${ok ? "ok" : ""}">${ok ? "✓" : "○"} ${escapeHtml(label)}</div>`).join("");
+  $("#alternative-copy").innerHTML = `
     <article><h4>Esperienza dichiarata</h4><p>${escapeHtml(experience)}</p></article>
-    <article><h4>Politico di riferimento</h4><p>${escapeHtml(referenceText)}</p></article>
-    <article><h4>Impegni proposti</h4>${commitmentsHtml}</article>
-    <article><h4>Riferimento privato</h4><p>Registrato nella bozza locale; non mostrato come collegamento.</p></article>`;
+    <article><h4>Impegni</h4><ol>${commitments.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ol></article>
+    <article><h4>Riferimento privato</h4><p>Registrato nella bozza locale e non pubblicato dal progetto.</p></article>`;
 
   state.alternativeText = [
-    "MANDATO APERTO — SCHEDA ALTERNATIVA (BOZZA PRIVATA, NON CERTIFICATA)",
+    "MANDATO APERTO — SCHEDA ALTERNATIVA PRIVATA",
     `Alternativa: ${name}`,
     `Stato: ${status}`,
-    `Politico di riferimento: ${current?.name ?? "non selezionato"}`,
+    `Politico di riferimento: ${state.activeProfile?.name ?? "non selezionato"}`,
     "",
-    "ESPERIENZA DICHIARATA",
+    "ESPERIENZA",
     experience,
     `Riferimento privato: ${evidence}`,
     "",
-    "IMPEGNI MISURABILI",
-    ...commitments.map((commitment, index) => `${index + 1}. ${commitment}`),
+    "IMPEGNI",
+    ...commitments.map((item, index) => `${index + 1}. ${item}`),
     "",
     `Trasparenza dichiarata: ${transparency ? "sì" : "no"}`,
-    `Completezza formale: ${readiness}/4`,
-    "",
-    "Nota: questa scheda non certifica la candidatura e non assegna un giudizio politico."
+    `Completezza formale: ${readiness}/4`
   ].join("\n");
 
   form.hidden = true;
-  document.querySelector("#alternative-result").hidden = false;
+  $("#alternative-result").hidden = false;
 }
 
 async function copyAlternative() {
   if (!state.alternativeText) return;
-  try {
-    await navigator.clipboard.writeText(state.alternativeText);
-    showToast("Scheda copiata.");
-  } catch {
-    const field = document.createElement("textarea");
-    field.value = state.alternativeText;
-    field.style.position = "fixed";
-    field.style.opacity = "0";
-    document.body.append(field);
-    field.select();
-    document.execCommand("copy");
-    field.remove();
-    showToast("Scheda copiata.");
-  }
+  try { await navigator.clipboard.writeText(state.alternativeText); showToast("Scheda copiata."); }
+  catch { showToast("Copia non disponibile."); }
 }
 
 function downloadAlternative() {
@@ -410,12 +316,8 @@ function downloadAlternative() {
 function restoreCompare() {
   try {
     const stored = JSON.parse(localStorage.getItem("mandato-aperto-compare") ?? "[]");
-    state.compare = Array.isArray(stored)
-      ? stored.map(String).filter((id) => politicianById(id)).slice(0, 2)
-      : [];
-  } catch {
-    state.compare = [];
-  }
+    state.compare = Array.isArray(stored) ? stored.map(String).filter((id) => politicianById(id)).slice(0, 2) : [];
+  } catch { state.compare = []; }
 }
 
 async function loadData() {
@@ -427,32 +329,29 @@ async function loadData() {
     state.meta = payload.meta ?? {};
 
     elements.total.textContent = numberFormat.format(state.politicians.length);
-    const highCount = state.politicians.filter((person) => inactivityValue(person) >= 60).length;
-    elements.high.textContent = numberFormat.format(highCount);
-    const bandCounts = new Map();
+    elements.high.textContent = numberFormat.format(state.politicians.filter((p) => inactivityValue(p) >= 60).length);
+
+    const bands = new Map();
     for (const person of state.politicians) {
-      if (person.inactivityBand === "N/D") continue;
-      bandCounts.set(person.inactivityBand, (bandCounts.get(person.inactivityBand) ?? 0) + 1);
+      if (!person.inactivityBand || person.inactivityBand === "N/D") continue;
+      bands.set(person.inactivityBand, (bands.get(person.inactivityBand) ?? 0) + 1);
     }
-    const commonBand = [...bandCounts.entries()].sort((left, right) => right[1] - left[1])[0]?.[0] ?? "N/D";
-    elements.common.textContent = commonBand;
-    const updated = state.meta.generatedAt
-      ? dateFormat.format(new Date(state.meta.generatedAt))
-      : "data non disponibile";
-    elements.updated.textContent = state.meta.generatedAt
-      ? shortDateFormat.format(new Date(state.meta.generatedAt))
-      : "N/D";
-    elements.freshness.textContent = `Dati aggregati · aggiornati ${updated}`;
+    elements.common.textContent = [...bands.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? "N/D";
+
+    const updated = state.meta.generatedAt ? new Date(state.meta.generatedAt) : null;
+    elements.updated.textContent = updated ? shortDateFormat.format(updated) : "N/D";
+    elements.headerUpdated.textContent = updated ? shortDateFormat.format(updated).toUpperCase() : "LIVE";
+    elements.freshness.textContent = updated ? `Ultima variazione dati: ${dateFormat.format(updated)}` : "Data non disponibile";
 
     restoreCompare();
     applyFilters();
     updateCompareBar();
   } catch (error) {
     console.error(error);
-    elements.freshness.textContent = "Dati temporaneamente non disponibili";
-    elements.count.textContent = "Errore di caricamento";
+    elements.count.textContent = "Dataset non disponibile";
+    elements.freshness.textContent = "Errore di caricamento";
     elements.empty.hidden = false;
-    elements.empty.querySelector("h3").textContent = "Impossibile caricare l’elenco";
+    elements.empty.querySelector("h3").textContent = "Impossibile caricare i dati.";
     elements.empty.querySelector("p").textContent = "Riprova tra poco.";
     elements.reset.hidden = true;
   }
@@ -466,52 +365,39 @@ elements.reset.addEventListener("click", () => {
   applyFilters();
   elements.search.focus();
 });
-elements.loadMore.addEventListener("click", () => {
-  state.visible += PAGE_SIZE;
-  renderRows();
-});
+elements.loadMore.addEventListener("click", () => { state.visible += PAGE_SIZE; renderRows(); });
 elements.grid.addEventListener("click", (event) => {
-  const openButton = event.target.closest("[data-open-profile]");
-  const compareButton = event.target.closest("[data-add-compare]");
-  if (openButton) openProfile(openButton.dataset.openProfile);
-  if (compareButton) toggleCompare(compareButton.dataset.addCompare);
+  const open = event.target.closest("[data-open-profile]");
+  const compare = event.target.closest("[data-add-compare]");
+  if (open) openProfile(open.dataset.openProfile);
+  if (compare) toggleCompare(compare.dataset.addCompare);
 });
-elements.clearCompare.addEventListener("click", () => {
-  state.compare = [];
-  updateCompareBar();
-});
+elements.clearCompare.addEventListener("click", () => { state.compare = []; updateCompareBar(); });
 elements.openCompare.addEventListener("click", openComparison);
-document.querySelector("#profile-compare").addEventListener("click", () => {
-  if (state.activeProfile) toggleCompare(state.activeProfile.id);
-});
-document.querySelector("#profile-alternative").addEventListener("click", openAlternativeFromProfile);
-document.querySelector("#alternative-form").addEventListener("submit", renderAlternative);
-document.querySelector("#copy-alternative").addEventListener("click", copyAlternative);
-document.querySelector("#download-alternative").addEventListener("click", downloadAlternative);
-document.querySelector("#edit-alternative").addEventListener("click", () => {
-  document.querySelector("#alternative-result").hidden = true;
-  document.querySelector("#alternative-form").hidden = false;
-});
+$("#profile-compare").addEventListener("click", () => { if (state.activeProfile) toggleCompare(state.activeProfile.id); });
+$("#profile-alternative").addEventListener("click", openAlternative);
+$("#alternative-form").addEventListener("submit", renderAlternative);
+$("#copy-alternative").addEventListener("click", copyAlternative);
+$("#download-alternative").addEventListener("click", downloadAlternative);
+$("#edit-alternative").addEventListener("click", () => { $("#alternative-result").hidden = true; $("#alternative-form").hidden = false; });
 
 document.querySelectorAll("[data-dialog]").forEach((button) => {
   button.addEventListener("click", () => {
+    const dialog = $(`#${button.dataset.dialog}`);
     if (button.dataset.dialog === "replacement-dialog") {
       state.activeProfile = null;
-      document.querySelector("#alternative-form").reset();
-      document.querySelector("#alternative-form").hidden = false;
-      document.querySelector("#alternative-result").hidden = true;
-      state.alternativeText = "";
-      document.querySelector("#alternative-current").textContent = "Nessun politico selezionato";
+      $("#alternative-current").textContent = "Nessun politico selezionato";
+      $("#alternative-form").reset();
+      $("#alternative-form").hidden = false;
+      $("#alternative-result").hidden = true;
     }
-    document.querySelector(`#${button.dataset.dialog}`)?.showModal();
+    dialog?.showModal();
   });
 });
 
 document.querySelectorAll("dialog").forEach((dialog) => {
   dialog.querySelector(".close-dialog")?.addEventListener("click", () => dialog.close());
-  dialog.addEventListener("click", (event) => {
-    if (event.target === dialog) dialog.close();
-  });
+  dialog.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); });
 });
 
 document.addEventListener("keydown", (event) => {
