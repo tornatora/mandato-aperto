@@ -19,6 +19,7 @@ const elements = {
   grid: $("#card-grid"),
   count: $("#results-count"),
   freshness: $("#freshness"),
+  sidebarFreshness: $("#sidebar-freshness"),
   total: $("#total-stat"),
   high: $("#high-stat"),
   common: $("#common-stat"),
@@ -81,13 +82,14 @@ function inactivityValue(person) {
 }
 
 function signalClass(person) {
-  const value = inactivityValue(person);
-  return value >= 60 ? "is-high" : "";
+  return inactivityValue(person) >= 60 ? "is-high" : "";
 }
 
 function percent(value) {
   if (typeof value === "string") return value === "N/D" ? value : `${value}%`;
-  return Number.isFinite(value) ? `${value.toLocaleString("it-IT", { maximumFractionDigits: 1 })}%` : "N/D";
+  return Number.isFinite(value)
+    ? `${value.toLocaleString("it-IT", { maximumFractionDigits: 1 })}%`
+    : "N/D";
 }
 
 function metric(value) {
@@ -109,17 +111,14 @@ function showToast(message) {
 function rowTemplate(person, index) {
   const selected = state.compare.includes(String(person.id));
   const inactivity = person.inactivityBand ?? "N/D";
-  const score = Math.max(0, Math.min(100, inactivityValue(person)));
   return `
-    <article class="person-row ${signalClass(person)}" role="listitem" style="--score:${score}%">
+    <article class="person-row ${signalClass(person)}" role="listitem">
       <span class="row-rank">${String(index + 1).padStart(2, "0")}</span>
       <div class="identity">
         <button class="person-link" type="button" data-open-profile="${escapeHtml(person.id)}">${escapeHtml(person.name)}</button>
-        <small>Identità non pubblicata</small>
       </div>
       <div class="inactivity-cell">
         <div class="inactivity-value"><strong>${escapeHtml(inactivity)}</strong><span>/100</span></div>
-        <div class="scorebar" aria-hidden="true"><span></span></div>
         <small>${escapeHtml(person.inactivityLabel ?? "")}</small>
       </div>
       <span class="metric">${escapeHtml(percent(person.metrics.participationPct))}</span>
@@ -127,7 +126,6 @@ function rowTemplate(person, index) {
       <span class="metric">${escapeHtml(metric(person.metrics.oversightFirstSigned))}</span>
       <span class="metric">${escapeHtml(metric(person.metrics.interventions))}</span>
       <div class="row-actions">
-        <button type="button" data-open-profile="${escapeHtml(person.id)}" aria-label="Apri ${escapeHtml(person.name)}">Apri</button>
         <button class="compare-button" type="button" data-add-compare="${escapeHtml(person.id)}" aria-pressed="${selected}" aria-label="${selected ? "Rimuovi dal" : "Aggiungi al"} confronto">${selected ? "✓" : "+"}</button>
       </div>
     </article>`;
@@ -173,7 +171,9 @@ function updateCompareBar() {
   const people = state.compare.map(politicianById).filter(Boolean);
   elements.compareBar.hidden = people.length === 0;
   elements.compareCount.textContent = `${people.length}/2`;
-  elements.compareNames.textContent = people.length ? people.map((person) => person.name).join(" · ") : "Seleziona due politici";
+  elements.compareNames.textContent = people.length
+    ? people.map((person) => person.name).join(" · ")
+    : "Seleziona due politici";
   elements.openCompare.disabled = people.length !== 2;
 
   document.querySelectorAll("[data-add-compare]").forEach((button) => {
@@ -184,10 +184,14 @@ function updateCompareBar() {
 
   if (state.activeProfile) {
     const button = $("#profile-compare");
-    button.textContent = state.compare.includes(String(state.activeProfile.id)) ? "Rimuovi dal confronto" : "Aggiungi al confronto";
+    button.textContent = state.compare.includes(String(state.activeProfile.id))
+      ? "Rimuovi dal confronto"
+      : "Aggiungi al confronto";
   }
 
-  try { localStorage.setItem("mandato-aperto-compare", JSON.stringify(state.compare)); } catch {}
+  try {
+    localStorage.setItem("mandato-aperto-compare", JSON.stringify(state.compare));
+  } catch {}
 }
 
 function toggleCompare(id) {
@@ -210,7 +214,7 @@ function openProfile(id) {
 
   $("#profile-code").textContent = person.id;
   $("#profile-name").textContent = person.name;
-  $("#profile-meta").textContent = "Identità non pubblicata";
+  $("#profile-meta").textContent = "Identità non pubblicata. Il codice cambia a ogni aggiornamento.";
   $("#profile-score").textContent = person.inactivityBand ?? "N/D";
   $("#profile-label").textContent = person.inactivityLabel ?? "Dato non disponibile";
   $("#metric-attendance").textContent = percent(person.metrics.participationPct);
@@ -218,8 +222,10 @@ function openProfile(id) {
   $("#metric-oversight").textContent = metric(person.metrics.oversightFirstSigned);
   $("#metric-interventions").textContent = metric(person.metrics.interventions);
 
-  const updated = state.meta?.generatedAt ? dateFormat.format(new Date(state.meta.generatedAt)) : "data non disponibile";
-  $("#profile-source-stamp").textContent = `Dati aggregati · aggiornamento ${updated} · metodo ${state.meta?.methodologyVersion ?? "0.1.2"}`;
+  const updated = state.meta?.generatedAt
+    ? dateFormat.format(new Date(state.meta.generatedAt))
+    : "data non disponibile";
+  $("#profile-source-stamp").textContent = `Aggiornamento ${updated} · metodo ${state.meta?.methodologyVersion ?? "0.1.2"}`;
 
   updateCompareBar();
   $("#profile-dialog").showModal();
@@ -236,20 +242,23 @@ function comparisonRow(label, left, right, note = "") {
 function openComparison() {
   const [left, right] = state.compare.map(politicianById);
   if (!left || !right) return;
+
   $("#compare-table").innerHTML = `
     <div class="comparison-row header"><div>Indicatore</div><div><strong>${escapeHtml(left.name)}</strong></div><div><strong>${escapeHtml(right.name)}</strong></div></div>
     ${comparisonRow("Inattività", escapeHtml(left.inactivityBand), escapeHtml(right.inactivityBand), "Fascia su 100")}
-    ${comparisonRow("Partecipazione", escapeHtml(percent(left.metrics.participationPct)), escapeHtml(percent(right.metrics.participationPct)), "Votazioni elettroniche")}
-    ${comparisonRow("Proposte", escapeHtml(metric(left.metrics.billsFirstSigned)), escapeHtml(metric(right.metrics.billsFirstSigned)), "Primo firmatario")}
-    ${comparisonRow("Controllo", escapeHtml(metric(left.metrics.oversightFirstSigned)), escapeHtml(metric(right.metrics.oversightFirstSigned)), "Primo firmatario")}
-    ${comparisonRow("Interventi", escapeHtml(metric(left.metrics.interventions)), escapeHtml(metric(right.metrics.interventions)), "Fascia aggregata")}`;
+    ${comparisonRow("Partecipazione", escapeHtml(percent(left.metrics.participationPct)), escapeHtml(percent(right.metrics.participationPct)))}
+    ${comparisonRow("Proposte", escapeHtml(metric(left.metrics.billsFirstSigned)), escapeHtml(metric(right.metrics.billsFirstSigned)))}
+    ${comparisonRow("Controllo", escapeHtml(metric(left.metrics.oversightFirstSigned)), escapeHtml(metric(right.metrics.oversightFirstSigned)))}
+    ${comparisonRow("Interventi", escapeHtml(metric(left.metrics.interventions)), escapeHtml(metric(right.metrics.interventions)))}`;
   $("#compare-dialog").showModal();
 }
 
 function restoreCompare() {
   try {
     const stored = JSON.parse(localStorage.getItem("mandato-aperto-compare") ?? "[]");
-    state.compare = Array.isArray(stored) ? stored.map(String).filter((id) => politicianById(id)).slice(0, 2) : [];
+    state.compare = Array.isArray(stored)
+      ? stored.map(String).filter((id) => politicianById(id)).slice(0, 2)
+      : [];
   } catch {
     state.compare = [];
   }
@@ -268,16 +277,32 @@ function renderAlternative(event) {
   event.preventDefault();
   const name = $("#candidate-name").value.trim();
   const experience = $("#candidate-experience").value.trim();
-  const commitments = $("#candidate-commitments").value.split("\n").map((line) => line.replace(/^[-–—•\d.)\s]+/, "").trim()).filter(Boolean);
+  const commitments = $("#candidate-commitments").value
+    .split("\n")
+    .map((line) => line.replace(/^[-–—•\d.)\s]+/, "").trim())
+    .filter(Boolean);
   const transparency = $("#candidate-transparency").checked;
+
   if (!name || !experience || commitments.length < 3 || !transparency) {
-    showToast("Completa i campi e inserisci almeno tre impegni.");
+    showToast("Inserisci esperienza, tre impegni e la dichiarazione.");
     return;
   }
 
   $("#alternative-name").textContent = name;
   $("#alternative-copy").innerHTML = `<p><strong>Esperienza</strong><br>${escapeHtml(experience)}</p><p><strong>Impegni</strong></p><ol>${commitments.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ol>`;
-  state.alternativeText = [`MANDATO APERTO — SCHEDA PRIVATA`, `Alternativa: ${name}`, "", "ESPERIENZA", experience, "", "IMPEGNI", ...commitments.map((item, index) => `${index + 1}. ${item}`), "", "Trasparenza dichiarata: sì"].join("\n");
+  state.alternativeText = [
+    "MANDATO APERTO — SCHEDA PRIVATA",
+    `Alternativa: ${name}`,
+    "",
+    "ESPERIENZA",
+    experience,
+    "",
+    "IMPEGNI",
+    ...commitments.map((item, index) => `${index + 1}. ${item}`),
+    "",
+    "Trasparenza dichiarata: sì"
+  ].join("\n");
+
   event.currentTarget.hidden = true;
   $("#alternative-result").hidden = false;
 }
@@ -301,7 +326,9 @@ async function loadData() {
     state.meta = payload.meta ?? {};
 
     elements.total.textContent = numberFormat.format(state.politicians.length);
-    elements.high.textContent = numberFormat.format(state.politicians.filter((person) => inactivityValue(person) >= 60).length);
+    elements.high.textContent = numberFormat.format(
+      state.politicians.filter((person) => inactivityValue(person) >= 60).length
+    );
 
     const counts = new Map();
     for (const person of state.politicians) {
@@ -311,8 +338,11 @@ async function loadData() {
     elements.common.textContent = [...counts.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? "N/D";
 
     const updated = state.meta.generatedAt ? new Date(state.meta.generatedAt) : null;
-    elements.updated.textContent = updated ? shortDateFormat.format(updated) : "N/D";
-    elements.freshness.textContent = updated ? `Aggiornati ${dateFormat.format(updated)}` : "Aggiornamento non disponibile";
+    const shortUpdated = updated ? shortDateFormat.format(updated) : "N/D";
+    const fullUpdated = updated ? dateFormat.format(updated) : "non disponibile";
+    elements.updated.textContent = shortUpdated;
+    elements.freshness.textContent = `Dati aggiornati ${fullUpdated}`;
+    elements.sidebarFreshness.textContent = updated ? `Aggiornato ${shortUpdated}` : "Aggiornamento non disponibile";
 
     restoreCompare();
     applyFilters();
@@ -320,9 +350,10 @@ async function loadData() {
     console.error(error);
     elements.count.textContent = "Dati non disponibili";
     elements.freshness.textContent = "Riprova tra poco";
+    elements.sidebarFreshness.textContent = "Dati non disponibili";
     elements.empty.hidden = false;
     elements.empty.querySelector("strong").textContent = "Impossibile caricare i dati";
-    elements.empty.querySelector("span").textContent = "La sorgente potrebbe essere temporaneamente indisponibile.";
+    elements.empty.querySelector("span").textContent = "Riprova tra poco.";
   }
 }
 
@@ -344,25 +375,38 @@ elements.grid.addEventListener("click", (event) => {
   if (open) openProfile(open.dataset.openProfile);
   if (compare) toggleCompare(compare.dataset.addCompare);
 });
-elements.clearCompare.addEventListener("click", () => { state.compare = []; updateCompareBar(); });
+elements.clearCompare.addEventListener("click", () => {
+  state.compare = [];
+  updateCompareBar();
+});
 elements.openCompare.addEventListener("click", openComparison);
-$("#profile-compare").addEventListener("click", () => { if (state.activeProfile) toggleCompare(state.activeProfile.id); });
+
+$("#profile-compare").addEventListener("click", () => {
+  if (state.activeProfile) toggleCompare(state.activeProfile.id);
+});
 $("#profile-alternative").addEventListener("click", openAlternative);
 $("#alternative-form").addEventListener("submit", renderAlternative);
 $("#copy-alternative").addEventListener("click", copyAlternative);
-$("#edit-alternative").addEventListener("click", () => { $("#alternative-result").hidden = true; $("#alternative-form").hidden = false; });
+$("#edit-alternative").addEventListener("click", () => {
+  $("#alternative-result").hidden = true;
+  $("#alternative-form").hidden = false;
+});
 
 document.querySelectorAll("[data-dialog]").forEach((button) => {
-  button.addEventListener("click", () => $(`#${button.dataset.dialog}`)?.showModal());
+  button.addEventListener("click", () => {
+    $(`#${button.dataset.dialog}`)?.showModal();
+  });
 });
 
 document.querySelectorAll("dialog").forEach((dialog) => {
   dialog.querySelector(".close-dialog")?.addEventListener("click", () => dialog.close());
-  dialog.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); });
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) dialog.close();
+  });
 });
 
 document.addEventListener("keydown", (event) => {
-  if ((event.metaKey || event.ctrlKey) && event.key.toLocaleLowerCase() === "k") {
+  if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
     event.preventDefault();
     elements.search.focus();
     elements.search.select();
