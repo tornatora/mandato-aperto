@@ -3,110 +3,91 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Mandato Aperto: piattaforma civica per consultare l’attività parlamentare documentata tramite dati anonimi e aggregati." />
-  <meta name="theme-color" content="#f5f6f8" />
+  <meta name="description" content="Mandato Aperto: attività parlamentare documentata, in forma anonima e aggregata." />
+  <meta name="theme-color" content="#f6f7f8" />
   <title>Mandato Aperto</title>
-  <link rel="stylesheet" href="styles.css?v=0.3.0" />
+  <link rel="stylesheet" href="styles.css?v=0.4.0" />
 </head>
 <body>
   <a class="skip-link" href="#ranking">Vai alla classifica</a>
 
-  <header class="appbar">
-    <div class="appbar-inner">
-      <a class="logo" href="#overview" aria-label="Mandato Aperto">
-        <span class="logo-symbol">M</span>
-        <span>Mandato Aperto</span>
-      </a>
-      <div class="appbar-center">
-        <span class="scope-dot" aria-hidden="true"></span>
-        <span>Camera dei deputati</span>
-        <span class="muted">XIX legislatura</span>
-      </div>
-      <div class="appbar-actions">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="wordmark" href="#ranking">Mandato Aperto</a>
+      <div class="topbar-right">
+        <span class="scope">Camera dei deputati <span>· XIX legislatura</span></span>
         <button type="button" data-dialog="method-dialog">Metodo</button>
         <button type="button" data-dialog="sources-dialog">Dati</button>
-        <a href="https://github.com/tornatora/mandato-aperto" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://github.com/tornatora/mandato-aperto" target="_blank" rel="noreferrer">GitHub ↗</a>
       </div>
     </div>
   </header>
 
-  <div class="app-layout">
-    <aside class="left-rail" aria-label="Navigazione">
-      <nav class="rail-nav">
-        <a class="active" href="#overview"><span class="nav-dot"></span>Panoramica</a>
-        <a href="#ranking"><span class="nav-dot"></span>Classifica</a>
-        <button type="button" data-dialog="method-dialog"><span class="nav-dot"></span>Metodologia</button>
-        <button type="button" data-dialog="sources-dialog"><span class="nav-dot"></span>Privacy</button>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Navigazione">
+      <nav>
+        <a class="active" href="#ranking">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+          <span>Classifica</span>
+        </a>
+        <button type="button" data-dialog="method-dialog">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 11v5M12 8h.01"/></svg>
+          <span>Metodo</span>
+        </button>
+        <button type="button" data-dialog="sources-dialog">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.8 2.7 8 7 10 4.3-2 7-5.2 7-10V6z"/></svg>
+          <span>Dati e privacy</span>
+        </button>
       </nav>
-      <div class="rail-foot">
-        <span>Open source</span>
-        <small>MIT · dati aggregati</small>
+
+      <div class="sidebar-meta">
+        <span>Dati pubblici aggregati</span>
+        <small id="sidebar-freshness">Aggiornamento…</small>
       </div>
     </aside>
 
-    <main class="main-column">
-      <section class="page-head" id="overview">
+    <main class="content">
+      <section class="page-title">
         <div>
-          <p class="eyebrow">Monitoraggio parlamentare</p>
-          <h1>Attività alla Camera</h1>
-          <p class="page-subtitle">Confronta l’attività documentata senza esporre identità personali.</p>
+          <h1>Classifica attività</h1>
+          <p>Profili anonimi ordinati per inattività documentata alla Camera.</p>
         </div>
-        <button class="ghost-button" type="button" data-dialog="method-dialog">Come funziona</button>
-      </section>
-
-      <section class="summary-strip" aria-label="Riepilogo dataset">
-        <div class="summary-item">
-          <span>Monitorati</span>
-          <strong id="total-stat">—</strong>
-        </div>
-        <div class="summary-item">
-          <span>Inattività alta</span>
-          <strong id="high-stat">—</strong>
-        </div>
-        <div class="summary-item">
-          <span>Fascia più comune</span>
-          <strong id="common-stat">—</strong>
-        </div>
-        <div class="summary-item">
-          <span>Aggiornato</span>
-          <strong id="updated-stat">—</strong>
+        <div class="dataset-summary" aria-label="Riepilogo dataset">
+          <span><strong id="total-stat">—</strong> politici</span>
+          <span><strong id="high-stat">—</strong> alta inattività</span>
+          <span>fascia più comune <strong id="common-stat">—</strong></span>
+          <span>aggiornato <strong id="updated-stat">—</strong></span>
         </div>
       </section>
 
-      <section class="ranking-surface" id="ranking" aria-labelledby="ranking-title">
-        <header class="ranking-header">
+      <section class="ranking" id="ranking" aria-labelledby="ranking-title">
+        <header class="ranking-top">
           <div>
-            <h2 id="ranking-title">Classifica</h2>
-            <p>Più inattività documentata in alto.</p>
+            <h2 id="ranking-title">Più inattivi</h2>
+            <span id="results-count">Caricamento…</span>
           </div>
-          <div class="ranking-meta">
-            <strong id="results-count">Caricamento…</strong>
-            <span id="freshness">Aggiornamento dati…</span>
+
+          <div class="controls">
+            <label class="search" for="search-input">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></svg>
+              <input id="search-input" type="search" autocomplete="off" placeholder="Cerca codice" />
+            </label>
+            <label class="sort" for="sort-filter">
+              <select id="sort-filter" aria-label="Ordina classifica">
+                <option value="inactivity-desc">Più inattivi</option>
+                <option value="inactivity-asc">Meno inattivi</option>
+                <option value="code">Codice</option>
+              </select>
+            </label>
           </div>
         </header>
 
-        <div class="toolbar">
-          <label class="search-box" for="search-input">
-            <span class="search-icon" aria-hidden="true">⌕</span>
-            <input id="search-input" type="search" autocomplete="off" placeholder="Cerca codice anonimo" />
-            <kbd>⌘K</kbd>
-          </label>
-          <label class="sort-box" for="sort-filter">
-            <span>Ordina</span>
-            <select id="sort-filter">
-              <option value="inactivity-desc">Più inattivi</option>
-              <option value="inactivity-asc">Meno inattivi</option>
-              <option value="code">Codice</option>
-            </select>
-          </label>
-        </div>
-
-        <div class="method-line">
+        <div class="table-note">
           <span>Inattività = 100 − attività</span>
-          <button type="button" data-dialog="method-dialog">Dettagli</button>
+          <button type="button" data-dialog="method-dialog">Come viene calcolata</button>
         </div>
 
-        <div class="table-wrap">
+        <div class="table-scroll">
           <div class="table-head" aria-hidden="true">
             <span>#</span>
             <span>Politico</span>
@@ -122,146 +103,141 @@
 
         <div class="empty-state" id="empty-state" hidden>
           <strong>Nessun risultato</strong>
-          <span>Controlla il codice inserito.</span>
-          <button id="reset-filters" type="button">Azzera ricerca</button>
+          <span>Prova con un altro codice.</span>
+          <button id="reset-filters" type="button">Azzera</button>
         </div>
 
         <button class="load-more" id="load-more" type="button" hidden>Mostra altri</button>
       </section>
+
+      <footer class="content-footer">
+        <span id="freshness">Aggiornamento dati…</span>
+        <span>L’indice non misura qualità o competenza politica.</span>
+      </footer>
     </main>
-
-    <aside class="right-rail" aria-label="Informazioni dataset">
-      <section class="side-panel status-panel">
-        <div class="status-line"><span class="live-dot"></span><strong>Dati ufficiali</strong></div>
-        <p>Camera dei deputati · fonti istituzionali elaborate automaticamente.</p>
-      </section>
-
-      <section class="side-panel">
-        <span class="side-kicker">Come leggere il dato</span>
-        <p>Una fascia alta indica meno attività rilevata. Non misura qualità, competenza o integrità politica.</p>
-        <button type="button" data-dialog="method-dialog">Leggi il metodo</button>
-      </section>
-
-      <section class="side-panel compact-panel">
-        <span class="side-kicker">Confronto</span>
-        <p>Seleziona due profili dalla classifica per confrontare gli stessi indicatori.</p>
-      </section>
-    </aside>
   </div>
 
   <aside class="compare-bar" id="compare-bar" hidden aria-label="Confronto selezionato">
-    <div class="compare-copy">
-      <span class="compare-count" id="compare-count">0/2</span>
-      <div><strong>Confronto</strong><span id="compare-names">Seleziona due politici</span></div>
+    <div>
+      <strong id="compare-count">0/2</strong>
+      <span id="compare-names">Seleziona due politici</span>
     </div>
-    <div class="compare-actions">
+    <div>
       <button id="clear-compare" type="button">Svuota</button>
-      <button id="open-compare" class="primary-button" type="button" disabled>Confronta</button>
+      <button id="open-compare" class="button-primary" type="button" disabled>Confronta</button>
     </div>
   </aside>
 
   <nav class="mobile-nav" aria-label="Navigazione mobile">
-    <a href="#overview">Home</a>
-    <a href="#ranking">Classifica</a>
+    <a class="active" href="#ranking">Classifica</a>
     <button type="button" data-dialog="method-dialog">Metodo</button>
+    <button type="button" data-dialog="sources-dialog">Dati</button>
   </nav>
 
   <dialog id="profile-dialog" class="drawer-dialog">
-    <div class="drawer-shell">
-      <button class="close-dialog" type="button" aria-label="Chiudi">×</button>
-      <span class="dialog-kicker">Profilo anonimo</span>
-      <div class="profile-topline">
+    <div class="drawer">
+      <header class="dialog-header">
         <div>
-          <p>Codice <span id="profile-code">—</span></p>
+          <span>Politico <span id="profile-code">—</span></span>
           <h2 id="profile-name">—</h2>
-          <span id="profile-meta">Identità non pubblicata</span>
         </div>
-        <div class="profile-score"><strong id="profile-score">—</strong><span>/100</span></div>
+        <button class="close-dialog" type="button" aria-label="Chiudi">×</button>
+      </header>
+
+      <div class="profile-score-row">
+        <div>
+          <span>Inattività documentata</span>
+          <strong id="profile-score">—</strong>
+        </div>
+        <p id="profile-label">—</p>
       </div>
-      <div class="profile-label" id="profile-label">—</div>
+
       <div class="profile-metrics">
         <div><span>Partecipazione</span><strong id="metric-attendance">—</strong></div>
         <div><span>Proposte</span><strong id="metric-bills">—</strong></div>
         <div><span>Controllo</span><strong id="metric-oversight">—</strong></div>
         <div><span>Interventi</span><strong id="metric-interventions">—</strong></div>
       </div>
-      <p class="profile-note">Il codice viene riassegnato a ogni aggiornamento e non identifica stabilmente una persona.</p>
+
+      <p class="profile-note" id="profile-meta">Identità non pubblicata. Il codice cambia a ogni aggiornamento.</p>
+
       <div class="drawer-actions">
         <button id="profile-compare" type="button">Aggiungi al confronto</button>
-        <button id="profile-alternative" class="primary-button" type="button">Valuta alternativa</button>
+        <button id="profile-alternative" type="button">Valuta alternativa</button>
       </div>
+
       <p class="source-stamp" id="profile-source-stamp">Aggiornamento in caricamento.</p>
     </div>
   </dialog>
 
   <dialog id="compare-dialog" class="modal-dialog">
-    <div class="modal-shell wide">
-      <button class="close-dialog" type="button" aria-label="Chiudi">×</button>
-      <span class="dialog-kicker">Confronto diretto</span>
-      <h2>Stessi indicatori, due profili</h2>
-      <p class="dialog-intro">Il confronto usa soltanto fasce aggregate e codici anonimi.</p>
+    <div class="modal modal-wide">
+      <header class="dialog-header">
+        <h2>Confronto</h2>
+        <button class="close-dialog" type="button" aria-label="Chiudi">×</button>
+      </header>
       <div id="compare-table" class="comparison-table"></div>
     </div>
   </dialog>
 
   <dialog id="method-dialog" class="modal-dialog">
-    <div class="modal-shell">
-      <button class="close-dialog" type="button" aria-label="Chiudi">×</button>
-      <span class="dialog-kicker">Metodologia v0.1.2</span>
-      <h2>Come calcoliamo l’attività</h2>
-      <p class="dialog-intro">L’indice combina partecipazione e volumi parlamentari. L’inattività è il valore inverso.</p>
-      <div class="formula-grid">
-        <div><strong>50%</strong><span>Partecipazione</span></div>
-        <div><strong>20%</strong><span>Proposte</span></div>
-        <div><strong>15%</strong><span>Controllo</span></div>
-        <div><strong>15%</strong><span>Interventi</span></div>
+    <div class="modal">
+      <header class="dialog-header">
+        <h2>Metodo</h2>
+        <button class="close-dialog" type="button" aria-label="Chiudi">×</button>
+      </header>
+      <p>L’attività combina quattro indicatori. L’inattività è il valore inverso.</p>
+      <dl class="method-weights">
+        <div><dt>Partecipazione</dt><dd>50%</dd></div>
+        <div><dt>Proposte</dt><dd>20%</dd></div>
+        <div><dt>Controllo</dt><dd>15%</dd></div>
+        <div><dt>Interventi</dt><dd>15%</dd></div>
+      </dl>
+      <div class="plain-list">
+        <p><strong>Missioni escluse.</strong> “In missione” e “Presidente di turno” non contano come assenze.</p>
+        <p><strong>Valori aggregati.</strong> I dati pubblici sono mostrati per fasce, non come valori puntuali.</p>
+        <p><strong>Limite.</strong> L’indice non misura integrità, competenza, qualità delle leggi o lavoro sul territorio.</p>
       </div>
-      <div class="method-list">
-        <p><strong>Missioni escluse.</strong> “In missione” e “Presidente di turno” non sono considerate assenze.</p>
-        <p><strong>Estremi ridotti.</strong> I volumi usano scala logaritmica limitata al 95° percentile.</p>
-        <p><strong>Solo fasce.</strong> I valori pubblici sono aggregati e non puntuali.</p>
-      </div>
-      <div class="notice">L’indice non misura integrità, competenza, qualità delle leggi, lavoro territoriale o efficacia politica.</div>
     </div>
   </dialog>
 
   <dialog id="sources-dialog" class="modal-dialog">
-    <div class="modal-shell">
-      <button class="close-dialog" type="button" aria-label="Chiudi">×</button>
-      <span class="dialog-kicker">Dati e privacy</span>
-      <h2>Il dato resta. L’identità no.</h2>
-      <p class="dialog-intro">La lavorazione parte da archivi istituzionali, mentre la pubblicazione espone soltanto dati aggregati.</p>
-      <div class="method-list">
-        <p><strong>Rimossi:</strong> nomi, cognomi, partiti, circoscrizioni, foto, URL e identificativi originari.</p>
-        <p><strong>Aggregati:</strong> partecipazione, proposte, controllo, interventi e indice.</p>
-        <p><strong>Codici instabili:</strong> riassegnati casualmente a ogni aggiornamento.</p>
+    <div class="modal">
+      <header class="dialog-header">
+        <h2>Dati e privacy</h2>
+        <button class="close-dialog" type="button" aria-label="Chiudi">×</button>
+      </header>
+      <p>La lavorazione parte da fonti istituzionali. Il dataset pubblico espone solo dati aggregati e codici anonimi.</p>
+      <div class="plain-list">
+        <p><strong>Non pubblicati:</strong> nomi, partiti, circoscrizioni, foto, URL e identificativi originari.</p>
+        <p><strong>Aggregati:</strong> partecipazione, proposte, controllo, interventi e inattività.</p>
+        <p><strong>Codici:</strong> vengono riassegnati a ogni aggiornamento.</p>
       </div>
-      <div class="notice">L’anonimizzazione riduce l’esposizione, ma non garantisce irreversibilità statistica né elimina responsabilità legali.</div>
     </div>
   </dialog>
 
   <dialog id="replacement-dialog" class="modal-dialog">
-    <div class="modal-shell">
-      <button class="close-dialog" type="button" aria-label="Chiudi">×</button>
-      <span class="dialog-kicker">Ricambio democratico</span>
-      <h2>Valuta un’alternativa</h2>
-      <p class="dialog-intro">Questa funzione crea una scheda privata sul dispositivo e non pubblica dati personali.</p>
+    <div class="modal">
+      <header class="dialog-header">
+        <h2>Valuta alternativa</h2>
+        <button class="close-dialog" type="button" aria-label="Chiudi">×</button>
+      </header>
       <form id="alternative-form" class="alternative-form">
-        <label><span>Nome dell’alternativa</span><input id="candidate-name" required /></label>
-        <label><span>Esperienza rilevante</span><textarea id="candidate-experience" rows="3" required></textarea></label>
-        <label><span>Tre impegni misurabili</span><textarea id="candidate-commitments" rows="4" required></textarea></label>
-        <label class="checkbox-line"><input id="candidate-transparency" type="checkbox" required /> <span>Dichiara possibili conflitti di interesse.</span></label>
-        <button class="primary-button" type="submit">Genera scheda</button>
+        <label>Nome<input id="candidate-name" required /></label>
+        <label>Esperienza<textarea id="candidate-experience" rows="3" required></textarea></label>
+        <label>Tre impegni misurabili<textarea id="candidate-commitments" rows="4" required></textarea></label>
+        <label class="checkbox-line"><input id="candidate-transparency" type="checkbox" required /> <span>Dichiara possibili conflitti di interesse</span></label>
+        <button class="button-primary" type="submit">Genera scheda</button>
       </form>
       <section id="alternative-result" class="alternative-result" hidden>
         <h3 id="alternative-name">—</h3>
         <div id="alternative-copy"></div>
-        <div class="drawer-actions"><button id="copy-alternative" class="primary-button" type="button">Copia</button><button id="edit-alternative" type="button">Modifica</button></div>
+        <div class="drawer-actions"><button id="copy-alternative" class="button-primary" type="button">Copia</button><button id="edit-alternative" type="button">Modifica</button></div>
       </section>
     </div>
   </dialog>
 
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
-  <script src="app.js?v=0.3.0" defer></script>
+  <script src="app.js?v=0.4.0" defer></script>
 </body>
 </html>
