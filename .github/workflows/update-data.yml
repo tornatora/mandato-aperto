@@ -28,17 +28,33 @@ jobs:
         run: |
           git fetch origin main
           git reset --hard origin/main
+      - name: Conserva il dataset precedente
+        run: cp dist/data/deputies.json /tmp/deputies-before.json
       - name: Scarica e calcola i dati ufficiali
         run: npm run sync
       - name: Verifica il dataset
         run: npm run validate
-      - name: Registra solo i cambiamenti reali
+      - name: Verifica se i dati pubblici sono cambiati davvero
+        id: semantic
+        shell: bash
         run: |
-          if git diff --quiet -- dist/data/deputies.json; then
-            echo "Nessun aggiornamento"
-            exit 0
+          set +e
+          node scripts/compare-public-data.mjs /tmp/deputies-before.json dist/data/deputies.json
+          status=$?
+          set -e
+          if [ "$status" -eq 0 ]; then
+            cp /tmp/deputies-before.json dist/data/deputies.json
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Nessuna variazione sostanziale nei dati pubblici"
+          elif [ "$status" -eq 1 ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Rilevata una variazione reale nei dati pubblici"
+          else
+            exit "$status"
           fi
-
+      - name: Registra solo i cambiamenti reali
+        if: steps.semantic.outputs.changed == 'true'
+        run: |
           git config user.name "mandato-aperto-bot"
           git config user.email "actions@users.noreply.github.com"
           git add dist/data/deputies.json
