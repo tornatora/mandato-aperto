@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Mandato Aperto rende leggibili i dati ufficiali della Camera e mostra quali politici risultano meno attivi in Parlamento." />
-  <meta name="theme-color" content="#f7f7f8" />
+  <meta name="description" content="Mandato Aperto trasforma i dati ufficiali della Camera in una piattaforma semplice per confrontare l'attività parlamentare." />
+  <meta name="theme-color" content="#f5f6f8" />
   <title>Mandato Aperto — Attività dei politici italiani</title>
-  <link rel="stylesheet" href="styles.css?v=0.6.0" />
+  <link rel="stylesheet" href="styles.css?v=0.7.0" />
 </head>
 <body>
   <a class="skip-link" href="#ranking">Vai alla classifica</a>
@@ -16,8 +16,8 @@
       <a class="wordmark" href="#top">Mandato Aperto</a>
       <div class="topbar-right">
         <span class="scope">Camera dei deputati <span>· XIX legislatura</span></span>
-        <button type="button" data-dialog="method-dialog">Come funziona</button>
-        <button type="button" data-dialog="sources-dialog">Dati</button>
+        <button type="button" data-dialog="method-dialog">Metodo</button>
+        <button type="button" data-dialog="sources-dialog">Dati e privacy</button>
         <a href="https://github.com/tornatora/mandato-aperto" target="_blank" rel="noreferrer">GitHub ↗</a>
       </div>
     </div>
@@ -32,7 +32,7 @@
         </a>
         <button type="button" data-dialog="method-dialog">
           <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 11v5M12 8h.01"/></svg>
-          <span>Come funziona</span>
+          <span>Come si legge</span>
         </button>
         <button type="button" data-dialog="sources-dialog">
           <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.8 2.7 8 7 10 4.3-2 7-5.2 7-10V6z"/></svg>
@@ -48,87 +48,128 @@
 
     <main class="content">
       <section class="hero" aria-labelledby="hero-title">
-        <p class="hero-kicker">Dati ufficiali. Niente opinioni.</p>
-        <h1 id="hero-title">Scopri quanto sono attivi in Parlamento i politici italiani.</h1>
-        <p class="hero-copy">Mandato Aperto prende i dati della Camera e li rende semplici da leggere. In cima alla classifica trovi chi, nei dati disponibili, risulta meno attivo: meno presenza alle votazioni, meno proposte presentate, meno atti di controllo e meno interventi.</p>
-        <div class="hero-actions">
-          <a class="hero-primary" href="#ranking">Guarda la classifica</a>
-          <button type="button" data-dialog="method-dialog">Come calcoliamo l’attività</button>
+        <div class="hero-copy">
+          <p class="hero-label">Piattaforma comparativa</p>
+          <h1 id="hero-title">Confronta l’attività dei politici italiani in pochi secondi.</h1>
+          <p class="hero-subtitle">Una lettura semplice dei dati pubblici della Camera: presenza alle votazioni, proposte di legge, atti di controllo e interventi.</p>
+          <div class="hero-actions">
+            <a class="button-primary" href="#ranking">Apri la classifica</a>
+            <button type="button" class="button-secondary" data-dialog="method-dialog">Come leggiamo i dati</button>
+          </div>
         </div>
-        <div class="hero-guide" aria-label="Come leggere la classifica">
-          <span><strong>Più in alto</strong> = meno attività rilevata</span>
-          <span><strong>Presenza</strong> = votazioni a cui ha partecipato</span>
-          <span><strong>Attività</strong> = proposte, controllo e interventi</span>
-        </div>
-        <p class="hero-disclaimer">La classifica misura solo l’attività parlamentare documentata. Non dice se un politico è bravo, competente o utile.</p>
-      </section>
 
-      <section class="page-title">
-        <div>
-          <h2>Politici meno attivi</h2>
-          <p>La classifica parte da chi registra meno attività parlamentare nei dati analizzati.</p>
-        </div>
-        <div class="dataset-summary" aria-label="Riepilogo dataset">
-          <span><strong id="total-stat">—</strong> politici analizzati</span>
-          <span><strong id="high-stat">—</strong> con inattività alta</span>
-          <span>fascia più comune <strong id="common-stat">—</strong></span>
-          <span>aggiornato <strong id="updated-stat">—</strong></span>
+        <div class="hero-guide" aria-label="Guida rapida">
+          <div><strong>1</strong><span>Cerca un profilo</span></div>
+          <div><strong>2</strong><span>Apri i dati</span></div>
+          <div><strong>3</strong><span>Confronta due politici</span></div>
         </div>
       </section>
 
-      <section class="ranking" id="ranking" aria-labelledby="ranking-title">
-        <header class="ranking-top">
-          <div>
-            <h2 id="ranking-title">Classifica</h2>
-            <span id="results-count">Caricamento…</span>
+      <div class="workspace">
+        <section class="ranking-panel">
+          <div class="section-head">
+            <div>
+              <h2>Politici meno attivi</h2>
+              <p>Più il livello di inattività è alto, meno attività parlamentare risulta nei dati disponibili.</p>
+            </div>
+            <div class="section-stats" aria-label="Riepilogo dataset">
+              <span><strong id="total-stat">—</strong> analizzati</span>
+              <span><strong id="high-stat">—</strong> inattività alta</span>
+              <span><strong id="updated-stat">—</strong> aggiornamento</span>
+            </div>
           </div>
 
-          <div class="controls">
-            <label class="search" for="search-input">
-              <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></svg>
-              <input id="search-input" type="search" autocomplete="off" placeholder="Cerca un codice" />
-            </label>
-            <label class="sort" for="sort-filter">
-              <select id="sort-filter" aria-label="Ordina la classifica">
-                <option value="inactivity-desc">Meno attivi prima</option>
-                <option value="inactivity-asc">Più attivi prima</option>
-                <option value="code">Codice</option>
-              </select>
-            </label>
-          </div>
-        </header>
+          <section class="ranking" id="ranking" aria-labelledby="ranking-title">
+            <header class="ranking-top">
+              <div>
+                <h3 id="ranking-title">Classifica</h3>
+                <span id="results-count">Caricamento…</span>
+              </div>
 
-        <div class="table-note">
-          <span>Un valore di inattività più alto significa meno attività rilevata.</span>
-          <button type="button" data-dialog="method-dialog">Come si calcola</button>
-        </div>
+              <div class="controls">
+                <label class="search" for="search-input">
+                  <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></svg>
+                  <input id="search-input" type="search" autocomplete="off" placeholder="Cerca codice o profilo" />
+                </label>
+                <label class="sort" for="sort-filter">
+                  <select id="sort-filter" aria-label="Ordina la classifica">
+                    <option value="inactivity-desc">Meno attivi prima</option>
+                    <option value="inactivity-asc">Più attivi prima</option>
+                    <option value="code">Codice</option>
+                  </select>
+                </label>
+              </div>
+            </header>
 
-        <div class="table-scroll">
-          <div class="table-head" aria-hidden="true">
-            <span>#</span>
-            <span>Politico</span>
-            <span>Inattività</span>
-            <span>Presenza ai voti</span>
-            <span>Proposte</span>
-            <span>Atti di controllo</span>
-            <span>Interventi</span>
-            <span></span>
-          </div>
-          <div class="people-list" id="card-grid" role="list" aria-live="polite"></div>
-        </div>
+            <div class="table-note">
+              <span>Classifica comparativa basata su quattro indicatori pubblici.</span>
+              <button type="button" data-dialog="method-dialog">Vedi il metodo</button>
+            </div>
 
-        <div class="empty-state" id="empty-state" hidden>
-          <strong>Nessun politico trovato</strong>
-          <span>Prova con un altro codice.</span>
-          <button id="reset-filters" type="button">Azzera ricerca</button>
-        </div>
+            <div class="table-scroll">
+              <div class="table-head" aria-hidden="true">
+                <span>#</span>
+                <span>Politico</span>
+                <span>Inattività</span>
+                <span>Presenza</span>
+                <span>Proposte</span>
+                <span>Controllo</span>
+                <span>Interventi</span>
+                <span></span>
+              </div>
+              <div class="people-list" id="card-grid" role="list" aria-live="polite"></div>
+            </div>
 
-        <button class="load-more" id="load-more" type="button" hidden>Mostra altri politici</button>
-      </section>
+            <div class="empty-state" id="empty-state" hidden>
+              <strong>Nessun politico trovato</strong>
+              <span>Prova con un altro codice o azzera la ricerca.</span>
+              <button id="reset-filters" type="button">Azzera ricerca</button>
+            </div>
+
+            <button class="load-more" id="load-more" type="button" hidden>Mostra altri politici</button>
+          </section>
+        </section>
+
+        <aside class="insights-panel" aria-label="Riepilogo e istruzioni">
+          <section class="panel-card compact-stats">
+            <span class="panel-eyebrow">Dataset</span>
+            <div class="stat-block">
+              <span>Fascia più comune</span>
+              <strong id="common-stat">—</strong>
+            </div>
+            <p>Dati pseudonimizzati e aggregati prima della pubblicazione.</p>
+          </section>
+
+          <section class="panel-card compare-panel">
+            <span class="panel-eyebrow">Confronto rapido</span>
+            <h3>Due profili, stessi indicatori.</h3>
+            <p>Premi <strong>+</strong> su due righe. La barra di confronto apparirà in basso e potrai aprire il confronto affiancato.</p>
+          </section>
+
+          <section class="panel-card method-panel">
+            <span class="panel-eyebrow">Indice</span>
+            <h3>Quattro segnali, un’unica lettura.</h3>
+            <ul>
+              <li><span>Presenza alle votazioni</span><strong>50%</strong></li>
+              <li><span>Proposte di legge</span><strong>20%</strong></li>
+              <li><span>Atti di controllo</span><strong>15%</strong></li>
+              <li><span>Interventi</span><strong>15%</strong></li>
+            </ul>
+            <button type="button" data-dialog="method-dialog">Apri metodologia</button>
+          </section>
+
+          <section class="panel-card privacy-panel">
+            <span class="panel-eyebrow">Privacy</span>
+            <h3>Niente nomi, partiti o collegamenti personali.</h3>
+            <p>La piattaforma pubblica soltanto profili anonimi e fasce aggregate.</p>
+            <button type="button" data-dialog="sources-dialog">Come trattiamo i dati</button>
+          </section>
+        </aside>
+      </div>
 
       <footer class="content-footer">
         <span id="freshness">Aggiornamento dati…</span>
-        <span>Misuriamo attività documentata, non qualità o competenza politica.</span>
+        <span>Misuriamo attività documentata, non qualità, competenza o utilità politica.</span>
       </footer>
     </main>
   </div>
@@ -146,7 +187,7 @@
 
   <nav class="mobile-nav" aria-label="Navigazione mobile">
     <a class="active" href="#ranking">Classifica</a>
-    <button type="button" data-dialog="method-dialog">Come funziona</button>
+    <button type="button" data-dialog="method-dialog">Metodo</button>
     <button type="button" data-dialog="sources-dialog">Dati</button>
   </nav>
 
@@ -162,7 +203,7 @@
 
       <div class="profile-score-row">
         <div>
-          <span>Inattività rilevata</span>
+          <span>Inattività documentata</span>
           <strong id="profile-score">—</strong>
         </div>
         <p id="profile-label">—</p>
@@ -170,12 +211,12 @@
 
       <div class="profile-metrics">
         <div><span>Presenza ai voti</span><strong id="metric-attendance">—</strong></div>
-        <div><span>Proposte presentate</span><strong id="metric-bills">—</strong></div>
+        <div><span>Proposte di legge</span><strong id="metric-bills">—</strong></div>
         <div><span>Atti di controllo</span><strong id="metric-oversight">—</strong></div>
         <div><span>Interventi</span><strong id="metric-interventions">—</strong></div>
       </div>
 
-      <p class="profile-note" id="profile-meta">Identità non pubblicata. Il codice cambia a ogni aggiornamento.</p>
+      <p class="profile-note" id="profile-meta">Profilo anonimo: l’identità non viene pubblicata e il codice cambia a ogni aggiornamento.</p>
 
       <div class="drawer-actions">
         <button id="profile-compare" type="button">Aggiungi al confronto</button>
@@ -192,7 +233,7 @@
         <h2>Confronta due politici</h2>
         <button class="close-dialog" type="button" aria-label="Chiudi">×</button>
       </header>
-      <p>Guarda fianco a fianco gli stessi dati e vedi subito chi registra più o meno attività parlamentare.</p>
+      <p>Gli stessi indicatori, affiancati, per vedere subito dove cambia il livello di attività documentata.</p>
       <div id="compare-table" class="comparison-table"></div>
     </div>
   </dialog>
@@ -200,10 +241,10 @@
   <dialog id="method-dialog" class="modal-dialog">
     <div class="modal">
       <header class="dialog-header">
-        <h2>Come calcoliamo l’attività</h2>
+        <h2>Come leggiamo l’attività parlamentare</h2>
         <button class="close-dialog" type="button" aria-label="Chiudi">×</button>
       </header>
-      <p>Usiamo quattro dati della Camera. La presenza alle votazioni pesa di più; poi consideriamo proposte, atti di controllo e interventi. Da questi dati ricaviamo un indice di attività. L’inattività è il valore opposto.</p>
+      <p>Partiamo da quattro indicatori disponibili negli archivi della Camera. Li combiniamo in un indice di attività; l’inattività è il valore inverso.</p>
       <dl class="method-weights">
         <div><dt>Presenza alle votazioni</dt><dd>50%</dd></div>
         <div><dt>Proposte come primo firmatario</dt><dd>20%</dd></div>
@@ -211,9 +252,9 @@
         <div><dt>Interventi registrati</dt><dd>15%</dd></div>
       </dl>
       <div class="plain-list">
-        <p><strong>Le missioni non sono assenze.</strong> Se un politico risulta “in missione” o “Presidente di turno”, quel voto non viene contato come assenza.</p>
-        <p><strong>Mostriamo fasce, non numeri personali precisi.</strong> I dati pubblici sono aggregati per rendere più difficile risalire all’identità.</p>
-        <p><strong>Cosa non misura.</strong> Il dato non valuta competenza, onestà, qualità delle leggi, lavoro sul territorio o efficacia politica.</p>
+        <p><strong>Le missioni non sono assenze.</strong> “In missione” e “Presidente di turno” vengono esclusi dal calcolo della partecipazione.</p>
+        <p><strong>Mostriamo fasce, non valori personali puntuali.</strong> I dati pubblici sono aggregati prima della pubblicazione.</p>
+        <p><strong>Cosa non dice questo indice.</strong> Non misura integrità, competenza, qualità delle leggi, lavoro sul territorio o efficacia politica.</p>
       </div>
     </div>
   </dialog>
@@ -224,11 +265,11 @@
         <h2>Dati e privacy</h2>
         <button class="close-dialog" type="button" aria-label="Chiudi">×</button>
       </header>
-      <p>I dati arrivano dagli archivi ufficiali della Camera dei deputati. Prima di pubblicarli togliamo i riferimenti personali e mostriamo soltanto valori aggregati.</p>
+      <p>Usiamo fonti istituzionali della Camera dei deputati. Prima della pubblicazione rimuoviamo i riferimenti personali e mostriamo solo valori aggregati.</p>
       <div class="plain-list">
         <p><strong>Non pubblichiamo</strong> nomi, partiti, circoscrizioni, foto, URL o identificativi originari.</p>
-        <p><strong>Mostriamo</strong> presenza alle votazioni, proposte, atti di controllo, interventi e livello di inattività.</p>
-        <p><strong>I codici cambiano</strong> a ogni aggiornamento e non identificano stabilmente una persona.</p>
+        <p><strong>Mostriamo in forma aggregata</strong> partecipazione alle votazioni, proposte, atti di controllo, interventi e inattività.</p>
+        <p><strong>I codici cambiano</strong> a ogni aggiornamento e non rappresentano un identificativo stabile della persona.</p>
       </div>
     </div>
   </dialog>
@@ -239,7 +280,7 @@
         <h2>Valuta un’alternativa</h2>
         <button class="close-dialog" type="button" aria-label="Chiudi">×</button>
       </header>
-      <p>Prepara una scheda privata per confrontare un possibile candidato usando esperienza, impegni concreti e trasparenza.</p>
+      <p>Prepara una scheda privata per confrontare un possibile candidato con criteri concreti e misurabili.</p>
       <form id="alternative-form" class="alternative-form">
         <label>Nome<input id="candidate-name" required /></label>
         <label>Esperienza concreta<textarea id="candidate-experience" rows="3" required></textarea></label>
@@ -256,6 +297,6 @@
   </dialog>
 
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
-  <script src="app.js?v=0.5.0" defer></script>
+  <script src="app.js?v=0.6.0" defer></script>
 </body>
 </html>
