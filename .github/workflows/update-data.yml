@@ -4,6 +4,12 @@ on:
   schedule:
     - cron: "17 3 * * *"
   workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/update-data.yml"
+      - "scripts/sync-camera.mjs"
+      - "scripts/validate-data.mjs"
+      - "scripts/compare-public-data.mjs"
 
 permissions:
   contents: write
