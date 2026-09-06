@@ -17,6 +17,7 @@ function canonical(payload) {
       metrics: item.metrics,
       inactivityBand: item.inactivityBand,
       inactivityLabel: item.inactivityLabel,
+      politicalArea: item.politicalArea,
       dataComplete: item.dataComplete
     }))
     .map((item) => JSON.stringify(item))
