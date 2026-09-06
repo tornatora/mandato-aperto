@@ -8,15 +8,26 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: camera-data-update
+  cancel-in-progress: false
+
 jobs:
   update:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
         with:
-          node-version: "22"
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+      - name: Allinea il repository alla main più recente
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
       - name: Scarica e calcola i dati ufficiali
         run: npm run sync
       - name: Verifica il dataset
@@ -27,8 +38,12 @@ jobs:
             echo "Nessun aggiornamento"
             exit 0
           fi
+
           git config user.name "mandato-aperto-bot"
           git config user.email "actions@users.noreply.github.com"
           git add dist/data/deputies.json
           git commit -m "data: aggiornamento automatico Camera"
-          git push
+
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
