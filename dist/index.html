@@ -3,282 +3,248 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Mandato Aperto rende semplici i dati della Camera: presenza, attività parlamentare, macro-area politica e stima del costo equivalente dell'inattività documentata." />
+  <meta name="description" content="Mandato Aperto rende leggibili i dati pubblici della Camera con profili anonimi, indicatori comparabili, macro-aree politiche e visualizzazioni interattive." />
   <meta name="theme-color" content="#f7f7f8" />
-  <title>Mandato Aperto — Quanto lavora davvero un deputato?</title>
-  <link rel="stylesheet" href="styles.css?v=1.1.0" />
+  <title>Mandato Aperto — Attività parlamentare, senza rumore</title>
+  <link rel="stylesheet" href="styles.css?v=1.2.0" />
 </head>
 <body>
-  <a class="skip-link" href="#explore">Vai ai profili</a>
+  <a class="skip-link" href="#explore">Vai ai dati</a>
 
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="Mandato Aperto">
+    <a class="brand" href="#top" aria-label="Mandato Aperto, torna all'inizio">
       <span class="brand-mark">M</span>
       <span>Mandato Aperto</span>
     </a>
     <nav class="header-nav" aria-label="Navigazione principale">
-      <a href="#explore">Esplora</a>
-      <a href="#how">Come funziona</a>
+      <a href="#explore">Dati</a>
+      <button type="button" data-view-jump="analytics">Analisi</button>
       <button type="button" data-dialog="method-dialog">Metodo</button>
     </nav>
-    <div class="live-pill"><i></i><span id="header-freshness">Dati Camera</span></div>
+    <div class="header-status"><i></i><span id="header-freshness">Dati Camera</span></div>
   </header>
 
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-grid">
         <div class="hero-copy">
-          <span class="eyebrow">Dati pubblici. Spiegati semplice.</span>
-          <h1 id="hero-title">Quanto lavora davvero<br>un deputato?</h1>
-          <p>Vedi quanto è presente, cosa fa in Parlamento, la sua <strong>macro-area politica</strong> e quanto pesa economicamente la sua <strong>inattività documentata</strong>.</p>
+          <span class="eyebrow">Camera · XIX legislatura · profili anonimi</span>
+          <h1 id="hero-title">L’attività parlamentare,<br><span>leggibile davvero.</span></h1>
+          <p>Presenza, iniziativa, controllo e interventi in un’unica interfaccia. Filtra per macro-area politica, confronta due profili e guarda come cambia il quadro in tempo reale.</p>
           <div class="hero-actions">
-            <a class="primary-button" href="#explore">Scopri i meno attivi</a>
-            <button class="ghost-button" id="hero-compare-top" type="button">Confronta i 2 meno attivi</button>
+            <a class="button primary" href="#explore">Esplora i dati</a>
+            <button class="button secondary" id="hero-compare-top" type="button">Confronta i 2 meno attivi</button>
           </div>
-          <div class="hero-proof">
-            <span><strong id="hero-count">399</strong> deputati</span>
-            <span>Camera · XIX legislatura</span>
-            <span>Aggiornamento automatico</span>
+          <div class="hero-facts">
+            <div><strong id="hero-count">—</strong><span>profili analizzati</span></div>
+            <div><strong>4</strong><span>indicatori pubblici</span></div>
+            <div><strong>24h</strong><span>refresh automatico</span></div>
           </div>
         </div>
 
-        <div class="hero-visual" aria-label="Esempio di lettura di un profilo">
-          <article class="hero-profile-card">
-            <div class="hero-card-top">
-              <div>
-                <span class="mini-label">Esempio dal dataset</span>
-                <strong id="hero-profile-name">Politico —</strong>
-                <span class="area-badge" id="hero-profile-area" hidden>—</span>
-              </div>
-              <span class="rank-chip" id="hero-rank">#—</span>
+        <div class="hero-panel" aria-label="Anteprima live del dataset">
+          <div class="panel-head">
+            <div><span class="micro">Profilo in evidenza</span><strong id="hero-profile-name">Politico —</strong></div>
+            <span class="area-badge" id="hero-profile-area" hidden>—</span>
+          </div>
+          <div class="hero-score-row">
+            <div class="score-ring" id="hero-orbit" style="--score:0"><div><strong id="hero-score">—</strong><span>inattività</span></div></div>
+            <div class="hero-readout">
+              <span class="micro">Lettura rapida</span>
+              <h2 id="hero-score-label">Caricamento dati…</h2>
+              <div class="hero-mini-bars" id="hero-mini-bars"></div>
             </div>
-
-            <div class="hero-score-area">
-              <div class="score-orbit hero-orbit" id="hero-orbit" style="--score:65">
-                <div><strong id="hero-score">—</strong><span>inattività</span></div>
-              </div>
-              <div class="hero-score-copy">
-                <span class="mini-label">In parole semplici</span>
-                <h2 id="hero-score-label">Quanto lavoro parlamentare non emerge dai dati.</h2>
-                <p>Più il valore sale, meno attività risulta documentata.</p>
-              </div>
-            </div>
-
-            <div class="cost-card">
-              <div class="cost-card-head">
-                <span>Costo pubblico base</span>
-                <button type="button" data-dialog="cost-dialog" aria-label="Come calcoliamo il costo">?</button>
-              </div>
-              <div class="cost-main"><strong>€17.628</strong><span>/ mese</span></div>
-              <small>Indennità lorda + diaria + rimborso mandato. Prima di eventuali decurtazioni.</small>
-              <div class="cost-divider"></div>
-              <div class="cost-estimate-row">
-                <span>Quota equivalente legata all’inattività</span>
-                <strong id="hero-cost-estimate">≈ €—</strong>
-              </div>
-              <small class="estimate-note">È una stima comparativa, non significa “soldi persi”.</small>
-            </div>
-          </article>
+          </div>
+          <div class="hero-bottom">
+            <div><span>Quota economica equivalente</span><strong id="hero-cost-estimate">≈ €— / mese</strong></div>
+            <button type="button" class="icon-button" data-dialog="cost-dialog" aria-label="Come funziona questa stima">?</button>
+          </div>
         </div>
-      </div>
-
-      <a class="scroll-cue" href="#how" aria-label="Scorri per capire come funziona">
-        <span>Capiscilo in 10 secondi</span>
-        <i>↓</i>
-      </a>
-    </section>
-
-    <section class="how" id="how" aria-labelledby="how-title">
-      <div class="section-intro">
-        <span class="eyebrow">Basta guardare 4 cose</span>
-        <h2 id="how-title">Cosa fa davvero un deputato?</h2>
-      </div>
-      <div class="explain-grid">
-        <article>
-          <span class="explain-number">01</span>
-          <div class="explain-icon">✓</div>
-          <h3>C’è?</h3>
-          <p>Quanto partecipa alle votazioni.</p>
-        </article>
-        <article>
-          <span class="explain-number">02</span>
-          <div class="explain-icon">＋</div>
-          <h3>Propone?</h3>
-          <p>Quante leggi firma per primo.</p>
-        </article>
-        <article>
-          <span class="explain-number">03</span>
-          <div class="explain-icon">?</div>
-          <h3>Controlla?</h3>
-          <p>Quanti atti usa per chiedere conto al Governo.</p>
-        </article>
-        <article>
-          <span class="explain-number">04</span>
-          <div class="explain-icon">◌</div>
-          <h3>Interviene?</h3>
-          <p>Quanto prende parte ai lavori parlamentari.</p>
-        </article>
       </div>
     </section>
 
     <section class="explore" id="explore" aria-labelledby="explore-title">
-      <div class="explore-head">
+      <div class="section-head">
         <div>
-          <span class="eyebrow">Esplora i dati</span>
-          <h2 id="explore-title">Chi risulta meno attivo?</h2>
-          <p>Filtra, apri un profilo o metti due politici faccia a faccia.</p>
+          <span class="eyebrow">Dataset interattivo</span>
+          <h2 id="explore-title">Esplora. Confronta. Capisci.</h2>
         </div>
-        <div class="explore-actions">
-          <label class="search-box" for="search-input">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></svg>
-            <input id="search-input" type="search" placeholder="Cerca codice" autocomplete="off" />
-            <kbd>⌘K</kbd>
-          </label>
-          <label class="sort-box" for="sort-filter">
-            <select id="sort-filter" aria-label="Ordina profili">
-              <option value="inactivity-desc">Meno attivi prima</option>
-              <option value="inactivity-asc">Più attivi prima</option>
-              <option value="code">Codice</option>
-            </select>
-          </label>
+        <div class="dataset-status"><i></i><span id="dataset-status-text">Sincronizzazione verificata</span></div>
+      </div>
+
+      <div class="toolbar">
+        <label class="search-field" for="search-input">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></svg>
+          <input id="search-input" type="search" placeholder="Cerca codice anonimo" autocomplete="off" />
+          <kbd>⌘K</kbd>
+        </label>
+        <label class="select-field" for="sort-filter">
+          <span>Ordina</span>
+          <select id="sort-filter">
+            <option value="inactivity-desc">Meno attivi prima</option>
+            <option value="inactivity-asc">Più attivi prima</option>
+            <option value="code">Codice</option>
+          </select>
+        </label>
+        <div class="view-switch" id="view-switch" role="group" aria-label="Modalità di visualizzazione">
+          <button class="active" type="button" data-view="cards">Schede</button>
+          <button type="button" data-view="table">Tabella</button>
+          <button type="button" data-view="analytics">Analisi</button>
         </div>
       </div>
 
-      <div class="filter-stack">
-        <div class="filter-line">
-          <span class="filter-caption">Inattività</span>
-          <div class="band-filters" id="band-filters" aria-label="Filtra per inattività">
+      <div class="filter-panel">
+        <div class="filter-row">
+          <span class="filter-label">Inattività</span>
+          <div class="segmented" id="band-filters">
             <button class="active" type="button" data-band="all">Tutti <span id="count-all">—</span></button>
             <button type="button" data-band="high">Alta <span id="count-high">—</span></button>
             <button type="button" data-band="medium">Media <span id="count-medium">—</span></button>
             <button type="button" data-band="low">Bassa <span id="count-low">—</span></button>
           </div>
         </div>
-
-        <div class="filter-line area-filter-line" id="area-filter-wrap" hidden>
-          <span class="filter-caption">Area politica</span>
-          <div class="area-filters" id="area-filters" aria-label="Filtra per macro-area politica">
+        <div class="filter-row" id="area-filter-wrap" hidden>
+          <span class="filter-label">Macro-area</span>
+          <div class="segmented area-segmented" id="area-filters">
             <button class="active" type="button" data-area="all">Tutte <span id="count-area-all">—</span></button>
             <button type="button" data-area="Centrodestra">Centrodestra <span id="count-area-cdx">—</span></button>
             <button type="button" data-area="Centrosinistra">Centrosinistra <span id="count-area-csx">—</span></button>
-            <button type="button" data-area="M5S">M5S <span id="count-area-m5s">—</span></button>
             <button type="button" data-area="Centro">Centro <span id="count-area-centro">—</span></button>
-            <button type="button" data-area="Autonomie/altro">Autonomie/altro <span id="count-area-altro">—</span></button>
+            <button type="button" data-area="Altro / non classificato">Altro <span id="count-area-altro">—</span></button>
           </div>
-          <button class="compare-now" id="compare-top" type="button">Confronta i 2 meno attivi <span>↗</span></button>
+          <button class="button compact" id="compare-top" type="button">Confronta i 2 meno attivi</button>
         </div>
       </div>
 
-      <div class="activity-map" aria-labelledby="map-title">
-        <div class="map-head">
-          <div><span class="mini-label">Mappa dell’inattività</span><strong id="map-title">Dove si concentra il Parlamento?</strong></div>
-          <span>tocca una barra per filtrare</span>
+      <section class="live-strip" aria-label="Sintesi del filtro corrente">
+        <div class="live-kpi"><span>Profili visibili</span><strong id="live-count">—</strong><small id="live-share">— del totale</small></div>
+        <div class="live-kpi"><span>Inattività indicativa</span><strong id="live-inactivity">—</strong><small>media del centro fascia</small></div>
+        <div class="live-kpi"><span>Presenza indicativa</span><strong id="live-participation">—</strong><small>media del centro fascia</small></div>
+        <div class="live-kpi"><span>Quota equivalente</span><strong id="live-cost">—</strong><small>media mensile indicativa</small></div>
+      </section>
+
+      <section class="view-panel active" id="cards-view" data-view-panel="cards">
+        <div class="results-line"><span id="results-count">Caricamento…</span><span>clicca una scheda per i dettagli</span></div>
+        <div class="profile-grid" id="card-grid" role="list" aria-live="polite"></div>
+        <div class="empty-state" id="empty-state" hidden><strong>Nessun profilo trovato.</strong><button id="reset-filters" type="button">Azzera filtri</button></div>
+        <button class="button load-more" id="load-more" type="button" hidden>Mostra altri profili</button>
+      </section>
+
+      <section class="view-panel" id="table-view" data-view-panel="table" hidden>
+        <div class="table-shell">
+          <div class="table-headline"><div><span class="micro">Vista comparativa</span><strong>Ranking interattivo</strong></div><span id="table-caption">— profili</span></div>
+          <div class="table-scroll">
+            <table>
+              <thead><tr>
+                <th><button type="button" data-table-sort="rank">#</button></th>
+                <th>Profilo</th>
+                <th>Macro-area</th>
+                <th><button type="button" data-table-sort="inactivity-desc">Inattività</button></th>
+                <th>Presenza</th>
+                <th>Leggi</th>
+                <th>Controllo</th>
+                <th>Interventi</th>
+                <th>Quota eq.</th>
+                <th><span class="sr-only">Azioni</span></th>
+              </tr></thead>
+              <tbody id="data-table-body"></tbody>
+            </table>
+          </div>
         </div>
-        <div class="histogram" id="histogram" aria-live="polite"></div>
-      </div>
+      </section>
 
-      <div class="results-meta">
-        <span id="results-count">Caricamento…</span>
-        <span>Più alto = meno attività documentata</span>
-      </div>
-
-      <div class="profile-grid" id="card-grid" role="list" aria-live="polite"></div>
-
-      <div class="empty-state" id="empty-state" hidden>
-        <strong>Nessun profilo trovato.</strong>
-        <button id="reset-filters" type="button">Azzera filtri</button>
-      </div>
-      <button class="load-more" id="load-more" type="button" hidden>Mostra altri profili</button>
-    </section>
-
-    <section class="cost-explainer" aria-labelledby="cost-title">
-      <div class="cost-explainer-copy">
-        <span class="eyebrow">Quanto costa</span>
-        <h2 id="cost-title">Un deputato ha un costo pubblico base di circa <strong>€17.628 al mese.</strong></h2>
-        <p>Noi trasformiamo l’inattività documentata in una <strong>quota economica equivalente</strong> per rendere il dato intuitivo. Non diciamo che quella cifra sia automaticamente denaro sprecato.</p>
-        <button type="button" class="text-button" data-dialog="cost-dialog">Vedi il calcolo esatto →</button>
-      </div>
-      <div class="cost-stack" aria-hidden="true">
-        <div><span>Indennità lorda</span><strong>€10.435</strong></div>
-        <div><span>Diaria</span><strong>€3.503</strong></div>
-        <div><span>Rimborso mandato</span><strong>€3.690</strong></div>
-        <div class="total"><span>Totale base</span><strong>€17.628</strong></div>
-      </div>
+      <section class="view-panel analytics-view" id="analytics-view" data-view-panel="analytics" hidden>
+        <div class="analytics-grid">
+          <article class="chart-card wide">
+            <div class="chart-head"><div><span class="micro">Distribuzione live</span><strong>Inattività documentata</strong></div><span>clicca una colonna per filtrare</span></div>
+            <div class="histogram" id="histogram"></div>
+          </article>
+          <article class="chart-card">
+            <div class="chart-head"><div><span class="micro">Confronto macro-aree</span><strong>Inattività indicativa</strong></div><span>centro fascia</span></div>
+            <div class="area-chart" id="area-chart"></div>
+          </article>
+          <article class="chart-card">
+            <div class="chart-head"><div><span class="micro">Mix del filtro</span><strong>Livelli di inattività</strong></div><span id="mix-total">— profili</span></div>
+            <div class="donut-wrap"><div class="donut" id="mix-donut"><div><strong id="mix-main">—</strong><span>alta</span></div></div><div class="donut-legend" id="mix-legend"></div></div>
+          </article>
+          <article class="chart-card wide">
+            <div class="chart-head"><div><span class="micro">Indicatori del filtro</span><strong>Profilo medio indicativo</strong></div><span>valori normalizzati dalle fasce pubbliche</span></div>
+            <div class="metric-overview" id="metric-overview"></div>
+          </article>
+        </div>
+      </section>
     </section>
   </main>
 
   <aside class="compare-dock" id="compare-bar" hidden aria-label="Confronto selezionato">
-    <div class="compare-dock-copy"><span class="compare-dot">↔</span><strong id="compare-count">0/2</strong><span id="compare-names">Seleziona due profili</span></div>
-    <div><button id="clear-compare" type="button">Svuota</button><button id="open-compare" class="primary-button" type="button" disabled>Confronta</button></div>
+    <div class="compare-copy"><span class="compare-icon">↔</span><div><strong id="compare-count">0/2</strong><span id="compare-names">Seleziona due profili</span></div></div>
+    <div class="compare-actions"><button id="clear-compare" type="button">Svuota</button><button id="open-compare" class="button primary compact" type="button" disabled>Apri confronto</button></div>
   </aside>
 
   <dialog id="profile-dialog" class="drawer-dialog">
     <div class="drawer">
       <header class="dialog-header">
-        <div><span>Profilo anonimo</span><h2 id="profile-name">—</h2><span class="area-badge" id="profile-area" hidden>—</span></div>
+        <div><span class="micro">Profilo anonimo</span><h2 id="profile-name">—</h2><span class="area-badge" id="profile-area" hidden>—</span></div>
         <button class="close-dialog" type="button" aria-label="Chiudi">×</button>
       </header>
-
-      <div class="profile-hero">
-        <div class="score-orbit profile-orbit" id="profile-orbit" style="--score:0"><div><strong id="profile-score">—</strong><span>inattività</span></div></div>
-        <div><span class="mini-label">Cosa significa</span><h3 id="profile-label">—</h3><p>Più sale, meno attività emerge dai dati parlamentari.</p></div>
+      <div class="profile-summary">
+        <div class="score-ring profile-ring" id="profile-orbit" style="--score:0"><div><strong id="profile-score">—</strong><span>inattività</span></div></div>
+        <div class="profile-summary-copy"><span class="micro">Lettura</span><h3 id="profile-label">—</h3><p id="profile-rank">—</p></div>
       </div>
-
-      <div class="profile-cost">
-        <span>Quanto costa questa inattività?</span>
-        <strong id="profile-cost">≈ €— / mese</strong>
-        <small>Stima equivalente sul costo pubblico base.</small>
+      <div class="profile-actions-row">
+        <button id="profile-compare" class="button primary" type="button">Aggiungi al confronto</button>
+        <button id="profile-show-analysis" class="button secondary" type="button">Vedi nel grafico</button>
       </div>
-
-      <div class="profile-metrics" id="profile-metrics"></div>
-
-      <div class="drawer-actions">
-        <button id="profile-compare" class="primary-button" type="button">Aggiungi al confronto</button>
+      <div class="drawer-tabs" role="tablist" aria-label="Dettagli profilo">
+        <button class="active" type="button" data-profile-tab="metrics">Indicatori</button>
+        <button type="button" data-profile-tab="context">Contesto</button>
+        <button type="button" data-profile-tab="method">Metodo</button>
       </div>
-      <p class="source-stamp" id="profile-source-stamp">Aggiornamento…</p>
+      <div class="drawer-panel active" data-profile-panel="metrics"><div class="profile-metrics" id="profile-metrics"></div></div>
+      <div class="drawer-panel" data-profile-panel="context" hidden>
+        <div class="context-grid">
+          <div><span>Quota equivalente mensile</span><strong id="profile-cost">—</strong></div>
+          <div><span>Media macro-area</span><strong id="profile-area-average">—</strong></div>
+        </div>
+        <p class="drawer-note">Le medie usano il centro delle fasce pubblicate: sono confronti indicativi, non valori puntuali del singolo profilo.</p>
+      </div>
+      <div class="drawer-panel" data-profile-panel="method" hidden>
+        <div class="method-list"><div><span>Presenza alle votazioni</span><strong>50%</strong></div><div><span>Proposte firmate per primo</span><strong>20%</strong></div><div><span>Atti di controllo</span><strong>15%</strong></div><div><span>Interventi</span><strong>15%</strong></div></div>
+        <p class="drawer-note">Missioni e presidenza di turno non sono trattate come assenze. L’indice non misura competenza, integrità o qualità politica.</p>
+      </div>
+      <p class="source-stamp" id="profile-source-stamp">Dati Camera</p>
     </div>
   </dialog>
 
   <dialog id="compare-dialog" class="modal-dialog compare-dialog">
     <div class="modal compare-modal">
-      <header class="dialog-header">
-        <div><span>Confronto diretto</span><h2>Chi fa di più?</h2></div>
-        <button class="close-dialog" type="button" aria-label="Chiudi">×</button>
-      </header>
+      <header class="dialog-header"><div><span class="micro">Confronto live</span><h2>Due profili, stessa scala.</h2></div><button class="close-dialog" type="button" aria-label="Chiudi">×</button></header>
       <div id="compare-table" class="head-to-head"></div>
     </div>
   </dialog>
 
   <dialog id="method-dialog" class="modal-dialog">
     <div class="modal">
-      <header class="dialog-header"><div><span>Metodo</span><h2>Come leggiamo l’attività</h2></div><button class="close-dialog" type="button" aria-label="Chiudi">×</button></header>
-      <p class="modal-lead">Quattro segnali pubblici diventano un indice semplice. L’inattività è l’inverso dell’attività documentata.</p>
-      <div class="method-simple">
-        <div><span>C’è alle votazioni</span><strong>50%</strong></div>
-        <div><span>Propone leggi</span><strong>20%</strong></div>
-        <div><span>Controlla il Governo</span><strong>15%</strong></div>
-        <div><span>Interviene</span><strong>15%</strong></div>
-      </div>
-      <p class="modal-note">Missioni e presidenza di turno non vengono trattate come assenze. L’indice non misura competenza, onestà o qualità politica.</p>
-      <p class="modal-note"><strong>Macro-area politica:</strong> viene derivata dal gruppo parlamentare ufficiale e ridotta a categorie molto larghe. Il partito o gruppo specifico non viene pubblicato. M5S resta separato per non forzarlo in una classificazione destra/sinistra.</p>
+      <header class="dialog-header"><div><span class="micro">Metodo</span><h2>Quattro segnali, un indice.</h2></div><button class="close-dialog" type="button" aria-label="Chiudi">×</button></header>
+      <p class="modal-lead">L’inattività è l’inverso dell’attività documentata. I valori pubblici sono volutamente aggregati in fasce.</p>
+      <div class="method-list"><div><span>Presenza alle votazioni</span><strong>50%</strong></div><div><span>Proposte firmate per primo</span><strong>20%</strong></div><div><span>Atti di controllo</span><strong>15%</strong></div><div><span>Interventi</span><strong>15%</strong></div></div>
+      <p class="modal-note"><strong>Macro-area politica:</strong> deriva dal gruppo parlamentare ufficiale ma viene pubblicata soltanto come categoria ampia: Centrodestra, Centrosinistra, Centro oppure Altro / non classificato. Nessun partito o gruppo specifico è mostrato.</p>
+      <p class="modal-note">Missioni e presidenza di turno non vengono trattate come assenze. L’indice non misura competenza, onestà, qualità o efficacia politica.</p>
     </div>
   </dialog>
 
   <dialog id="cost-dialog" class="modal-dialog">
     <div class="modal">
-      <header class="dialog-header"><div><span>Costo pubblico</span><h2>Da dove arriva €17.628?</h2></div><button class="close-dialog" type="button" aria-label="Chiudi">×</button></header>
-      <div class="cost-detail-list">
-        <div><span>Indennità parlamentare lorda</span><strong>€10.435,00</strong></div>
-        <div><span>Diaria</span><strong>€3.503,11</strong></div>
-        <div><span>Rimborso esercizio mandato</span><strong>€3.690,00</strong></div>
-        <div class="total"><span>Totale base mensile</span><strong>€17.628,11</strong></div>
-      </div>
-      <p class="modal-note">Importi ufficiali Camera, validi per il 2026. Il totale è prima di eventuali decurtazioni e non include alcune ulteriori voci, come trasporti e rimborsi accessori di viaggio. La “quota di inattività” è una nostra stima comparativa: totale base × punto medio della fascia di inattività.</p>
-      <a class="source-link" href="https://www.camera.it/deputati/trattamento-economico" target="_blank" rel="noreferrer">Fonte ufficiale: Camera dei deputati ↗</a>
+      <header class="dialog-header"><div><span class="micro">Quota equivalente</span><h2>Una lettura economica, non una perdita contabile.</h2></div><button class="close-dialog" type="button" aria-label="Chiudi">×</button></header>
+      <p class="modal-lead">La quota equivalente moltiplica il costo pubblico base mensile utilizzato dal progetto per il centro della fascia di inattività pubblicata. Serve soltanto a rendere il confronto intuitivo.</p>
+      <div class="formula-box"><span>Costo base mensile</span><strong>€17.628</strong><b>×</b><span>inattività indicativa</span><strong>= quota equivalente</strong></div>
+      <p class="modal-note">Non significa che quella cifra sia “denaro perso” e non sostituisce una valutazione contabile o giuridica.</p>
     </div>
   </dialog>
 
-  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
-  <script src="app.js?v=1.1.0" defer></script>
+  <div class="toast" id="toast" hidden role="status" aria-live="polite"></div>
+
+  <footer><span>Mandato Aperto</span><span>Dati istituzionali · profili pseudonimizzati · metodo pubblico</span></footer>
+  <script src="app.js?v=1.2.0" defer></script>
 </body>
 </html>
