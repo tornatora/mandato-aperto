@@ -3,27 +3,27 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Mandato Aperto: attività parlamentare documentata, in forma anonima e aggregata." />
+  <meta name="description" content="Mandato Aperto analizza i dati ufficiali della Camera per mostrare quanto risultano attivi i politici italiani." />
   <meta name="theme-color" content="#f6f7f8" />
-  <title>Mandato Aperto</title>
-  <link rel="stylesheet" href="styles.css?v=0.4.0" />
+  <title>Mandato Aperto — Quanto sono attivi i politici italiani?</title>
+  <link rel="stylesheet" href="styles.css?v=0.5.0" />
 </head>
 <body>
   <a class="skip-link" href="#ranking">Vai alla classifica</a>
 
   <header class="topbar">
     <div class="topbar-inner">
-      <a class="wordmark" href="#ranking">Mandato Aperto</a>
+      <a class="wordmark" href="#top">Mandato Aperto</a>
       <div class="topbar-right">
         <span class="scope">Camera dei deputati <span>· XIX legislatura</span></span>
-        <button type="button" data-dialog="method-dialog">Metodo</button>
-        <button type="button" data-dialog="sources-dialog">Dati</button>
+        <button type="button" data-dialog="method-dialog">Come funziona</button>
+        <button type="button" data-dialog="sources-dialog">Dati e privacy</button>
         <a href="https://github.com/tornatora/mandato-aperto" target="_blank" rel="noreferrer">GitHub ↗</a>
       </div>
     </div>
   </header>
 
-  <div class="shell">
+  <div class="shell" id="top">
     <aside class="sidebar" aria-label="Navigazione">
       <nav>
         <a class="active" href="#ranking">
@@ -32,7 +32,7 @@
         </a>
         <button type="button" data-dialog="method-dialog">
           <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 11v5M12 8h.01"/></svg>
-          <span>Metodo</span>
+          <span>Come leggiamo i dati</span>
         </button>
         <button type="button" data-dialog="sources-dialog">
           <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.8 2.7 8 7 10 4.3-2 7-5.2 7-10V6z"/></svg>
@@ -41,20 +41,27 @@
       </nav>
 
       <div class="sidebar-meta">
-        <span>Dati pubblici aggregati</span>
+        <span>Dati ufficiali della Camera</span>
         <small id="sidebar-freshness">Aggiornamento…</small>
       </div>
     </aside>
 
     <main class="content">
+      <section class="intro" aria-labelledby="intro-title">
+        <p class="intro-label">Monitoraggio parlamentare</p>
+        <h1 id="intro-title">Verifica quanto sono attivi i politici italiani.</h1>
+        <p class="intro-copy">Mandato Aperto analizza i dati ufficiali della Camera dei deputati e li trasforma in una lettura semplice: chi partecipa meno alle votazioni, chi presenta meno proposte e atti di controllo, chi interviene meno.</p>
+        <p class="intro-note">Non diamo un voto alla persona: misuriamo soltanto l’attività parlamentare che risulta documentata.</p>
+      </section>
+
       <section class="page-title">
         <div>
-          <h1>Classifica attività</h1>
-          <p>Profili anonimi ordinati per inattività documentata alla Camera.</p>
+          <h2>Classifica</h2>
+          <p>In alto trovi i politici con la maggiore inattività documentata.</p>
         </div>
         <div class="dataset-summary" aria-label="Riepilogo dataset">
-          <span><strong id="total-stat">—</strong> politici</span>
-          <span><strong id="high-stat">—</strong> alta inattività</span>
+          <span><strong id="total-stat">—</strong> politici analizzati</span>
+          <span><strong id="high-stat">—</strong> con inattività alta</span>
           <span>fascia più comune <strong id="common-stat">—</strong></span>
           <span>aggiornato <strong id="updated-stat">—</strong></span>
         </div>
@@ -63,17 +70,17 @@
       <section class="ranking" id="ranking" aria-labelledby="ranking-title">
         <header class="ranking-top">
           <div>
-            <h2 id="ranking-title">Più inattivi</h2>
+            <h2 id="ranking-title">Politici meno attivi</h2>
             <span id="results-count">Caricamento…</span>
           </div>
 
           <div class="controls">
             <label class="search" for="search-input">
               <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></svg>
-              <input id="search-input" type="search" autocomplete="off" placeholder="Cerca codice" />
+              <input id="search-input" type="search" autocomplete="off" placeholder="Cerca un codice" />
             </label>
             <label class="sort" for="sort-filter">
-              <select id="sort-filter" aria-label="Ordina classifica">
+              <select id="sort-filter" aria-label="Ordina la classifica">
                 <option value="inactivity-desc">Più inattivi</option>
                 <option value="inactivity-asc">Meno inattivi</option>
                 <option value="code">Codice</option>
@@ -83,8 +90,8 @@
         </header>
 
         <div class="table-note">
-          <span>Inattività = 100 − attività</span>
-          <button type="button" data-dialog="method-dialog">Come viene calcolata</button>
+          <span>Più il valore è alto, meno attività parlamentare è stata rilevata.</span>
+          <button type="button" data-dialog="method-dialog">Vedi come lo calcoliamo</button>
         </div>
 
         <div class="table-scroll">
@@ -92,7 +99,7 @@
             <span>#</span>
             <span>Politico</span>
             <span>Inattività</span>
-            <span>Partecipazione</span>
+            <span>Presenza ai voti</span>
             <span>Proposte</span>
             <span>Controllo</span>
             <span>Interventi</span>
@@ -102,17 +109,17 @@
         </div>
 
         <div class="empty-state" id="empty-state" hidden>
-          <strong>Nessun risultato</strong>
+          <strong>Nessun politico trovato</strong>
           <span>Prova con un altro codice.</span>
-          <button id="reset-filters" type="button">Azzera</button>
+          <button id="reset-filters" type="button">Azzera ricerca</button>
         </div>
 
-        <button class="load-more" id="load-more" type="button" hidden>Mostra altri</button>
+        <button class="load-more" id="load-more" type="button" hidden>Mostra altri politici</button>
       </section>
 
       <footer class="content-footer">
         <span id="freshness">Aggiornamento dati…</span>
-        <span>L’indice non misura qualità o competenza politica.</span>
+        <span>Il ranking misura attività documentata, non qualità, competenza o utilità politica.</span>
       </footer>
     </main>
   </div>
@@ -130,7 +137,7 @@
 
   <nav class="mobile-nav" aria-label="Navigazione mobile">
     <a class="active" href="#ranking">Classifica</a>
-    <button type="button" data-dialog="method-dialog">Metodo</button>
+    <button type="button" data-dialog="method-dialog">Come funziona</button>
     <button type="button" data-dialog="sources-dialog">Dati</button>
   </nav>
 
@@ -153,9 +160,9 @@
       </div>
 
       <div class="profile-metrics">
-        <div><span>Partecipazione</span><strong id="metric-attendance">—</strong></div>
-        <div><span>Proposte</span><strong id="metric-bills">—</strong></div>
-        <div><span>Controllo</span><strong id="metric-oversight">—</strong></div>
+        <div><span>Presenza ai voti</span><strong id="metric-attendance">—</strong></div>
+        <div><span>Proposte di legge</span><strong id="metric-bills">—</strong></div>
+        <div><span>Atti di controllo</span><strong id="metric-oversight">—</strong></div>
         <div><span>Interventi</span><strong id="metric-interventions">—</strong></div>
       </div>
 
@@ -173,9 +180,10 @@
   <dialog id="compare-dialog" class="modal-dialog">
     <div class="modal modal-wide">
       <header class="dialog-header">
-        <h2>Confronto</h2>
+        <h2>Confronta due politici</h2>
         <button class="close-dialog" type="button" aria-label="Chiudi">×</button>
       </header>
+      <p>Mettiamo fianco a fianco gli stessi indicatori, così puoi vedere subito dove cambia il livello di attività.</p>
       <div id="compare-table" class="comparison-table"></div>
     </div>
   </dialog>
@@ -183,20 +191,20 @@
   <dialog id="method-dialog" class="modal-dialog">
     <div class="modal">
       <header class="dialog-header">
-        <h2>Metodo</h2>
+        <h2>Come leggiamo l’attività parlamentare</h2>
         <button class="close-dialog" type="button" aria-label="Chiudi">×</button>
       </header>
-      <p>L’attività combina quattro indicatori. L’inattività è il valore inverso.</p>
+      <p>Partiamo da quattro indicatori disponibili negli archivi della Camera. Li combiniamo in un indice di attività; l’inattività è il valore inverso.</p>
       <dl class="method-weights">
-        <div><dt>Partecipazione</dt><dd>50%</dd></div>
-        <div><dt>Proposte</dt><dd>20%</dd></div>
-        <div><dt>Controllo</dt><dd>15%</dd></div>
-        <div><dt>Interventi</dt><dd>15%</dd></div>
+        <div><dt>Presenza alle votazioni</dt><dd>50%</dd></div>
+        <div><dt>Proposte come primo firmatario</dt><dd>20%</dd></div>
+        <div><dt>Atti di indirizzo e controllo</dt><dd>15%</dd></div>
+        <div><dt>Interventi registrati</dt><dd>15%</dd></div>
       </dl>
       <div class="plain-list">
-        <p><strong>Missioni escluse.</strong> “In missione” e “Presidente di turno” non contano come assenze.</p>
-        <p><strong>Valori aggregati.</strong> I dati pubblici sono mostrati per fasce, non come valori puntuali.</p>
-        <p><strong>Limite.</strong> L’indice non misura integrità, competenza, qualità delle leggi o lavoro sul territorio.</p>
+        <p><strong>Le missioni non sono assenze.</strong> “In missione” e “Presidente di turno” vengono esclusi dal calcolo della partecipazione.</p>
+        <p><strong>Mostriamo fasce, non valori personali puntuali.</strong> I dati pubblici sono aggregati per ridurre la possibilità di ricondurli direttamente a una persona.</p>
+        <p><strong>Cosa non dice questo indice.</strong> Non misura integrità, competenza, qualità delle leggi, lavoro sul territorio o efficacia politica.</p>
       </div>
     </div>
   </dialog>
@@ -204,14 +212,14 @@
   <dialog id="sources-dialog" class="modal-dialog">
     <div class="modal">
       <header class="dialog-header">
-        <h2>Dati e privacy</h2>
+        <h2>Da dove arrivano i dati</h2>
         <button class="close-dialog" type="button" aria-label="Chiudi">×</button>
       </header>
-      <p>La lavorazione parte da fonti istituzionali. Il dataset pubblico espone solo dati aggregati e codici anonimi.</p>
+      <p>Usiamo fonti istituzionali della Camera dei deputati. Prima della pubblicazione rimuoviamo i riferimenti personali e mostriamo solo valori aggregati.</p>
       <div class="plain-list">
-        <p><strong>Non pubblicati:</strong> nomi, partiti, circoscrizioni, foto, URL e identificativi originari.</p>
-        <p><strong>Aggregati:</strong> partecipazione, proposte, controllo, interventi e inattività.</p>
-        <p><strong>Codici:</strong> vengono riassegnati a ogni aggiornamento.</p>
+        <p><strong>Non pubblichiamo</strong> nomi, partiti, circoscrizioni, foto, URL o identificativi originari.</p>
+        <p><strong>Mostriamo in forma aggregata</strong> partecipazione alle votazioni, proposte, atti di controllo, interventi e inattività.</p>
+        <p><strong>I codici cambiano</strong> a ogni aggiornamento e non rappresentano un identificativo stabile della persona.</p>
       </div>
     </div>
   </dialog>
@@ -219,12 +227,13 @@
   <dialog id="replacement-dialog" class="modal-dialog">
     <div class="modal">
       <header class="dialog-header">
-        <h2>Valuta alternativa</h2>
+        <h2>Valuta un’alternativa</h2>
         <button class="close-dialog" type="button" aria-label="Chiudi">×</button>
       </header>
+      <p>Puoi preparare una scheda privata per confrontare un possibile candidato con criteri concreti e misurabili.</p>
       <form id="alternative-form" class="alternative-form">
         <label>Nome<input id="candidate-name" required /></label>
-        <label>Esperienza<textarea id="candidate-experience" rows="3" required></textarea></label>
+        <label>Esperienza concreta<textarea id="candidate-experience" rows="3" required></textarea></label>
         <label>Tre impegni misurabili<textarea id="candidate-commitments" rows="4" required></textarea></label>
         <label class="checkbox-line"><input id="candidate-transparency" type="checkbox" required /> <span>Dichiara possibili conflitti di interesse</span></label>
         <button class="button-primary" type="submit">Genera scheda</button>
@@ -238,6 +247,6 @@
   </dialog>
 
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
-  <script src="app.js?v=0.4.0" defer></script>
+  <script src="app.js?v=0.5.0" defer></script>
 </body>
 </html>
