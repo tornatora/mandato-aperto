@@ -1,6 +1,6 @@
 {
   "name": "mandato-aperto",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": true,
   "type": "module",
   "description": "Piattaforma civica open source con record pseudonimizzati sull'attività parlamentare documentata.",

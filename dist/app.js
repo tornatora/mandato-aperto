@@ -18,6 +18,9 @@ const elements = {
   count: document.querySelector("#results-count"),
   freshness: document.querySelector("#freshness"),
   total: document.querySelector("#total-stat"),
+  high: document.querySelector("#high-stat"),
+  common: document.querySelector("#common-stat"),
+  updated: document.querySelector("#updated-stat"),
   empty: document.querySelector("#empty-state"),
   reset: document.querySelector("#reset-filters"),
   loadMore: document.querySelector("#load-more"),
@@ -36,6 +39,12 @@ const dateFormat = new Intl.DateTimeFormat("it-IT", {
   year: "numeric",
   hour: "2-digit",
   minute: "2-digit",
+  timeZone: "Europe/Rome"
+});
+const shortDateFormat = new Intl.DateTimeFormat("it-IT", {
+  day: "2-digit",
+  month: "short",
+  year: "numeric",
   timeZone: "Europe/Rome"
 });
 
@@ -72,8 +81,8 @@ function inactivityValue(person) {
 
 function signalClass(person) {
   const value = inactivityValue(person);
-  if (value >= 40) return "is-high";
-  if (value >= 20) return "is-medium";
+  if (value >= 60) return "is-high";
+  if (value >= 30) return "is-medium";
   return "is-low";
 }
 
@@ -132,17 +141,21 @@ function applyFilters() {
 function rowTemplate(person, index) {
   const selected = state.compare.includes(String(person.id));
   const inactivity = person.inactivityBand ?? "N/D";
+  const score = Math.max(0, Math.min(100, inactivityValue(person)));
   return `
-    <article class="person-row ${signalClass(person)}" role="listitem">
+    <article class="person-row ${signalClass(person)}" role="listitem" style="--score: ${score}%">
       <span class="row-rank">${String(index + 1).padStart(2, "0")}</span>
       <div class="identity">
-        <button class="person-link" type="button" data-open-profile="${escapeHtml(person.id)}">${escapeHtml(person.name)}</button>
-        <span>Cognome **** · Partito ****</span>
+        <span class="person-avatar" aria-hidden="true">R</span>
+        <div>
+          <button class="person-link" type="button" data-open-profile="${escapeHtml(person.id)}">${escapeHtml(person.name)}</button>
+          <small>Cognome **** · Partito ****</small>
+        </div>
       </div>
       <div class="inactivity-cell" aria-label="Fascia di inattività documentata ${escapeHtml(inactivity)} su 100">
-        <span>Inattività</span>
-        <p><strong>${escapeHtml(inactivity)}</strong><small>/100</small></p>
-        <em>${escapeHtml(person.inactivityLabel)}</em>
+        <div class="inactivity-main"><strong>${escapeHtml(inactivity)}</strong><span>/100</span></div>
+        <div class="score-track" aria-hidden="true"><span></span></div>
+        <small>${escapeHtml(person.inactivityLabel)}</small>
       </div>
       <div class="row-metrics">
         <dl><dt>Partecipazione</dt><dd>${escapeHtml(percent(person.metrics.participationPct))}</dd></dl>
@@ -151,8 +164,8 @@ function rowTemplate(person, index) {
         <dl><dt>Interventi</dt><dd>${escapeHtml(integer(person.metrics.interventions))}</dd></dl>
       </div>
       <div class="row-actions">
-        <button class="open-profile" type="button" data-open-profile="${escapeHtml(person.id)}">Dettagli</button>
-        <button class="add-compare" type="button" data-add-compare="${escapeHtml(person.id)}" aria-pressed="${selected}" aria-label="${selected ? "Rimuovi" : "Aggiungi"} ${escapeHtml(person.name)} ${selected ? "dal" : "al"} confronto">${selected ? "✓" : "+"}</button>
+        <button class="open-profile" type="button" data-open-profile="${escapeHtml(person.id)}">Apri</button>
+        <button class="add-compare" type="button" data-add-compare="${escapeHtml(person.id)}" aria-pressed="${selected}" aria-label="${selected ? "Rimuovi" : "Aggiungi"} ${escapeHtml(person.name)} ${selected ? "dal" : "al"} confronto">${selected ? "✓ Aggiunto" : "+ Confronta"}</button>
       </div>
     </article>`;
 }
@@ -184,7 +197,7 @@ function updateCompareBar() {
       "aria-label",
       `${selected ? "Rimuovi" : "Aggiungi"} ${person?.name ?? "politico"} ${selected ? "dal" : "al"} confronto`
     );
-    button.textContent = selected ? "✓" : "+";
+    button.textContent = selected ? "✓ Aggiunto" : "+ Confronta";
   });
 
   if (state.activeProfile) {
@@ -220,6 +233,7 @@ function openProfile(id) {
   state.activeProfile = person;
   const metrics = person.metrics;
   document.querySelector("#profile-code").textContent = person.id;
+  document.querySelector("#profile-symbol").textContent = person.id.slice(-2);
   document.querySelector("#profile-name").textContent = person.name;
   document.querySelector("#profile-meta").textContent = "Cognome **** · Partito **** · Area ****";
   document.querySelector("#profile-inactivity strong").textContent = person.inactivityBand ?? "N/D";
@@ -413,9 +427,21 @@ async function loadData() {
     state.meta = payload.meta ?? {};
 
     elements.total.textContent = numberFormat.format(state.politicians.length);
+    const highCount = state.politicians.filter((person) => inactivityValue(person) >= 60).length;
+    elements.high.textContent = numberFormat.format(highCount);
+    const bandCounts = new Map();
+    for (const person of state.politicians) {
+      if (person.inactivityBand === "N/D") continue;
+      bandCounts.set(person.inactivityBand, (bandCounts.get(person.inactivityBand) ?? 0) + 1);
+    }
+    const commonBand = [...bandCounts.entries()].sort((left, right) => right[1] - left[1])[0]?.[0] ?? "N/D";
+    elements.common.textContent = commonBand;
     const updated = state.meta.generatedAt
       ? dateFormat.format(new Date(state.meta.generatedAt))
       : "data non disponibile";
+    elements.updated.textContent = state.meta.generatedAt
+      ? shortDateFormat.format(new Date(state.meta.generatedAt))
+      : "N/D";
     elements.freshness.textContent = `Dati aggregati · aggiornati ${updated}`;
 
     restoreCompare();
