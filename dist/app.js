@@ -134,7 +134,7 @@ function rowTemplate(person, index) {
 function renderRows() {
   const shown = state.filtered.slice(0, state.visible);
   elements.grid.innerHTML = shown.map(rowTemplate).join("");
-  elements.count.textContent = `${numberFormat.format(state.filtered.length)} profili`;
+  elements.count.textContent = `${numberFormat.format(state.filtered.length)} politici`;
   elements.empty.hidden = state.filtered.length !== 0;
   elements.loadMore.hidden = state.visible >= state.filtered.length;
 }
@@ -199,7 +199,7 @@ function toggleCompare(id) {
   if (state.compare.includes(key)) {
     state.compare = state.compare.filter((item) => item !== key);
   } else if (state.compare.length >= 2) {
-    showToast("Puoi confrontare due profili alla volta.");
+    showToast("Puoi confrontare due politici alla volta.");
     return;
   } else {
     state.compare.push(key);
@@ -214,7 +214,7 @@ function openProfile(id) {
 
   $("#profile-code").textContent = person.id;
   $("#profile-name").textContent = person.name;
-  $("#profile-meta").textContent = "Identità non pubblicata. Il codice cambia a ogni aggiornamento.";
+  $("#profile-meta").textContent = "Profilo anonimo: l’identità non viene pubblicata e il codice cambia a ogni aggiornamento.";
   $("#profile-score").textContent = person.inactivityBand ?? "N/D";
   $("#profile-label").textContent = person.inactivityLabel ?? "Dato non disponibile";
   $("#metric-attendance").textContent = percent(person.metrics.participationPct);
@@ -225,7 +225,7 @@ function openProfile(id) {
   const updated = state.meta?.generatedAt
     ? dateFormat.format(new Date(state.meta.generatedAt))
     : "data non disponibile";
-  $("#profile-source-stamp").textContent = `Aggiornamento ${updated} · metodo ${state.meta?.methodologyVersion ?? "0.1.2"}`;
+  $("#profile-source-stamp").textContent = `Dati aggiornati ${updated} · metodo ${state.meta?.methodologyVersion ?? "0.1.2"}`;
 
   updateCompareBar();
   $("#profile-dialog").showModal();
@@ -245,11 +245,11 @@ function openComparison() {
 
   $("#compare-table").innerHTML = `
     <div class="comparison-row header"><div>Indicatore</div><div><strong>${escapeHtml(left.name)}</strong></div><div><strong>${escapeHtml(right.name)}</strong></div></div>
-    ${comparisonRow("Inattività", escapeHtml(left.inactivityBand), escapeHtml(right.inactivityBand), "Fascia su 100")}
-    ${comparisonRow("Partecipazione", escapeHtml(percent(left.metrics.participationPct)), escapeHtml(percent(right.metrics.participationPct)))}
-    ${comparisonRow("Proposte", escapeHtml(metric(left.metrics.billsFirstSigned)), escapeHtml(metric(right.metrics.billsFirstSigned)))}
-    ${comparisonRow("Controllo", escapeHtml(metric(left.metrics.oversightFirstSigned)), escapeHtml(metric(right.metrics.oversightFirstSigned)))}
-    ${comparisonRow("Interventi", escapeHtml(metric(left.metrics.interventions)), escapeHtml(metric(right.metrics.interventions)))}`;
+    ${comparisonRow("Inattività documentata", escapeHtml(left.inactivityBand), escapeHtml(right.inactivityBand), "Fascia su 100")}
+    ${comparisonRow("Presenza alle votazioni", escapeHtml(percent(left.metrics.participationPct)), escapeHtml(percent(right.metrics.participationPct)))}
+    ${comparisonRow("Proposte di legge", escapeHtml(metric(left.metrics.billsFirstSigned)), escapeHtml(metric(right.metrics.billsFirstSigned)))}
+    ${comparisonRow("Atti di controllo", escapeHtml(metric(left.metrics.oversightFirstSigned)), escapeHtml(metric(right.metrics.oversightFirstSigned)))}
+    ${comparisonRow("Interventi registrati", escapeHtml(metric(left.metrics.interventions)), escapeHtml(metric(right.metrics.interventions)))}`;
   $("#compare-dialog").showModal();
 }
 
