@@ -1,6 +1,6 @@
-# Mandato Aperto
+# TRACCIA
 
-**Inattività, senza rumore.** Mandato Aperto pubblica esclusivamente politici anonimi e fasce aggregate, senza nomi, cognomi, partiti, circoscrizioni o collegamenti personali.
+**Attività parlamentare, documentata.** TRACCIA pubblica esclusivamente politici anonimi e fasce aggregate, senza nomi, cognomi, partiti, circoscrizioni o collegamenti personali.
 
 **Apri l'app:** https://tornatora.github.io/mandato-aperto/
 
@@ -30,7 +30,7 @@ Le fonti originarie restano pubbliche presso le istituzioni. Il progetto non pro
 
 ## Che cosa non fa
 
-Mandato Aperto non misura onestà, competenza, utilità, qualità delle leggi, efficacia politica o aderenza a un'ideologia. Non definisce nessuno “nullafacente” e non può revocare un eletto. Il ricambio avviene con gli strumenti previsti dall'ordinamento democratico; il progetto aiuta gli elettori a confrontare fatti documentati.
+TRACCIA non misura onestà, competenza, utilità, qualità delle leggi, efficacia politica o aderenza a un'ideologia. Non definisce nessuno “nullafacente” e non può revocare un eletto. Il ricambio avviene con gli strumenti previsti dall'ordinamento democratico; il progetto aiuta gli elettori a confrontare fatti documentati.
 
 ## Avvio senza installazioni
 
