@@ -1,0 +1,59 @@
+/* TRACCIA — editorial wordmark. No standalone app icon. */
+.brand-traccia{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  min-width:0;
+  font-family:Manrope,Inter,sans-serif;
+  font-weight:600;
+  letter-spacing:normal;
+}
+.brand-traccia .brand-word{
+  color:#111;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.16em;
+  line-height:1;
+}
+.brand-traccia .brand-trace{
+  position:relative;
+  width:34px;
+  height:1px;
+  flex:0 0 34px;
+  background:linear-gradient(90deg,#1b1b1b 0 62%,#a8adaf 62% 100%);
+}
+.brand-traccia .brand-trace::before{
+  content:"";
+  position:absolute;
+  left:61%;
+  top:50%;
+  width:5px;
+  height:5px;
+  border:1px solid #fff;
+  border-radius:50%;
+  background:var(--accent);
+  transform:translate(-50%,-50%);
+  box-shadow:0 0 0 1px rgba(16,163,127,.22);
+}
+.brand-traccia .brand-descriptor{
+  color:#8a8f92;
+  font-family:Inter,sans-serif;
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.12em;
+  line-height:1;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.brand-traccia:hover .brand-word{color:#000}
+.brand-traccia:hover .brand-trace{background:#151515}
+
+/* Remove the legacy generated-looking monogram wherever cached markup might survive. */
+.brand-mark{display:none!important}
+
+@media(max-width:760px){
+  .brand-traccia{gap:8px}
+  .brand-traccia .brand-word{font-size:12px;letter-spacing:.14em}
+  .brand-traccia .brand-trace{width:25px;flex-basis:25px}
+  .brand-traccia .brand-descriptor{display:none}
+}
