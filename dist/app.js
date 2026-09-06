@@ -9,6 +9,7 @@ const state = {
   compare: [],
   activeProfile: null,
   activeBand: "all",
+  activeArea: "all",
   meta: null
 };
 
@@ -102,6 +103,11 @@ function simpleLabel(person) {
   return "Nei dati emerge molta attività.";
 }
 
+function areaBadge(person) {
+  if (!person.politicalArea) return "";
+  return `<span class="area-badge">${escapeHtml(person.politicalArea)}</span>`;
+}
+
 function metricMini(def, person) {
   const raw = person.metrics?.[def.key];
   const score = metricScore(raw, def.type);
@@ -113,9 +119,9 @@ function cardTemplate(person, index) {
   const score = Math.round(inactivity(person));
   const category = categoryFor(person);
   return `<article class="profile-card ${category}" role="listitem" data-id="${escapeHtml(person.id)}">
-    <div class="card-top"><span class="rank-number">#${String(index + 1).padStart(2, "0")}</span><button class="compare-add" type="button" data-add-compare="${escapeHtml(person.id)}" aria-pressed="${selected}">${selected ? "✓" : "+"}</button></div>
+    <div class="card-top"><span class="rank-number">#${String(index + 1).padStart(2, "0")}</span><button class="compare-add" type="button" data-add-compare="${escapeHtml(person.id)}" aria-pressed="${selected}" aria-label="${selected ? "Rimuovi dal" : "Aggiungi al"} confronto">${selected ? "✓" : "+"}</button></div>
     <button class="card-main" type="button" data-open-profile="${escapeHtml(person.id)}">
-      <div class="card-identity"><span class="mini-label">Profilo anonimo</span><h3>${escapeHtml(person.name)}</h3></div>
+      <div class="card-identity"><span class="mini-label">Profilo anonimo</span><h3>${escapeHtml(person.name)}</h3>${areaBadge(person)}</div>
       <div class="score-orbit card-orbit" style="--score:${score}"><div><strong>${escapeHtml(person.inactivityBand ?? "N/D")}</strong><span>inattività</span></div></div>
       <p class="card-meaning">${escapeHtml(simpleLabel(person))}</p>
       <div class="mini-metrics">${metricDefs.map((d) => metricMini(d, person)).join("")}</div>
@@ -137,12 +143,16 @@ function matchesBand(person) {
   return state.activeBand === "all" || categoryFor(person) === state.activeBand;
 }
 
+function matchesArea(person) {
+  return state.activeArea === "all" || person.politicalArea === state.activeArea;
+}
+
 function applyFilters() {
   const query = normalize(el.search.value.trim());
   const sort = el.sort.value;
   state.filtered = state.politicians.filter((person) => {
-    const haystack = normalize(`${person.name} ${person.id}`);
-    return matchesBand(person) && (!query || haystack.includes(query));
+    const haystack = normalize(`${person.name} ${person.id} ${person.politicalArea ?? ""}`);
+    return matchesBand(person) && matchesArea(person) && (!query || haystack.includes(query));
   });
 
   state.filtered.sort((a, b) => {
@@ -161,14 +171,21 @@ function setBand(band) {
   applyFilters();
 }
 
+function setArea(area) {
+  state.activeArea = area;
+  $$("[data-area]").forEach((button) => button.classList.toggle("active", button.dataset.area === area));
+  applyFilters();
+}
+
 function renderHistogram() {
   const ranges = ["0–10", "11–20", "21–30", "31–40", "41–50", "51–60", "61–70", "71–80", "81–90", "91–100"];
-  const counts = ranges.map((range) => state.politicians.filter((p) => p.inactivityBand === range).length);
+  const source = state.activeArea === "all" ? state.politicians : state.politicians.filter((p) => p.politicalArea === state.activeArea);
+  const counts = ranges.map((range) => source.filter((p) => p.inactivityBand === range).length);
   const max = Math.max(...counts, 1);
   el.histogram.innerHTML = ranges.map((range, i) => {
     const mid = bandMid(range);
     const cat = mid >= 60 ? "high" : mid >= 35 ? "medium" : "low";
-    return `<button class="hist-bar ${cat}" type="button" data-hist-band="${cat}" title="${range}: ${counts[i]} profili"><i style="--h:${Math.max(5, counts[i] / max * 100)}%"></i><span>${range.replace("–", "–")}</span><b>${counts[i]}</b></button>`;
+    return `<button class="hist-bar ${cat}" type="button" data-hist-band="${cat}" title="${range}: ${counts[i]} profili"><i style="--h:${Math.max(5, counts[i] / max * 100)}%"></i><span>${range}</span><b>${counts[i]}</b></button>`;
   }).join("");
 }
 
@@ -184,6 +201,24 @@ function updateCounts() {
   $("#hero-count").textContent = nf.format(all);
 }
 
+function updateAreaControls() {
+  const withArea = state.politicians.filter((p) => p.politicalArea);
+  const wrap = $("#area-filter-wrap");
+  if (!withArea.length) {
+    wrap.hidden = true;
+    return;
+  }
+
+  wrap.hidden = false;
+  const count = (area) => withArea.filter((p) => p.politicalArea === area).length;
+  $("#count-area-all").textContent = nf.format(withArea.length);
+  $("#count-area-cdx").textContent = nf.format(count("Centrodestra"));
+  $("#count-area-csx").textContent = nf.format(count("Centrosinistra"));
+  $("#count-area-m5s").textContent = nf.format(count("M5S"));
+  $("#count-area-centro").textContent = nf.format(count("Centro"));
+  $("#count-area-altro").textContent = nf.format(count("Autonomie/altro"));
+}
+
 function renderHeroExample() {
   const ranked = [...state.politicians].sort((a, b) => inactivity(b) - inactivity(a));
   const person = ranked[0];
@@ -195,6 +230,9 @@ function renderHeroExample() {
   $("#hero-orbit").style.setProperty("--score", score);
   $("#hero-score-label").textContent = simpleLabel(person);
   $("#hero-cost-estimate").textContent = `≈ ${euro.format(inactivityCost(person))} / mese`;
+  const area = $("#hero-profile-area");
+  area.hidden = !person.politicalArea;
+  if (person.politicalArea) area.textContent = person.politicalArea;
 }
 
 function updateCompareBar() {
@@ -222,6 +260,15 @@ function toggleCompare(id) {
   updateCompareBar();
 }
 
+function compareTopTwo() {
+  const source = state.filtered.length ? state.filtered : [...state.politicians].sort((a, b) => inactivity(b) - inactivity(a));
+  const top = [...source].sort((a, b) => inactivity(b) - inactivity(a)).slice(0, 2);
+  if (top.length < 2) return showToast("Servono almeno due profili nel filtro corrente.");
+  state.compare = top.map((p) => String(p.id));
+  updateCompareBar();
+  openComparison();
+}
+
 function profileMetricTemplate(def, person) {
   const raw = person.metrics?.[def.key];
   const score = metricScore(raw, def.type);
@@ -239,6 +286,9 @@ function openProfile(id) {
   $("#profile-label").textContent = simpleLabel(person);
   $("#profile-cost").textContent = `≈ ${euro.format(inactivityCost(person))} / mese`;
   $("#profile-metrics").innerHTML = metricDefs.map((d) => profileMetricTemplate(d, person)).join("");
+  const area = $("#profile-area");
+  area.hidden = !person.politicalArea;
+  if (person.politicalArea) area.textContent = person.politicalArea;
   $("#profile-source-stamp").textContent = state.meta?.generatedAt ? `Dati Camera · aggiornati ${dateFmt.format(new Date(state.meta.generatedAt))}` : "Dati Camera";
   updateCompareBar();
   $("#profile-dialog").showModal();
@@ -253,10 +303,12 @@ function compareMetric(def, left, right) {
 function openComparison() {
   const [left, right] = state.compare.map(politicianById);
   if (!left || !right) return;
+  const leftArea = left.politicalArea ? ` · ${escapeHtml(left.politicalArea)}` : "";
+  const rightArea = right.politicalArea ? ` · ${escapeHtml(right.politicalArea)}` : "";
   $("#compare-table").innerHTML = `<div class="vs-head">
-      <div class="vs-person"><span>Profilo A</span><h3>${escapeHtml(left.name)}</h3><div class="score-orbit vs-orbit" style="--score:${Math.round(inactivity(left))}"><div><strong>${escapeHtml(left.inactivityBand)}</strong><span>inattività</span></div></div><em>≈ ${euro.format(inactivityCost(left))}/mese</em></div>
+      <div class="vs-person"><span>Profilo A${leftArea}</span><h3>${escapeHtml(left.name)}</h3><div class="score-orbit vs-orbit" style="--score:${Math.round(inactivity(left))}"><div><strong>${escapeHtml(left.inactivityBand)}</strong><span>inattività</span></div></div><em>≈ ${euro.format(inactivityCost(left))}/mese</em></div>
       <div class="vs-center">VS</div>
-      <div class="vs-person"><span>Profilo B</span><h3>${escapeHtml(right.name)}</h3><div class="score-orbit vs-orbit" style="--score:${Math.round(inactivity(right))}"><div><strong>${escapeHtml(right.inactivityBand)}</strong><span>inattività</span></div></div><em>≈ ${euro.format(inactivityCost(right))}/mese</em></div>
+      <div class="vs-person"><span>Profilo B${rightArea}</span><h3>${escapeHtml(right.name)}</h3><div class="score-orbit vs-orbit" style="--score:${Math.round(inactivity(right))}"><div><strong>${escapeHtml(right.inactivityBand)}</strong><span>inattività</span></div></div><em>≈ ${euro.format(inactivityCost(right))}/mese</em></div>
     </div><div class="vs-metrics">${metricDefs.map((d) => compareMetric(d, left, right)).join("")}</div>`;
   $("#compare-dialog").showModal();
 }
@@ -276,6 +328,7 @@ async function loadData() {
     state.politicians = payload.deputies ?? [];
     state.meta = payload.meta ?? {};
     updateCounts();
+    updateAreaControls();
     renderHistogram();
     renderHeroExample();
     restoreCompare();
@@ -291,10 +344,29 @@ async function loadData() {
 
 el.search.addEventListener("input", applyFilters);
 el.sort.addEventListener("change", applyFilters);
-el.reset.addEventListener("click", () => { el.search.value = ""; el.sort.value = "inactivity-desc"; setBand("all"); });
+el.reset.addEventListener("click", () => {
+  el.search.value = "";
+  el.sort.value = "inactivity-desc";
+  state.activeArea = "all";
+  $$("[data-area]").forEach((button) => button.classList.toggle("active", button.dataset.area === "all"));
+  setBand("all");
+  renderHistogram();
+});
 el.loadMore.addEventListener("click", () => { state.visible += PAGE_SIZE; renderCards(); });
-$("#band-filters").addEventListener("click", (event) => { const button = event.target.closest("[data-band]"); if (button) setBand(button.dataset.band); });
-el.histogram.addEventListener("click", (event) => { const button = event.target.closest("[data-hist-band]"); if (button) setBand(button.dataset.histBand); });
+$("#band-filters").addEventListener("click", (event) => {
+  const button = event.target.closest("[data-band]");
+  if (button) setBand(button.dataset.band);
+});
+$("#area-filters").addEventListener("click", (event) => {
+  const button = event.target.closest("[data-area]");
+  if (!button) return;
+  setArea(button.dataset.area);
+  renderHistogram();
+});
+el.histogram.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-hist-band]");
+  if (button) setBand(button.dataset.histBand);
+});
 el.grid.addEventListener("click", (event) => {
   const open = event.target.closest("[data-open-profile]");
   const compare = event.target.closest("[data-add-compare]");
@@ -304,6 +376,8 @@ el.grid.addEventListener("click", (event) => {
 el.clearCompare.addEventListener("click", () => { state.compare = []; updateCompareBar(); });
 el.openCompare.addEventListener("click", openComparison);
 $("#profile-compare").addEventListener("click", () => { if (state.activeProfile) toggleCompare(state.activeProfile.id); });
+$("#compare-top").addEventListener("click", compareTopTwo);
+$("#hero-compare-top").addEventListener("click", compareTopTwo);
 
 $$('[data-dialog]').forEach((button) => button.addEventListener("click", () => $(`#${button.dataset.dialog}`)?.showModal()));
 $$('dialog').forEach((dialog) => {
