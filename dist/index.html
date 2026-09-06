@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Mandato Aperto rende semplici i dati della Camera: presenza, attività parlamentare e stima del costo equivalente dell'inattività documentata." />
-  <meta name="theme-color" content="#f7f8fb" />
+  <meta name="description" content="Mandato Aperto rende semplici i dati della Camera: presenza, attività parlamentare, macro-area politica e stima del costo equivalente dell'inattività documentata." />
+  <meta name="theme-color" content="#f7f7f8" />
   <title>Mandato Aperto — Quanto lavora davvero un deputato?</title>
-  <link rel="stylesheet" href="styles.css?v=1.0.0" />
+  <link rel="stylesheet" href="styles.css?v=1.1.0" />
 </head>
 <body>
   <a class="skip-link" href="#explore">Vai ai profili</a>
@@ -26,15 +26,14 @@
 
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-aurora" aria-hidden="true"></div>
       <div class="hero-grid">
         <div class="hero-copy">
           <span class="eyebrow">Dati pubblici. Spiegati semplice.</span>
           <h1 id="hero-title">Quanto lavora davvero<br>un deputato?</h1>
-          <p>Vedi quanto è presente, cosa fa in Parlamento e quanto pesa economicamente la sua <strong>inattività documentata</strong>.</p>
+          <p>Vedi quanto è presente, cosa fa in Parlamento, la sua <strong>macro-area politica</strong> e quanto pesa economicamente la sua <strong>inattività documentata</strong>.</p>
           <div class="hero-actions">
             <a class="primary-button" href="#explore">Scopri i meno attivi</a>
-            <button class="ghost-button" type="button" data-dialog="method-dialog">Come calcoliamo tutto</button>
+            <button class="ghost-button" id="hero-compare-top" type="button">Confronta i 2 meno attivi</button>
           </div>
           <div class="hero-proof">
             <span><strong id="hero-count">399</strong> deputati</span>
@@ -49,6 +48,7 @@
               <div>
                 <span class="mini-label">Esempio dal dataset</span>
                 <strong id="hero-profile-name">Politico —</strong>
+                <span class="area-badge" id="hero-profile-area" hidden>—</span>
               </div>
               <span class="rank-chip" id="hero-rank">#—</span>
             </div>
@@ -126,7 +126,7 @@
         <div>
           <span class="eyebrow">Esplora i dati</span>
           <h2 id="explore-title">Chi risulta meno attivo?</h2>
-          <p>Tocca un profilo. Capisci tutto senza leggere un report.</p>
+          <p>Filtra, apri un profilo o metti due politici faccia a faccia.</p>
         </div>
         <div class="explore-actions">
           <label class="search-box" for="search-input">
@@ -144,11 +144,29 @@
         </div>
       </div>
 
-      <div class="band-filters" id="band-filters" aria-label="Filtra per inattività">
-        <button class="active" type="button" data-band="all">Tutti <span id="count-all">—</span></button>
-        <button type="button" data-band="high">Alta <span id="count-high">—</span></button>
-        <button type="button" data-band="medium">Media <span id="count-medium">—</span></button>
-        <button type="button" data-band="low">Bassa <span id="count-low">—</span></button>
+      <div class="filter-stack">
+        <div class="filter-line">
+          <span class="filter-caption">Inattività</span>
+          <div class="band-filters" id="band-filters" aria-label="Filtra per inattività">
+            <button class="active" type="button" data-band="all">Tutti <span id="count-all">—</span></button>
+            <button type="button" data-band="high">Alta <span id="count-high">—</span></button>
+            <button type="button" data-band="medium">Media <span id="count-medium">—</span></button>
+            <button type="button" data-band="low">Bassa <span id="count-low">—</span></button>
+          </div>
+        </div>
+
+        <div class="filter-line area-filter-line" id="area-filter-wrap" hidden>
+          <span class="filter-caption">Area politica</span>
+          <div class="area-filters" id="area-filters" aria-label="Filtra per macro-area politica">
+            <button class="active" type="button" data-area="all">Tutte <span id="count-area-all">—</span></button>
+            <button type="button" data-area="Centrodestra">Centrodestra <span id="count-area-cdx">—</span></button>
+            <button type="button" data-area="Centrosinistra">Centrosinistra <span id="count-area-csx">—</span></button>
+            <button type="button" data-area="M5S">M5S <span id="count-area-m5s">—</span></button>
+            <button type="button" data-area="Centro">Centro <span id="count-area-centro">—</span></button>
+            <button type="button" data-area="Autonomie/altro">Autonomie/altro <span id="count-area-altro">—</span></button>
+          </div>
+          <button class="compare-now" id="compare-top" type="button">Confronta i 2 meno attivi <span>↗</span></button>
+        </div>
       </div>
 
       <div class="activity-map" aria-labelledby="map-title">
@@ -197,7 +215,7 @@
   <dialog id="profile-dialog" class="drawer-dialog">
     <div class="drawer">
       <header class="dialog-header">
-        <div><span>Profilo anonimo</span><h2 id="profile-name">—</h2></div>
+        <div><span>Profilo anonimo</span><h2 id="profile-name">—</h2><span class="area-badge" id="profile-area" hidden>—</span></div>
         <button class="close-dialog" type="button" aria-label="Chiudi">×</button>
       </header>
 
@@ -242,6 +260,7 @@
         <div><span>Interviene</span><strong>15%</strong></div>
       </div>
       <p class="modal-note">Missioni e presidenza di turno non vengono trattate come assenze. L’indice non misura competenza, onestà o qualità politica.</p>
+      <p class="modal-note"><strong>Macro-area politica:</strong> viene derivata dal gruppo parlamentare ufficiale e ridotta a categorie molto larghe. Il partito o gruppo specifico non viene pubblicato. M5S resta separato per non forzarlo in una classificazione destra/sinistra.</p>
     </div>
   </dialog>
 
@@ -260,6 +279,6 @@
   </dialog>
 
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
-  <script src="app.js?v=1.0.0" defer></script>
+  <script src="app.js?v=1.1.0" defer></script>
 </body>
 </html>
