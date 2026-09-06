@@ -3,14 +3,19 @@
   let toggle;
   let body;
   let summary;
-  let activeView = "activity";
+  let activeView = "map";
   let selectedMetric = "participationPct";
+  let mapScope = "all";
+  let compareFromMap = false;
+  let mapCompare = [];
+  let highlightId = null;
   let attempts = 0;
 
   const q = (selector, root = document) => root.querySelector(selector);
   const qa = (selector, root = document) => [...root.querySelectorAll(selector)];
   const mean = (items, reader) => items.length ? items.reduce((sum, item) => sum + reader(item), 0) / items.length : 0;
   const sum = (items, reader) => items.reduce((total, item) => total + reader(item), 0);
+  const clamp = (value, min = 0, max = 100) => Math.max(min, Math.min(max, value));
 
   function hasDocumentedActivity(value) {
     const text = String(value ?? "").trim().toLowerCase();
@@ -29,6 +34,33 @@
       const haystack = normalize(`${person.name} ${person.id} ${person.politicalArea ?? ""}`);
       return matchesBand(person) && (!query || haystack.includes(query));
     });
+  }
+
+  function initiativeScore(person) {
+    const bills = metricScore(person.metrics?.billsFirstSigned, "count");
+    const oversight = metricScore(person.metrics?.oversightFirstSigned, "count");
+    const interventions = metricScore(person.metrics?.interventions, "count");
+    return clamp(bills * .35 + oversight * .30 + interventions * .35);
+  }
+
+  function deterministicJitter(id, axis) {
+    const text = `${id}-${axis}`;
+    let hash = 0;
+    for (let i = 0; i < text.length; i += 1) hash = ((hash << 5) - hash + text.charCodeAt(i)) | 0;
+    return ((Math.abs(hash) % 1000) / 1000 - .5) * 4.8;
+  }
+
+  function percentileCopy(person) {
+    const current = inactivity(person);
+    const population = state.politicians.filter((p) => Number.isFinite(inactivity(p)));
+    const area = population.filter((p) => p.politicalArea === person.politicalArea);
+    const overallBetterThan = population.length
+      ? Math.round(population.filter((p) => inactivity(p) > current).length / population.length * 100)
+      : 0;
+    const areaBetterThan = area.length
+      ? Math.round(area.filter((p) => inactivity(p) > current).length / area.length * 100)
+      : 0;
+    return { overallBetterThan, areaBetterThan, areaCount: area.length };
   }
 
   function mount() {
@@ -62,19 +94,20 @@
         <div class="analysis-head">
           <div class="analysis-title">
             <span>Analisi interattiva</span>
-            <strong>Cosa mostrano i filtri attuali?</strong>
-            <small>I grafici cambiano mentre filtri i profili.</small>
+            <strong>Cosa mostrano i dati?</strong>
+            <small>Un solo livello alla volta. I grafici reagiscono ai filtri della pagina.</small>
           </div>
           <button class="analysis-close" type="button" aria-label="Chiudi analisi">×</button>
         </div>
         <div class="analysis-summary" id="analysis-summary"></div>
         <div class="analysis-tabs" role="tablist" aria-label="Tipo di analisi">
-          <button class="analysis-tab active" type="button" data-analysis-view="activity">Attività</button>
+          <button class="analysis-tab active" type="button" data-analysis-view="map">Mappa</button>
+          <button class="analysis-tab" type="button" data-analysis-view="activity">Attività</button>
           <button class="analysis-tab" type="button" data-analysis-view="areas">Aree</button>
           <button class="analysis-tab" type="button" data-analysis-view="cost">Costo</button>
         </div>
         <div class="analysis-view" id="analysis-view"></div>
-        <p class="analysis-note">Grafici costruiti esclusivamente sulle fasce pubbliche anonime. Dove serve una stima, viene usato il punto medio della fascia.</p>
+        <p class="analysis-note">Le visualizzazioni usano esclusivamente fasce pubbliche anonime. Percentili e posizioni sono approssimativi perché calcolati sui punti medi delle fasce.</p>
       </div>`;
     map.insertAdjacentElement("afterend", panel);
 
@@ -92,6 +125,7 @@
     });
 
     body.addEventListener("click", handleChartClick);
+    bindProfileEnhancement();
   }
 
   function setOpen(open) {
@@ -115,6 +149,64 @@
       <span>Quota equivalente media<strong>≈ ${euro.format(avgCost)}/mese</strong></span>`;
   }
 
+  function mapDot(person, activeIds) {
+    const presence = metricScore(person.metrics?.participationPct, "participation");
+    const initiative = initiativeScore(person);
+    const x = clamp(presence + deterministicJitter(person.id, "x"), 2, 98);
+    const y = clamp(initiative + deterministicJitter(person.id, "y"), 2, 98);
+    const active = activeIds.has(String(person.id));
+    const selected = mapCompare.includes(String(person.id));
+    const highlighted = highlightId === String(person.id);
+    return `<button
+      class="parliament-dot ${active ? "is-active" : "is-muted"} ${selected ? "is-selected" : ""} ${highlighted ? "is-highlighted" : ""}"
+      type="button"
+      style="--x:${x.toFixed(2)}%;--y:${(100 - y).toFixed(2)}%"
+      data-map-profile="${escapeHtml(person.id)}"
+      aria-label="${escapeHtml(person.name)}: presenza circa ${Math.round(presence)}%, iniziativa circa ${Math.round(initiative)}%"
+      title="${escapeHtml(person.name)} · presenza ≈ ${Math.round(presence)}% · iniziativa ≈ ${Math.round(initiative)}%">
+      <span></span>
+    </button>`;
+  }
+
+  function renderMap() {
+    const filteredIds = new Set(filteredPeople().map((p) => String(p.id)));
+    const source = mapScope === "filtered" ? state.politicians.filter((p) => filteredIds.has(String(p.id))) : state.politicians;
+    const dots = source.map((person) => mapDot(person, filteredIds)).join("");
+    const selectedCopy = compareFromMap
+      ? mapCompare.length
+        ? `${mapCompare.length}/2 selezionati`
+        : "Seleziona il primo profilo"
+      : "Clicca un punto per aprire il profilo";
+
+    body.innerHTML = `
+      <div class="analysis-view-head map-view-head">
+        <div>
+          <strong>Mappa dei ${nf.format(state.politicians.length)}</strong>
+          <span>Presenza sull’asse orizzontale · iniziativa documentata sull’asse verticale.</span>
+        </div>
+        <div class="map-toolbar">
+          <button class="map-tool ${mapScope === "filtered" ? "active" : ""}" type="button" data-map-scope>
+            ${mapScope === "filtered" ? "Solo filtro" : "Tutti i 399"}
+          </button>
+          <button class="map-tool ${compareFromMap ? "active" : ""}" type="button" data-map-compare>Confronta</button>
+        </div>
+      </div>
+      <div class="parliament-map-wrap">
+        <div class="parliament-axis axis-y"><span>Più iniziativa</span><span>Meno iniziativa</span></div>
+        <div class="parliament-map" id="parliament-map">
+          <i class="axis-line axis-line-x"></i>
+          <i class="axis-line axis-line-y"></i>
+          <span class="axis-label label-left">Meno presenza</span>
+          <span class="axis-label label-right">Più presenza</span>
+          ${dots}
+        </div>
+      </div>
+      <div class="map-readout">
+        <span>${selectedCopy}</span>
+        <small>${mapScope === "all" ? "I punti attenuati sono fuori dai filtri attuali." : "Sono visibili solo i profili del filtro corrente."} I punti sono leggermente distanziati per evitare sovrapposizioni.</small>
+      </div>`;
+  }
+
   function activityStats(people, def) {
     if (def.type === "participation") {
       const value = mean(people, (person) => metricScore(person.metrics?.[def.key], def.type));
@@ -131,7 +223,7 @@
       const stats = activityStats(people, def);
       return `<button class="insight-row" type="button" data-metric-key="${def.key}">
         <span>${def.short}</span>
-        <i class="insight-track"><i style="--w:${Math.max(0, Math.min(100, stats.value))}%"></i></i>
+        <i class="insight-track"><i style="--w:${clamp(stats.value)}%"></i></i>
         <span class="insight-value"><strong>${stats.label}</strong></span>
       </button>`;
     }).join("");
@@ -152,7 +244,7 @@
       const avg = mean(people, inactivity);
       return `<button class="area-analysis-row" type="button" data-area-target="${area}">
         <span>${area === "Altro / non classificato" ? "Altro" : area}</span>
-        <i class="insight-track"><i style="--w:${Math.max(0, Math.min(100, avg))}%"></i></i>
+        <i class="insight-track"><i style="--w:${clamp(avg)}%"></i></i>
         <span class="insight-value"><strong>≈ ${Math.round(avg)}%</strong> · ${nf.format(people.length)}</span>
       </button>`;
     }).join("");
@@ -176,7 +268,7 @@
       const share = total ? value / total * 100 : 0;
       return `<button class="cost-band-row" type="button" data-band-target="${group.key}">
         <span>${group.label}</span>
-        <i class="insight-track"><i style="--w:${Math.max(0, Math.min(100, share))}%"></i></i>
+        <i class="insight-track"><i style="--w:${clamp(share)}%"></i></i>
         <span class="insight-value"><strong>${euro.format(value)}</strong></span>
       </button>`;
     }).join("");
@@ -188,18 +280,63 @@
 
   function renderBody() {
     if (!body) return;
-    if (activeView === "areas") renderAreas();
+    if (activeView === "activity") renderActivity();
+    else if (activeView === "areas") renderAreas();
     else if (activeView === "cost") renderCost();
-    else renderActivity();
+    else renderMap();
   }
 
   function renderAll() {
     if (!panel) return;
     renderSummary();
     renderBody();
+    if (state.activeProfile) enhanceOpenProfile(state.activeProfile);
+  }
+
+  function handleMapProfile(id) {
+    const person = politicianById(id);
+    if (!person) return;
+    if (!compareFromMap) {
+      highlightId = String(id);
+      openProfile(id);
+      requestAnimationFrame(() => enhanceOpenProfile(person));
+      return;
+    }
+
+    const key = String(id);
+    if (mapCompare.includes(key)) mapCompare = mapCompare.filter((item) => item !== key);
+    else if (mapCompare.length < 2) mapCompare.push(key);
+
+    if (mapCompare.length === 2) {
+      state.compare = [...mapCompare];
+      updateCompareBar();
+      openComparison();
+      compareFromMap = false;
+      mapCompare = [];
+    }
+    renderMap();
   }
 
   function handleChartClick(event) {
+    const profile = event.target.closest("[data-map-profile]");
+    if (profile) {
+      handleMapProfile(profile.dataset.mapProfile);
+      return;
+    }
+
+    if (event.target.closest("[data-map-scope]")) {
+      mapScope = mapScope === "all" ? "filtered" : "all";
+      renderMap();
+      return;
+    }
+
+    if (event.target.closest("[data-map-compare]")) {
+      compareFromMap = !compareFromMap;
+      mapCompare = [];
+      renderMap();
+      return;
+    }
+
     const metric = event.target.closest("[data-metric-key]");
     if (metric) {
       selectedMetric = metric.dataset.metricKey;
@@ -226,6 +363,59 @@
       q("#reset-filters")?.click();
       requestAnimationFrame(renderAll);
     }
+  }
+
+  function enhanceOpenProfile(person) {
+    const drawer = q("#profile-dialog .drawer");
+    if (!drawer || !person) return;
+    let block = q("#profile-positioning", drawer);
+    if (!block) {
+      block = document.createElement("section");
+      block.id = "profile-positioning";
+      block.className = "profile-positioning";
+      const metrics = q("#profile-metrics", drawer);
+      metrics?.insertAdjacentElement("afterend", block);
+    }
+
+    const pct = percentileCopy(person);
+    block.innerHTML = `
+      <div class="positioning-head">
+        <div><span>Posizionamento</span><strong>Più attivo di circa ${pct.overallBetterThan}% dei profili</strong></div>
+        <button type="button" data-see-on-map="${escapeHtml(person.id)}">Vedi sulla mappa ↗</button>
+      </div>
+      <div class="percentile-track" aria-label="Percentile di attività approssimativo"><i style="--w:${pct.overallBetterThan}%"></i><b style="--x:${pct.overallBetterThan}%"></b></div>
+      <div class="positioning-meta">
+        <span>Camera <strong>≈ ${pct.overallBetterThan}° percentile</strong></span>
+        <span>${escapeHtml(person.politicalArea || "Macro-area")} <strong>≈ ${pct.areaBetterThan}° percentile</strong></span>
+      </div>
+      <small>Stima basata sulle fasce pubbliche anonime, non su valori puntuali.</small>`;
+  }
+
+  function showOnMap(id) {
+    highlightId = String(id);
+    activeView = "map";
+    qa(".analysis-tab", panel).forEach((tab) => tab.classList.toggle("active", tab.dataset.analysisView === "map"));
+    setOpen(true);
+    renderMap();
+    q("#profile-dialog")?.close();
+    panel.scrollIntoView({ behavior: "smooth", block: "center" });
+    window.setTimeout(() => q(`[data-map-profile="${CSS.escape(String(id))}"]`, panel)?.focus({ preventScroll: true }), 350);
+  }
+
+  function bindProfileEnhancement() {
+    document.addEventListener("click", (event) => {
+      const opener = event.target.closest("[data-open-profile]");
+      if (opener) {
+        const person = politicianById(opener.dataset.openProfile);
+        if (person) requestAnimationFrame(() => enhanceOpenProfile(person));
+      }
+
+      const mapButton = event.target.closest("[data-see-on-map]");
+      if (mapButton) {
+        event.preventDefault();
+        showOnMap(mapButton.dataset.seeOnMap);
+      }
+    });
   }
 
   function bindLiveUpdates() {
