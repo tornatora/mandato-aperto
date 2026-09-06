@@ -9,7 +9,7 @@ const LEG_URI = `http://dati.camera.it/ocd/legislatura.rdf/repubblica_${LEGISLAT
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-async function fetchJson(url, { attempts = 4, timeout = 150_000 } = {}) {
+async function fetchJson(url, { attempts = 7, timeout = 150_000 } = {}) {
   let lastError;
   for (let attempt = 1; attempt <= attempts; attempt += 1) {
     const controller = new AbortController();
@@ -22,11 +22,22 @@ async function fetchJson(url, { attempts = 4, timeout = 150_000 } = {}) {
           "user-agent": "MandatoAperto/0.1 (+https://github.com/)"
         }
       });
-      if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+      if (!response.ok) {
+        const error = new Error(`${response.status} ${response.statusText}`);
+        error.status = response.status;
+        throw error;
+      }
       return await response.json();
     } catch (error) {
       lastError = error;
-      if (attempt < attempts) await sleep(attempt * 1_250);
+      if (attempt < attempts) {
+        const transient = !error.status || [408, 425, 429, 500, 502, 503, 504].includes(error.status);
+        if (!transient) throw error;
+        const backoff = Math.min(30_000, 1_500 * 2 ** (attempt - 1));
+        const jitter = randomInt(250, 1_001);
+        console.warn(`Fonte temporaneamente non disponibile (${error.message}). Nuovo tentativo ${attempt + 1}/${attempts} tra ${Math.round((backoff + jitter) / 1000)}s…`);
+        await sleep(backoff + jitter);
+      }
     } finally {
       clearTimeout(timer);
     }
@@ -139,14 +150,13 @@ WHERE {
 GROUP BY ?deputato ?tipo ?descrizione`;
 
   try {
-    return await sparql(query, { attempts: 2, timeout: 120_000 });
+    return await sparql(query, { attempts: 4, timeout: 120_000 });
   } catch (error) {
     if (uris.length === 1) throw error;
     const middle = Math.ceil(uris.length / 2);
-    const [left, right] = await Promise.all([
-      fetchAttendanceBatch(uris.slice(0, middle)),
-      fetchAttendanceBatch(uris.slice(middle))
-    ]);
+    const left = await fetchAttendanceBatch(uris.slice(0, middle));
+    await sleep(500);
+    const right = await fetchAttendanceBatch(uris.slice(middle));
     return [...left, ...right];
   }
 }
@@ -227,13 +237,14 @@ WHERE {
 GROUP BY ?deputato`;
 
 console.log("Scarico elenco, attività e interventi dalla Camera…");
-const [officialList, basicRows, firstRows, coRows, interventionRows] = await Promise.all([
-  fetchJson(CAMERA_LIST_URL),
-  sparql(basicQuery),
-  sparql(firstSignerQuery),
-  sparql(coSignerQuery),
-  sparql(interventionsQuery)
-]);
+const officialList = await fetchJson(CAMERA_LIST_URL, { attempts: 7 });
+const basicRows = await sparql(basicQuery, { attempts: 7 });
+await sleep(750);
+const firstRows = await sparql(firstSignerQuery, { attempts: 7 });
+await sleep(750);
+const coRows = await sparql(coSignerQuery, { attempts: 7 });
+await sleep(750);
+const interventionRows = await sparql(interventionsQuery, { attempts: 7 });
 
 const currentGroups = new Map(
   officialList
@@ -257,7 +268,7 @@ console.log(`Calcolo partecipazione per ${basicRows.length} deputati…`);
 const uris = basicRows.map((row) => value(row, "deputato"));
 const batches = [];
 for (let index = 0; index < uris.length; index += 12) batches.push(uris.slice(index, index + 12));
-const attendanceRows = (await mapPool(batches, 5, fetchAttendanceBatch)).flat();
+const attendanceRows = (await mapPool(batches, 3, fetchAttendanceBatch)).flat();
 const attendanceByDeputy = new Map();
 for (const row of attendanceRows) {
   const deputy = value(row, "deputato");
