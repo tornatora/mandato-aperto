@@ -72,6 +72,15 @@ function displayName(text) {
     .replace(/(^|[\s'’-])\p{L}/gu, (match) => match.toLocaleUpperCase("it-IT"));
 }
 
+function politicalArea(group) {
+  const normalized = normalizeName(group || "");
+  if (/FRATELLI D ITALIA|\bLEGA\b|FORZA ITALIA|NOI MODERATI/.test(normalized)) return "Centrodestra";
+  if (/PARTITO DEMOCRATICO|ALLEANZA VERDI E SINISTRA|MISTO EUROPA|\bEUROPA\b/.test(normalized)) return "Centrosinistra";
+  if (/MOVIMENTO 5 STELLE/.test(normalized)) return "M5S";
+  if (/\bAZIONE\b|ITALIA VIVA/.test(normalized)) return "Centro";
+  return "Autonomie/altro";
+}
+
 function rangeBand(value, width, maximum = null) {
   if (!Number.isFinite(value)) return "N/D";
   if (maximum !== null && value >= maximum) return String(maximum);
@@ -375,6 +384,7 @@ const publicDeputies = shuffle(deputies).map((deputy, index) => {
   return {
     id,
     name: `Politico ${id}`,
+    politicalArea: politicalArea(deputy.group),
     metrics: {
       participationPct: rangeBand(deputy.metrics.participationPct, 10, 100),
       billsFirstSigned: countBand(deputy.metrics.billsFirstSigned),
@@ -393,11 +403,12 @@ const payload = {
     legislature: "XIX",
     scope: "Record anonimi dei politici in carica alla Camera",
     generatedAt: new Date().toISOString(),
-    methodologyVersion: "0.1.2",
+    methodologyVersion: "0.1.3",
     scoreCaps: caps,
     scoreBands,
     count: publicDeputies.length,
-    privacy: "Identità, nomi, partiti, circoscrizioni, identificativi, collegamenti personali e valori puntuali rimossi.",
+    privacy: "Identità, nomi, partiti e gruppi specifici, circoscrizioni, identificativi, collegamenti personali e valori puntuali rimossi. È pubblicata solo una macro-area politica molto ampia.",
+    politicalAreaMethod: "Macro-area derivata dal gruppo parlamentare ufficiale: Centrodestra, Centrosinistra, M5S, Centro, Autonomie/altro. M5S resta separato per evitare una classificazione ideologica forzata.",
     disclaimer: "L'inattività è l'inverso dell'attività documentata e non misura qualità, competenza, integrità o efficacia politica.",
     sources: [
       {
