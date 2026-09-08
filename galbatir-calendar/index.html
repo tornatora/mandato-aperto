@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#f7f7f4" />
+  <title>GAL BaTiR · Calendario eventi</title>
+  <meta name="description" content="Calendario territoriale GAL BaTiR per individuare date libere e conflitti tra eventi pubblici nella provincia di Reggio Calabria." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span>GAL</span> BaTiR<small>Agenda territoriale</small></div>
+      <nav>
+        <button class="nav-item active" data-view="calendar"><span>◫</span>Calendario</button>
+        <button class="nav-item" data-view="events"><span>≡</span>Eventi</button>
+        <button class="nav-item" data-view="sources"><span>⌁</span>Fonti</button>
+        <button class="nav-item" data-view="reports"><span>＋</span>Segnalazioni</button>
+      </nav>
+      <div class="sync-card">
+        <div class="eyebrow">SINCRONIZZAZIONE</div>
+        <strong id="sourceCount">8 fonti</strong>
+        <span class="good" id="sourcesOnline">verifica in corso…</span>
+        <span class="warn" id="sourcesOffline"></span>
+        <small id="lastRefresh">Ultimo refresh: —</small>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1>Calendario eventi</h1>
+          <p id="periodLabel">Provincia di Reggio Calabria · settembre 2026</p>
+        </div>
+        <button id="refreshButton" class="primary-button"><span id="refreshIcon">↻</span>Aggiorna fonti</button>
+      </header>
+
+      <section class="metrics">
+        <article class="metric"><span>DATE LIBERE</span><div><strong id="freeDates">—</strong><small>con copertura sufficiente</small></div></article>
+        <article class="metric"><span>CONFLITTI ALTI</span><div><strong class="danger" id="highConflict">—</strong><small>giorni da evitare</small></div></article>
+        <article class="metric"><span>COPERTURA FONTI</span><div><strong id="coverage">—</strong><small>fonti raggiungibili</small></div></article>
+        <article class="metric recommendation"><span>PROSSIMA DATA CONSIGLIATA</span><div><strong id="nextBest">—</strong><small id="nextBestMeta">calcolo in corso</small></div></article>
+      </section>
+
+      <section class="toolbar">
+        <div class="chips" id="filters">
+          <button class="chip active" data-filter="all">Tutti gli eventi</button>
+          <button class="chip" data-filter="outdoor">All'aperto</button>
+          <button class="chip" data-filter="indoor">Luogo chiuso</button>
+          <button class="chip" data-filter="fair">Sagre / fiere</button>
+          <button class="chip" data-filter="religious">Religioso</button>
+          <button class="chip" data-filter="sport">Sport</button>
+        </div>
+        <label class="search"><span>⌕</span><input id="searchInput" placeholder="Cerca comune o evento" /></label>
+      </section>
+
+      <section class="content-grid">
+        <article class="calendar-card">
+          <div class="calendar-header">
+            <div>
+              <h2 id="monthTitle">Settembre 2026</h2>
+              <div class="legend">
+                <span><i class="dot free"></i>Libera</span>
+                <span><i class="dot low"></i>Bassa pressione</span>
+                <span><i class="dot busy"></i>Occupata</span>
+                <span><i class="dot incomplete"></i>Copertura incompleta</span>
+              </div>
+            </div>
+            <div class="month-nav"><button id="prevMonth">‹</button><button id="todayButton">Oggi</button><button id="nextMonth">›</button></div>
+          </div>
+          <div class="weekdays"><span>LUN</span><span>MAR</span><span>MER</span><span>GIO</span><span>VEN</span><span>SAB</span><span>DOM</span></div>
+          <div class="calendar-grid" id="calendarGrid"></div>
+        </article>
+
+        <aside class="right-panel">
+          <section class="panel-section">
+            <h3>Date migliori</h3>
+            <p>Ordinate per minore conflitto</p>
+            <div id="bestDates" class="best-dates"></div>
+          </section>
+          <div class="divider"></div>
+          <section class="panel-section source-status">
+            <h3>Stato fonti</h3>
+            <div id="sourceSummary"></div>
+            <div class="rule-box"><strong>Una data è “libera” solo se</strong><span>le fonti critiche risultano raggiungibili.</span><small>Copertura incompleta → stato neutro.</small></div>
+          </section>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <button class="drawer-close" id="drawerClose">×</button>
+    <div class="drawer-head">
+      <span class="eyebrow">DETTAGLIO GIORNO</span>
+      <h2 id="drawerDate">—</h2>
+      <div class="status-pill" id="drawerStatus">—</div>
+    </div>
+    <div id="drawerEvents" class="drawer-events"></div>
+    <div class="drawer-footer">
+      <span id="drawerCoverage">Copertura fonti: —</span>
+      <button class="secondary-button" id="markGal">Segna come evento GAL</button>
+    </div>
+  </aside>
+
+  <script src="/app.js" type="module"></script>
+</body>
+</html>
