@@ -5,7 +5,7 @@ import crypto from 'node:crypto';
 const ORIGIN='https://scs-aihub.vercel.app';
 const OUT=path.resolve('dist');
 const RAW='https://raw.githubusercontent.com/tornatora/mandato-aperto/main/scs-aihub-overlay';
-const ua='Mozilla/5.0 (compatible; SCS-AIHub-Snapshot/3.0; +https://scs-aihub.vercel.app)';
+const ua='Mozilla/5.0 (compatible; SCS-AIHub-Snapshot/4.0; +https://scs-aihub.vercel.app)';
 const seen=new Set(),queue=[];const rewrites=new Map();let assetCount=0,pageCount=0,queryAssetCount=0;
 const sha=s=>crypto.createHash('sha1').update(s).digest('hex').slice(0,14);
 await fs.rm(OUT,{recursive:true,force:true});await fs.mkdir(OUT,{recursive:true});
@@ -30,8 +30,18 @@ for(const u of extractHtml(rootHtmlRaw,ORIGIN+'/'))enqueue(u);
 while(queue.length&&seen.size<800){const u=queue.shift();try{const r=await get(u.href),ct=r.headers.get('content-type')||'',buf=Buffer.from(await r.arrayBuffer());const wp=webPathFor(u,ct);await writeBuf(diskFor(wp),buf);assetCount++;if(u.search)queryAssetCount++;if(/text\/html/i.test(ct)){pageCount++;for(const v of extractHtml(buf.toString('utf8'),u.href))enqueue(v)}else if(/text\/css/i.test(ct)){for(const v of extractCss(buf.toString('utf8'),u.href))enqueue(v)}else if(/(?:javascript|ecmascript)/i.test(ct)||/\.m?js$/i.test(u.pathname)){for(const v of extractJs(buf.toString('utf8'),u.href))enqueue(v)}}catch(e){console.warn('mirror-skip',u.pathname,String(e.message||e))}}
 for(const u of extractHtml(rootHtmlRaw,ORIGIN+'/').filter(isPage).slice(0,40)){try{const r=await get(u.href),ct=r.headers.get('content-type')||'';if(!/text\/html/i.test(ct))continue;let html=await r.text();for(const v of extractHtml(html,u.href))enqueue(v);html=applyRewrites(html,u.href);await writeBuf(diskFor(webPathFor(u,'text/html')),Buffer.from(html));pageCount++}catch(e){console.warn('page-skip',u.pathname)}}
 while(queue.length&&seen.size<950){const u=queue.shift();try{const r=await get(u.href),ct=r.headers.get('content-type')||'',buf=Buffer.from(await r.arrayBuffer());const wp=webPathFor(u,ct);await writeBuf(diskFor(wp),buf);assetCount++;if(u.search)queryAssetCount++;if(/text\/css/i.test(ct))for(const v of extractCss(buf.toString('utf8'),u.href))enqueue(v)}catch{}}
+
+// Preserve every existing page as captured from the live AI Hub.
 let rootHtml=applyRewrites(rootHtmlRaw,ORIGIN+'/');await writeBuf(path.join(OUT,'index.html'),Buffer.from(rootHtml));pageCount++;
-function inject(html){let x=html;if(!/<base\b/i.test(x))x=x.replace(/<head([^>]*)>/i,'<head$1><base href="/">');const css=(surveyCss+'\n'+nativeCss).replace(/<\/style>/gi,'<\\/style>');const js=(surveyJs+'\n'+nativeJs).replace(/<\/script>/gi,'<\\/script>');x=x.replace(/<\/head>/i,`<style id="scs-cost-style">${css}</style></head>`);x=x.replace(/<\/body>/i,`<div id="scs-cost-root"></div><script id="scs-cost-script">${js}</script></body>`);return x}
+
+// Assessment assets are external same-origin files. This avoids the original app CSP blocking inline JS.
+const scsDir=path.join(OUT,'__scs-cost');await fs.mkdir(scsDir,{recursive:true});
+await fs.writeFile(path.join(scsDir,'style.css'),surveyCss+'\n'+nativeCss,'utf8');
+await fs.writeFile(path.join(scsDir,'survey.js'),surveyJs,'utf8');
+await fs.writeFile(path.join(scsDir,'native.js'),nativeJs,'utf8');
+
+function stripMetaCsp(html){return html.replace(/<meta[^>]+http-equiv=["']Content-Security-Policy["'][^>]*>/gi,'')}
+function inject(html){let x=stripMetaCsp(html);if(!/<base\b/i.test(x))x=x.replace(/<head([^>]*)>/i,'<head$1><base href="/">');x=x.replace(/<\/head>/i,'<link rel="stylesheet" href="/__scs-cost/style.css?v=4"></head>');x=x.replace(/<\/body>/i,'<div id="scs-cost-root"></div><script src="/__scs-cost/survey.js?v=4"></script><script src="/__scs-cost/native.js?v=4"></script></body>');return x}
 await fs.mkdir(path.join(OUT,'analisi-costi-ai'),{recursive:true});const assessment=inject(rootHtml);await fs.writeFile(path.join(OUT,'analisi-costi-ai','index.html'),assessment,'utf8');await fs.writeFile(path.join(OUT,'analisi-costi-ai.html'),assessment,'utf8');
 await fs.writeFile(path.join(OUT,'404.html'),rootHtml,'utf8');
-const diag={source:ORIGIN,capturedAt:new Date().toISOString(),sourceBytes:Buffer.byteLength(rootHtmlRaw),sourceSha256:crypto.createHash('sha256').update(rootHtmlRaw).digest('hex'),assetsMirrored:assetCount,queryAssetsMirrored:queryAssetCount,pagesMirrored:pageCount,surveyCssBytes:Buffer.byteLength(surveyCss),surveyJsBytes:Buffer.byteLength(surveyJs),nativeCssBytes:Buffer.byteLength(nativeCss),nativeJsBytes:Buffer.byteLength(nativeJs),assessmentBytes:Buffer.byteLength(assessment)};await fs.writeFile(path.join(OUT,'_snapshot-diagnostic.json'),JSON.stringify(diag,null,2));console.log('SCS AI Hub snapshot ready',diag);
+const diag={source:ORIGIN,capturedAt:new Date().toISOString(),sourceBytes:Buffer.byteLength(rootHtmlRaw),sourceSha256:crypto.createHash('sha256').update(rootHtmlRaw).digest('hex'),assetsMirrored:assetCount,queryAssetsMirrored:queryAssetCount,pagesMirrored:pageCount,surveyCssBytes:Buffer.byteLength(surveyCss),surveyJsBytes:Buffer.byteLength(surveyJs),nativeCssBytes:Buffer.byteLength(nativeCss),nativeJsBytes:Buffer.byteLength(nativeJs),assessmentBytes:Buffer.byteLength(assessment),route:'/analisi-costi-ai',scriptMode:'external-same-origin'};await fs.writeFile(path.join(OUT,'_snapshot-diagnostic.json'),JSON.stringify(diag,null,2));console.log('SCS AI Hub snapshot ready',diag);
