@@ -54,4 +54,12 @@ const httpServer=createServer(async(req,res)=>{
   }
   res.writeHead(404).end("Not Found");
 });
-httpServer.listen(PORT,"0.0.0.0",()=>console.log(`Meeting OS listening on :${PORT}`));
+httpServer.listen(PORT,"0.0.0.0",async()=>{
+  console.log(`Meeting OS listening on :${PORT}`);
+  try{
+    const h=await fetch(STORE_BASE+"/health");
+    console.log("STORE_HEALTH",h.status,(await h.text()).slice(0,400));
+    const d=await fetch(STORE_BASE+"/.well-known/oauth-authorization-server");
+    console.log("STORE_OAUTH_DISCOVERY",d.status,(await d.text()).slice(0,800));
+  }catch(e){console.error("STORE_SELF_TEST_FAILED",e)}
+});
