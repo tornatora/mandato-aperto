@@ -29,10 +29,10 @@ button{font:inherit;touch-action:manipulation;-webkit-tap-highlight-color:transp
 <body>
 <main class="app">
   <div class="head">
-    <div><div class="brand">Meeting OS</div><div class="sub">Riunioni → decisioni → azioni</div></div>
+    <div><div class="brand">Meeting OSS 2.1</div><div class="sub">Riunioni → decisioni → azioni</div></div>
     <div class="stats" id="stats"></div>
   </div>
-  <div class="actions">
+  <div class="section" style="margin-top:6px"><b>Nuova riunione</b><span>inizia da qui</span></div><div class="actions">
     <button class="action record" id="record"><span>● Registra nuova riunione</span><small>Usa la registrazione audio di ChatGPT</small></button>
     <button class="action upload" id="upload"><span>↑ Carica audio riunione</span><small>Allega M4A, MP3, WAV o altro audio</small></button>
   </div>
@@ -63,8 +63,8 @@ function render(){
   document.querySelectorAll("[data-status]").forEach(b=>b.onclick=async()=>{const t=data.tasks.find(x=>x.id===b.dataset.status);if(!t)return;b.disabled=true;try{update(await window.openai.callTool("update_task_status",{task_id:t.id,status:nextStatus(t.status)}))}finally{b.disabled=false}});
   notifyHeight();
 }
-document.getElementById("record").onclick=()=>window.openai?.sendFollowUpMessage?.({prompt:"Voglio registrare una nuova riunione in Meeting OS. Guidami a registrare/allegare l'audio qui in ChatGPT; quando l'audio è disponibile, analizzalo e salva in Meeting OS una sintesi di massimo 5 punti, le decisioni reali e massimo 7 attività concrete senza inventare responsabili o scadenze.",scrollToBottom:true});
-document.getElementById("upload").onclick=()=>window.openai?.sendFollowUpMessage?.({prompt:"Voglio caricare l'audio di una riunione in Meeting OS. Chiedimi di allegare qui in ChatGPT il file audio; appena è disponibile, analizzalo e salva in Meeting OS una sintesi di massimo 5 punti, le decisioni reali e massimo 7 attività concrete senza inventare responsabili o scadenze.",scrollToBottom:true});
+document.getElementById("record").onclick=()=>window.openai?.sendFollowUpMessage?.({prompt:"Voglio registrare una nuova riunione in Meeting OSS 2.1. Guidami a registrare/allegare l'audio qui in ChatGPT; quando l'audio è disponibile, analizzalo e salva in Meeting OS una sintesi di massimo 5 punti, le decisioni reali e massimo 7 attività concrete senza inventare responsabili o scadenze.",scrollToBottom:true});
+document.getElementById("upload").onclick=()=>window.openai?.sendFollowUpMessage?.({prompt:"Voglio caricare l'audio di una riunione in Meeting OSS 2.1. Chiedimi di allegare qui in ChatGPT il file audio; appena è disponibile, analizzalo e salva in Meeting OS una sintesi di massimo 5 punti, le decisioni reali e massimo 7 attività concrete senza inventare responsabili o scadenze.",scrollToBottom:true});
 window.addEventListener("openai:set_globals",e=>{const g=e.detail?.globals;if(g?.toolOutput)update(g.toolOutput)},{passive:true});
 update(window.openai?.toolOutput||data);render();
 </script>
